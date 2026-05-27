@@ -2,9 +2,9 @@
 
 A practical Quality Engineering playbook for building reliable software **before, during, and after development**.
 
-This repository is a portfolio project that documents how modern QA can support delivery through shift-left practices, risk-based testing, automation, release confidence, and continuous improvement.
+This repository is a portfolio project that documents how modern QA can support delivery through shift-left practices, risk-based testing, automation, observability, release confidence, and continuous improvement.
 
-> Quality is not a final checkpoint. It is a strategy built through clear requirements, technical collaboration, smart testing, and measurable learning.
+> Quality is not a final checkpoint. It is a system property built through clear requirements, technical collaboration, smart testing, and measurable learning.
 
 ---
 
@@ -40,7 +40,10 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 5. **Humans protect context**  
    AI can help generate ideas, analyze logs, summarize requirements, and speed up test design, but human judgment remains essential for product risk, usability, ethics, and real user impact.
 
-6. **Metrics should improve decisions**  
+6. **Observability is a quality requirement**  
+   A feature is not truly ready if the team cannot understand, monitor, and troubleshoot it after release.
+
+7. **Metrics should improve decisions**  
    Good QA metrics reveal risk, bottlenecks, learning opportunities, and product impact. They should never be used to blame people.
 
 ---
@@ -52,6 +55,7 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 | Before Development | Build quality into requirements, risks, contracts, and testability | [01 - Before Development](01-before-development.md) |
 | During Development | Collaborate with developers, validate continuously, and automate smartly | [02 - During Development](02-during-development.md) |
 | After Development | Measure release confidence, production quality, and continuous improvement | [03 - After Development](03-after-development.md) |
+| QA SDLC Glossary | Clarify common QA, SDLC, testing, release, and metrics terms used across the playbook | [QA SDLC Glossary](qa-sdlc-glossary.md) |
 
 ---
 
@@ -63,6 +67,7 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 | [Test Strategy Template](templates/test-strategy-template.md) | Lightweight strategy with risk assessment, test scope, automation, observability, and release confidence |
 | [Test Cases Template](templates/test-cases-template.md) | Plain-text test case documentation for manual, exploratory, API, integration, regression, and automation candidate scenarios |
 | [Quality Review Checklist](templates/quality-review-checklist.md) | Quick quality questions for refinement, development, and release |
+| [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md) | Practical DoR/DoD quality gates for stories, tasks, and team working agreements |
 | [Bug Report Template](templates/bug-report-template.md) | Clear and reproducible bug documentation |
 | [Deployment Validation Guide Template](templates/deployment-validation-guide-template.md) | QA-focused guide for release readiness, deployment validation, rollback awareness, and post-deploy monitoring |
 | [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md) | Metrics model for quality visibility and team decisions |
@@ -73,11 +78,11 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 
 Use this playbook as:
 
+- a GitHub portfolio project;
 - a reference for QA interviews;
 - a team working agreement;
 - a starting point for QA process improvement;
-- a QA team assessment;
-- a quality governance model.
+- a lightweight quality governance model.
 
 ---
 
@@ -96,3 +101,4 @@ This playbook is inspired by modern Quality Engineering practices, shift-left te
 ## Author
 
 Created by **Paula Marcondes**
+https://www.linkedin.com/in/paulamarcondes/
