@@ -88,7 +88,9 @@ Use this playbook as:
 
 ## References and inspiration
 
-This playbook is inspired by modern Quality Engineering practices, shift-left testing, risk-based testing, DevOps, observability, and continuous improvement. Useful references include:
+This playbook is inspired by modern Quality Engineering practices, shift-left testing, risk-based testing, DevOps, observability, and continuous improvement.
+
+Useful references include:
 
 - [DORA Metrics](https://dora.dev/guides/dora-metrics/)
 - [Google SRE Book - Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)
@@ -100,5 +102,6 @@ This playbook is inspired by modern Quality Engineering practices, shift-left te
 
 ## Author
 
-Created by **Paula Marcondes**
-https://www.linkedin.com/in/paulamarcondes/
+Created by **Paula Marcondes**  
+
+[Connect with me on LinkedIn](https://www.linkedin.com/in/paulamarcondes/)

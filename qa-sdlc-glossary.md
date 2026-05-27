@@ -54,9 +54,9 @@ The goal is to reduce ambiguity and help teams use the same language when discus
 | User Impact | The effect a change, issue, or limitation has on the user's ability to complete a real task. |
 | Critical Flow | A user journey, business process, or system workflow that must work reliably because failure has high impact. |
 | Golden Path | The most important successful end-to-end path that represents expected system behavior. |
-| Edge Case | A less common condition that may still cause failure, confusion, data issues, or unexpected behavior. |
-| Negative Scenario | A test scenario designed to validate how the system behaves when something is invalid, missing, unavailable, or unexpected. |
 | Happy Path | The expected successful flow when all inputs, dependencies, and conditions are valid. |
+| Negative Scenario | A test scenario designed to validate how the system behaves when something is invalid, missing, unavailable, or unexpected. |
+| Edge Case | A less common condition that may still cause failure, confusion, data issues, or unexpected behavior. |
 | Assumption | Something believed to be true but not yet confirmed. Assumptions should be made visible because they create risk. |
 | Out of Scope | A behavior, area, or scenario intentionally not covered by the current delivery or test effort. |
 
@@ -175,6 +175,7 @@ The goal is to reduce ambiguity and help teams use the same language when discus
 | Lead Time for Changes | How long it takes for a change to move from code committed to running in production. |
 | Change Failure Rate | The percentage of changes that cause incidents, rollbacks, hotfixes, or degraded service. |
 | MTTR | Mean Time to Restore. The average time needed to recover after a production issue. |
+| MTTD | Mean Time to Detect. The average time needed to identify that an issue is happening. |
 | Defect Density | Number of defects relative to size, scope, module, story count, or another baseline. |
 | Defect Aging | How long defects remain open before being resolved. |
 | Rework | Extra work caused by unclear requirements, defects, missed risks, poor implementation, or incomplete validation. |

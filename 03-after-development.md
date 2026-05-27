@@ -38,6 +38,8 @@ Before release, the team should confirm that the change is functionally correct,
 - Release notes or documentation updated when needed
 - Go/no-go decision made with visible risk
 
+For a reusable structure, see [Deployment Validation Guide Template](templates/deployment-validation-guide-template.md).
+
 ---
 
 ## 2. Run focused regression
@@ -89,67 +91,43 @@ A release is not fully complete until the team confirms that production behavior
 
 Metrics should help the team improve quality, not create blame.
 
-A strong QA dashboard combines **outcome metrics**, **process metrics**, **automation health**, and **production signals**.
+A strong QA dashboard combines a few useful signals:
+
+| Metric category | What it helps answer |
+|---|---|
+| Outcome metrics | Did quality improve for users and production? |
+| Process health metrics | Where is delivery slowing down or creating rework? |
+| Automation health metrics | Is automation protecting critical flows or creating noise? |
+| Production and observability metrics | Can the team detect, diagnose, and recover quickly? |
+| User experience metrics | Can users complete important tasks successfully? |
+
+For a detailed dashboard format, see [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md).
 
 ---
 
 ## 5. Recommended QA metrics
 
-### Outcome metrics
+Use only metrics that help the team make better decisions.
 
-| Metric | What it shows | How to use it |
-|---|---|---|
-| Defect escape rate | Defects found after release compared with total defects | Identify gaps in test strategy and risk analysis |
-| Production incidents | Number and severity of issues affecting users | Track product stability and release risk |
-| Change failure rate | Percentage of releases causing incidents, rollback, hotfix, or degraded service | Connect QA and release quality to delivery performance |
-| Customer/support-reported defects | Issues discovered by users or support | Reveal real-world pain points |
-| Severity distribution | Balance of critical/high/medium/low defects | Understand risk concentration |
+### Strong metrics to start with
 
-### Process health metrics
-
-| Metric | What it shows | How to use it |
-|---|---|---|
-| Requirement readiness | Stories entering sprint with clear acceptance criteria and testability | Improve shift-left quality |
-| Defects by origin | Where defects were introduced or missed | Improve refinement, development, reviews, or testing |
-| Reopened defect rate | Bugs reopened after fix | Improve bug analysis, fix validation, and communication |
-| Validation cycle time | Time from ready-for-QA to QA sign-off | Identify bottlenecks |
-| Defect resolution time | Time from bug report to verified fix | Improve flow and prioritization |
-
-### Automation health metrics
-
-| Metric | What it shows | How to use it |
-|---|---|---|
-| Critical flow automation coverage | How many high-risk flows are protected | Focus automation on business value |
-| Automated test pass rate | Stability of automated validation | Detect build or environment instability |
-| Flaky test rate | Tests that fail without product defects | Protect trust in automation |
-| Regression execution time | Time needed to validate release risk | Show automation impact |
-| Automation maintenance effort | Cost of keeping tests useful | Avoid bloated or low-value suites |
-
-### Production and observability metrics
-
-| Metric | What it shows | How to use it |
-|---|---|---|
-| Error rate | How often requests/jobs/files/events fail | Detect instability |
-| Latency/performance | How long critical operations take | Protect user experience |
-| Traffic/volume | Usage or processing load | Understand normal vs abnormal behavior |
-| Saturation/resource usage | System pressure | Prevent degradation |
-| MTTR | Mean time to restore service after failure | Improve incident response |
-| MTTD | Mean time to detect issues | Improve monitoring and alerting |
-
-### User experience metrics
-
-| Metric | What it shows | How to use it |
-|---|---|---|
-| Task success rate | Whether users can complete key journeys | Validate product value |
-| Support ticket trend | User friction after release | Prioritize fixes and improvements |
-| CSAT/NPS feedback | User satisfaction | Connect quality to perception |
-| Usability findings | Workflow pain points | Improve human-centered quality |
+| Metric | Why it matters |
+|---|---|
+| Escaped defects | Shows what reached users or production |
+| Production incidents | Shows real stability and operational impact |
+| Change failure rate | Connects release quality to delivery performance |
+| Reopened defect rate | Reveals unclear fixes, weak validation, or poor communication |
+| Validation cycle time | Highlights QA blockers, test data gaps, or environment problems |
+| Critical flow automation coverage | Shows whether automation protects what matters most |
+| Flaky test rate | Protects trust in automation results |
+| MTTR / MTTD | Shows how quickly the team detects and recovers from issues |
+| Support ticket trend | Connects quality to real user friction |
 
 ---
 
 ## 6. Avoid vanity metrics
 
-Be careful with metrics that look impressive but do not prove quality.
+Some metrics look impressive but do not prove quality by themselves.
 
 ### Use with context
 
@@ -159,7 +137,7 @@ Be careful with metrics that look impressive but do not prove quality.
 - Number of automated tests
 - Number of executed scenarios
 
-These can be useful, but only when connected to risk, coverage of critical flows, defect trends, and release outcomes.
+These can be useful only when connected to risk, critical-flow coverage, defect trends, and release outcomes.
 
 ### Better question
 
@@ -167,78 +145,9 @@ These can be useful, but only when connected to risk, coverage of critical flows
 
 ---
 
-## 7. How to show QA metrics
+## 7. Turn metrics into action
 
-A good dashboard should be simple enough for the team to read quickly.
-
-### Recommended dashboard sections
-
-#### 1. Release confidence summary
-
-Show a clear view of current release readiness.
-
-| Indicator | Example |
-|---|---|
-| Critical tests | Passed / Failed / Blocked |
-| Open high-severity defects | Count and status |
-| Regression status | Not started / In progress / Complete |
-| Known risks | Short list |
-| Go/no-go recommendation | Ready / Ready with risk / Not ready |
-
-#### 2. Quality trend view
-
-Show whether quality is improving over time.
-
-Recommended charts:
-
-- escaped defects by sprint/month;
-- production incidents by severity;
-- reopened bugs trend;
-- validation cycle time trend;
-- regression execution time trend;
-- flaky test trend.
-
-#### 3. Risk heatmap
-
-Show where attention is needed.
-
-| Area | Risk | Defects | Automation | Observability | Action |
-|---|---|---:|---|---|---|
-| Checkout | High | 4 | Partial | Good | Add API contract tests |
-| User Profile | Medium | 1 | Good | Partial | Improve logs |
-| Reporting | Low | 0 | Manual only | Basic | Monitor |
-
-#### 4. Defect source analysis
-
-Group defects by where they could have been prevented.
-
-Examples:
-
-- unclear requirement;
-- missed edge case;
-- code defect;
-- integration dependency;
-- test data gap;
-- environment issue;
-- monitoring gap.
-
-#### 5. Automation health panel
-
-Show whether automation is helping or slowing the team.
-
-Recommended indicators:
-
-- pass rate;
-- flaky rate;
-- average execution time;
-- critical journeys covered;
-- failures by cause: product bug, test issue, environment issue.
-
----
-
-## 8. Use metrics to trigger action
-
-Metrics should lead to concrete improvements.
+Metrics should trigger improvement, not just reporting.
 
 | Signal | Possible action |
 |---|---|
@@ -252,7 +161,7 @@ Metrics should lead to concrete improvements.
 
 ---
 
-## 9. Run blame-free post-release reviews
+## 8. Run blame-free post-release reviews
 
 After important releases or incidents, the team should learn without blame.
 

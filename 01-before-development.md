@@ -72,7 +72,6 @@ Examples:
 - Invalid data must fail explicitly, not silently.
 - The system must log the correlation ID for troubleshooting.
 - The API response must keep backward compatibility.
- - The API response must maintain backward compatibility.
 - The critical flow must be covered by automated regression.
 
 ---
@@ -171,6 +170,8 @@ A story is ready for development when:
 - non-functional expectations are clear when relevant;
 - observability needs are defined for risky flows;
 - QA, Dev, and Product share the same understanding.
+
+For a full template, see [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md).
 
 ---
 
