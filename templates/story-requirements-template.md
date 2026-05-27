@@ -153,11 +153,27 @@ Use this section when the change involves APIs, events, files, data transformati
 
 Write criteria that are specific, observable, and testable.
 
+### Option A - BDD format
+
+Use this when behavior needs to be business-readable across Product, Dev, and QA.
+
 ```gherkin
 Given [context]
 When [action]
 Then [expected behavior]
 And [observable result]
+```
+
+### Option B - Practical checklist format
+
+Use this when the team needs a simple and fast structure.
+
+```text
+- User can [complete action] when [condition]
+- System prevents [invalid action] when [condition]
+- Error message explains [problem] and [next step]
+- Existing behavior [flow/component] is not impacted
+- Logs include [ID/context] for troubleshooting
 ```
 
 ### Functional acceptance criteria
@@ -217,7 +233,22 @@ version=
 
 ---
 
-## 11. QA Notes
+## 11. User Experience Notes
+
+Use this section for user-facing changes.
+
+- Primary user journey:
+- Expected user outcome:
+- Possible confusion points:
+- Error/loading/empty states:
+- Accessibility considerations:
+- Usability heuristic concerns:
+
+Reference: [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
+
+---
+
+## 12. QA Notes
 
 ### Test focus
 
@@ -236,14 +267,16 @@ version=
 
 ---
 
-## 12. Readiness Checklist
+## 13. Readiness Checklist
 
 The story/requirement is ready when:
 
 - [ ] Scope is clear
 - [ ] Acceptance criteria are testable
+- [ ] BDD or practical checklist format was selected
 - [ ] Data contract or interface details are documented when relevant
 - [ ] Risks and dependencies are visible
 - [ ] Test data needs are known
 - [ ] Observability expectations are defined
+- [ ] User impact and UX considerations are documented when relevant
 - [ ] Open questions are resolved or explicitly accepted

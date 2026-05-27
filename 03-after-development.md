@@ -4,7 +4,7 @@ The goal after development is to answer one question:
 
 > Can we release with confidence, detect issues quickly, and learn from what happens next?
 
-Quality does not end when QA testing is complete. Release readiness, production validation, observability, metrics, and retrospectives are part of modern QA.
+Quality does not end when QA testing is complete. Release readiness, production validation, observability, metrics, leadership visibility, and retrospectives are part of modern QA.
 
 ---
 
@@ -15,6 +15,7 @@ After implementation, the team should be able to:
 - understand release risk;
 - validate the most important flows before and after deployment;
 - detect failures quickly;
+- communicate QA status clearly to stakeholders;
 - measure quality trends;
 - learn from incidents and escaped defects;
 - improve the next delivery cycle.
@@ -87,7 +88,34 @@ A release is not fully complete until the team confirms that production behavior
 
 ---
 
-## 4. Use QA metrics that drive decisions
+## 4. Create a QA report for leadership visibility
+
+QA reporting should make quality visible without overwhelming stakeholders.
+
+### A strong QA report includes
+
+- Scope tested and not tested
+- Release recommendation: Ready / Ready with risk / Not ready
+- Key risks and mitigations
+- Test execution summary
+- Critical defects and current status
+- Escaped defects or production concerns when relevant
+- Automation and regression coverage for critical flows
+- Environment or test data blockers
+- User impact and business impact
+- Metrics trend and improvement actions
+
+### Recommended format
+
+Use a concise one-page document or short presentation for leadership and a more detailed dashboard for the team.
+
+### Principle
+
+Leadership does not need every test step. They need the risk picture, release confidence, business impact, and decisions required.
+
+---
+
+## 5. Use QA metrics that drive decisions
 
 Metrics should help the team improve quality, not create blame.
 
@@ -105,7 +133,7 @@ For a detailed dashboard format, see [QA Metrics Dashboard Template](templates/q
 
 ---
 
-## 5. Recommended QA metrics
+## 6. Recommended QA metrics
 
 Use only metrics that help the team make better decisions.
 
@@ -122,10 +150,11 @@ Use only metrics that help the team make better decisions.
 | Flaky test rate | Protects trust in automation results |
 | MTTR / MTTD | Shows how quickly the team detects and recovers from issues |
 | Support ticket trend | Connects quality to real user friction |
+| Team QA maturity trend | Shows whether quality culture and practices are improving |
 
 ---
 
-## 6. Avoid vanity metrics
+## 7. Avoid vanity metrics
 
 Some metrics look impressive but do not prove quality by themselves.
 
@@ -137,7 +166,7 @@ Some metrics look impressive but do not prove quality by themselves.
 - Number of automated tests
 - Number of executed scenarios
 
-These can be useful only when connected to risk, critical-flow coverage, defect trends, and release outcomes.
+These can be useful only when connected to risk, critical-flow coverage, defect trends, release outcomes, and user impact.
 
 ### Better question
 
@@ -145,7 +174,7 @@ These can be useful only when connected to risk, critical-flow coverage, defect 
 
 ---
 
-## 7. Turn metrics into action
+## 8. Turn metrics into action
 
 Metrics should trigger improvement, not just reporting.
 
@@ -158,10 +187,11 @@ Metrics should trigger improvement, not just reporting.
 | High flaky test rate | Stabilize automation before expanding coverage |
 | Low observability | Add logs, alerts, correlation IDs, or dashboard visibility |
 | Repeated incidents in one area | Run root cause analysis and add targeted regression |
+| Low QA maturity survey score | Create a focused improvement plan with the team |
 
 ---
 
-## 8. Run blame-free post-release reviews
+## 9. Run blame-free post-release reviews
 
 After important releases or incidents, the team should learn without blame.
 
@@ -197,6 +227,7 @@ Examples:
 - [ ] Regression completed based on risk
 - [ ] Critical automated tests passing
 - [ ] Release risks documented
+- [ ] QA report or release summary prepared when relevant
 - [ ] Production smoke validation planned
 - [ ] Observability checked
 - [ ] Known defects reviewed
@@ -210,4 +241,4 @@ Examples:
 ## Key message
 
 > Quality after development is not about proving that QA tested.  
-> It is about proving that the team can release, observe, learn, and improve.
+> It is about proving that the team can release, observe, communicate, learn, and improve.

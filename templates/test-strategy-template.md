@@ -2,7 +2,7 @@
 
 Use this as a lightweight test strategy for a feature, integration, release, or significant change.
 
-This template includes risk assessment, test scope, test levels, automation direction, observability, and release confidence in one place.
+This template includes risk assessment, test scope, test levels, manual vs automated strategy, tool/framework decisions, observability, and release confidence in one place.
 
 ---
 
@@ -85,7 +85,21 @@ Risk should guide testing depth and evidence expectations.
 
 ---
 
-## 5. Test Approach by Level
+## 5. Test Approach by Area
+
+Use different strategies for frontend/UX and backend/API risks.
+
+| Area | Main risks | Validation approach | Evidence |
+|---|---|---|---|
+| Frontend / UX | Usability, accessibility, content, visual feedback, navigation, user errors | Exploratory, UI checks, accessibility, usability heuristics, critical UI automation | Screenshots, video, notes |
+| Backend / API | Contracts, business rules, data integrity, permissions, performance, integrations | API, contract, integration, negative, data validation | Payloads, logs, reports |
+| Data / Integration | Mapping, transformation, compatibility, duplicate handling, processing failures | Input/output validation, file/event checks, logs, reconciliation | Files, events, logs, DB checks |
+
+Reference for UI review: [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
+
+---
+
+## 6. Test Approach by Level
 
 | Test level | Required? | Purpose | Owner | Evidence |
 |---|---|---|---|---|
@@ -101,7 +115,7 @@ Risk should guide testing depth and evidence expectations.
 
 ---
 
-## 6. Test Data and Environment
+## 7. Test Data and Environment
 
 | Need | Source | Owner | Status | Notes |
 |---|---|---|---|---|
@@ -113,7 +127,23 @@ Risk should guide testing depth and evidence expectations.
 
 ---
 
-## 7. Automation Strategy
+## 8. Tool and Framework Strategy
+
+| Decision | Selected option | Reason | Risks / Notes |
+|---|---|---|---|
+| Manual testing tools |  |  |  |
+| API testing tool |  |  |  |
+| Automation framework | Robot Framework / Playwright / Cypress / Selenium / Other |  |  |
+| Programming language | Python / JavaScript / TypeScript / Java / Other |  |  |
+| Test management |  |  |  |
+| CI/CD integration |  |  |  |
+| Reporting |  |  |  |
+
+Choose tools based on product architecture, team skills, maintainability, CI/CD fit, debugging capability, and risk coverage.
+
+---
+
+## 9. Automation Strategy
 
 | Scenario | Automate? | Level | Reason | Location / Notes |
 |---|---|---|---|---|
@@ -131,7 +161,7 @@ Avoid automating unstable, unclear, or low-value scenarios before the behavior i
 
 ---
 
-## 8. Observability and Supportability
+## 10. Observability and Supportability
 
 | Requirement | Status | Evidence / Notes |
 |---|---|---|
@@ -144,7 +174,25 @@ Avoid automating unstable, unclear, or low-value scenarios before the behavior i
 
 ---
 
-## 9. Entry Criteria
+## 11. Early Test Design
+
+Create a draft test case outline before or during development for medium/high-risk changes.
+
+| Area | Draft scenarios | Owner | Status |
+|---|---|---|---|
+| Critical happy path |  |  | Draft / Ready / N/A |
+| Negative paths |  |  | Draft / Ready / N/A |
+| Edge cases |  |  | Draft / Ready / N/A |
+| Integration/API |  |  | Draft / Ready / N/A |
+| UI/UX |  |  | Draft / Ready / N/A |
+| Regression |  |  | Draft / Ready / N/A |
+| Post-deploy smoke |  |  | Draft / Ready / N/A |
+
+AI-assisted drafting may be used, but final review must be done by QA with product and technical context.
+
+---
+
+## 12. Entry Criteria
 
 - [ ] Requirements are clear and testable
 - [ ] Acceptance criteria are approved
@@ -155,7 +203,7 @@ Avoid automating unstable, unclear, or low-value scenarios before the behavior i
 
 ---
 
-## 10. Exit Criteria
+## 13. Exit Criteria
 
 - [ ] Critical scenarios passed
 - [ ] High-risk regression completed
@@ -168,7 +216,7 @@ Avoid automating unstable, unclear, or low-value scenarios before the behavior i
 
 ---
 
-## 11. Final Recommendation
+## 14. Final Recommendation
 
 **Status:** Ready / Ready with risk / Not ready  
 **Reason:**  
