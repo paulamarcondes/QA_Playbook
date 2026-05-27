@@ -115,42 +115,38 @@ Leadership does not need every test step. They need the risk picture, release co
 
 ---
 
-## 5. Use QA metrics that drive decisions
+## 5. Use metrics that drive decisions
 
 Metrics should help the team improve quality, not create blame.
 
-A strong QA dashboard combines a few useful signals:
+A strong QA metrics approach should combine a few useful signals:
 
-| Metric category | What it helps answer |
-|---|---|
-| Outcome metrics | Did quality improve for users and production? |
-| Process health metrics | Where is delivery slowing down or creating rework? |
-| Automation health metrics | Is automation protecting critical flows or creating noise? |
-| Production and observability metrics | Can the team detect, diagnose, and recover quickly? |
-| User experience metrics | Can users complete important tasks successfully? |
+- **Outcome signals:** escaped defects, production incidents, support ticket trends, user-impacting issues.
+- **Delivery health signals:** validation cycle time, blocked testing time, rework, release readiness risk.
+- **Automation health signals:** critical-flow automation coverage, flaky test rate, failed pipeline patterns.
+- **Observability signals:** time to detect, time to restore, useful logs, alerts, dashboards, traceability.
+- **Culture and maturity signals:** QA assessment survey trends, Definition of Ready/Done adoption, repeated root causes.
 
 For a detailed dashboard format, see [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md).
 
 ---
 
-## 6. Recommended QA metrics
+## 6. Start with a small set of strong QA metrics
 
 Use only metrics that help the team make better decisions.
 
-### Strong metrics to start with
+Strong metrics to start with:
 
-| Metric | Why it matters |
-|---|---|
-| Escaped defects | Shows what reached users or production |
-| Production incidents | Shows real stability and operational impact |
-| Change failure rate | Connects release quality to delivery performance |
-| Reopened defect rate | Reveals unclear fixes, weak validation, or poor communication |
-| Validation cycle time | Highlights QA blockers, test data gaps, or environment problems |
-| Critical flow automation coverage | Shows whether automation protects what matters most |
-| Flaky test rate | Protects trust in automation results |
-| MTTR / MTTD | Shows how quickly the team detects and recovers from issues |
-| Support ticket trend | Connects quality to real user friction |
-| Team QA maturity trend | Shows whether quality culture and practices are improving |
+- **Escaped defects:** shows what reached users or production.
+- **Production incidents:** shows real stability and operational impact.
+- **Change failure rate:** connects release quality to delivery performance.
+- **Reopened defect rate:** reveals unclear fixes, weak validation, or poor communication.
+- **Validation cycle time:** highlights QA blockers, test data gaps, or environment problems.
+- **Critical-flow automation coverage:** shows whether automation protects what matters most.
+- **Flaky test rate:** protects trust in automation results.
+- **MTTR / MTTD:** shows how quickly the team detects and recovers from issues.
+- **Support ticket trend:** connects quality to real user friction.
+- **Team QA maturity trend:** shows whether quality culture and practices are improving.
 
 ---
 
@@ -158,13 +154,13 @@ Use only metrics that help the team make better decisions.
 
 Some metrics look impressive but do not prove quality by themselves.
 
-### Use with context
+Use these with context:
 
-- Total number of test cases
-- Raw test coverage percentage
-- Number of bugs found by QA
-- Number of automated tests
-- Number of executed scenarios
+- total number of test cases;
+- raw test coverage percentage;
+- number of bugs found by QA;
+- number of automated tests;
+- number of executed scenarios.
 
 These can be useful only when connected to risk, critical-flow coverage, defect trends, release outcomes, and user impact.
 
@@ -178,16 +174,16 @@ These can be useful only when connected to risk, critical-flow coverage, defect 
 
 Metrics should trigger improvement, not just reporting.
 
-| Signal | Possible action |
-|---|---|
-| Escaped defects increasing | Review risk analysis and regression strategy |
-| Many requirement-related defects | Improve refinement and Definition of Ready |
-| High reopened bug rate | Improve bug fix validation and acceptance criteria |
-| Long QA cycle time | Review test data, environment stability, and automation opportunities |
-| High flaky test rate | Stabilize automation before expanding coverage |
-| Low observability | Add logs, alerts, correlation IDs, or dashboard visibility |
-| Repeated incidents in one area | Run root cause analysis and add targeted regression |
-| Low QA maturity survey score | Create a focused improvement plan with the team |
+Examples:
+
+- If escaped defects are increasing, review risk analysis and regression strategy.
+- If many defects are requirement-related, improve refinement and Definition of Ready.
+- If reopened bugs are frequent, improve fix validation and acceptance criteria.
+- If QA cycle time is long, review test data, environment stability, and automation opportunities.
+- If flaky tests are high, stabilize automation before expanding coverage.
+- If observability is weak, add logs, alerts, correlation IDs, or dashboard visibility.
+- If incidents repeat in one area, run root cause analysis and add targeted regression.
+- If QA maturity survey scores are low, create a focused improvement plan with the team.
 
 ---
 

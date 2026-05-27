@@ -54,30 +54,56 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 
 ## Playbook structure
 
-| Area | Goal | Guide |
-|---|---|---|
-| Before Development | Build quality into requirements, risks, contracts, testability, and early test design | [01 - Before Development](01-before-development.md) |
-| During Development | Collaborate with developers, validate continuously, review quality signals, and automate smartly | [02 - During Development](02-during-development.md) |
-| After Development | Measure release confidence, production quality, leadership visibility, and continuous improvement | [03 - After Development](03-after-development.md) |
-| Testing Types Reference | Clarify testing levels, methods, types, and techniques | [Testing Types Reference](testing-types.md) |
-| QA SDLC Glossary | Clarify common QA, SDLC, testing, release, AI, and metrics terms used across the playbook | [QA SDLC Glossary](qa-sdlc-glossary.md) |
-| AI Tools | Reusable AI assistant instructions, agents, and skills for QA work | [AI Tools](ai-tools/README.md) |
+### Core guides
 
----
+- **[01 - Before Development](01-before-development.md)**  
+  Build quality into requirements, risks, contracts, testability, tool decisions, user focus, and early test design.
 
-## Templates
+- **[02 - During Development](02-during-development.md)**  
+  Collaborate with developers, validate continuously, review quality signals, support PR review, and automate smartly.
 
-| Template | Purpose |
-|---|---|
-| [Story / Requirements / Interface Document Template](templates/story-requirements-template.md) | Clean structure for user stories, requirements, interfaces, contracts, user focus, and testability expectations |
-| [Test Strategy Template](templates/test-strategy-template.md) | Lightweight strategy with risk assessment, test scope, tool/framework choices, automation, observability, and release confidence |
-| [Test Cases Template](templates/test-cases-template.md) | Plain-text test case documentation for manual, exploratory, API, integration, regression, UX, and automation candidate scenarios |
-| [Quality Review Checklist](templates/quality-review-checklist.md) | Quick quality questions for refinement, development, PR review, environments, documentation, and release |
-| [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md) | Practical DoR/DoD quality gates for stories, tasks, and team working agreements |
-| [QA Assessment Survey Template](templates/qa-assessment-survey-template.md) | Team survey to measure QA maturity, culture, tooling, collaboration, and improvement over time |
-| [Bug Report Template](templates/bug-report-template.md) | Clear and reproducible bug documentation |
-| [Deployment Validation Guide Template](templates/deployment-validation-guide-template.md) | QA-focused guide for release readiness, deployment validation, rollback awareness, and post-deploy monitoring |
-| [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md) | Metrics model for quality visibility and team decisions |
+- **[03 - After Development](03-after-development.md)**  
+  Measure release confidence, production quality, leadership visibility, post-release learning, and continuous improvement.
+
+### References
+
+- **[Testing Types Reference](testing-types.md)**  
+  Clarifies testing levels, methods, types, techniques, and practical selection criteria.
+
+- **[QA SDLC Glossary](qa-sdlc-glossary.md)**  
+  Defines common QA, SDLC, testing, release, AI, and metrics terms used across the playbook.
+
+- **[AI Tools](ai-tools/README.md)**  
+  Reusable AI assistant instructions, agents, and skills for QA workflows.
+
+### Templates
+
+- **[Story / Requirements / Interface Document Template](templates/story-requirements-template.md)**  
+  Structure for user stories, requirements, interfaces, contracts, user focus, and testability expectations.
+
+- **[Test Strategy Template](templates/test-strategy-template.md)**  
+  Lightweight strategy with risk assessment, test scope, tool/framework choices, automation, observability, and release confidence.
+
+- **[Test Cases Template](templates/test-cases-template.md)**  
+  Plain-text test case documentation for manual, exploratory, API, integration, regression, UX, and automation candidate scenarios.
+
+- **[Quality Review Checklist](templates/quality-review-checklist.md)**  
+  Quick quality questions for refinement, development, PR review, environments, documentation, and release.
+
+- **[Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md)**  
+  Practical DoR/DoD quality gates for stories, tasks, and team working agreements.
+
+- **[QA Assessment Survey Template](templates/qa-assessment-survey-template.md)**  
+  Team survey to measure QA maturity, culture, tooling, collaboration, and improvement over time.
+
+- **[Bug Report Template](templates/bug-report-template.md)**  
+  Clear and reproducible bug documentation.
+
+- **[Deployment Validation Guide Template](templates/deployment-validation-guide-template.md)**  
+  QA-focused guide for release readiness, deployment validation, rollback awareness, and post-deploy monitoring.
+
+- **[QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md)**  
+  Metrics model for quality visibility and team decisions.
 
 ---
 

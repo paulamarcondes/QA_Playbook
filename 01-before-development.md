@@ -114,22 +114,20 @@ Examples:
 
 Not every change deserves the same testing effort. Testing depth should follow risk.
 
-| Risk factor | Questions |
-|---|---|
-| User impact | Could this block a critical user journey? |
-| Business impact | Could this affect revenue, compliance, safety, or trust? |
-| Technical complexity | Does it involve integrations, async flows, data transformation, permissions, or configuration? |
-| Change size | Is the change touching shared components or legacy areas? |
-| Defect history | Has this area failed before? |
-| Observability | Can failures be detected and diagnosed quickly? |
+### Risk factors to review
+
+- **User impact:** Could this block a critical user journey?
+- **Business impact:** Could this affect revenue, compliance, safety, or trust?
+- **Technical complexity:** Does it involve integrations, async flows, data transformation, permissions, or configuration?
+- **Change size:** Is the change touching shared components or legacy areas?
+- **Defect history:** Has this area failed before?
+- **Observability:** Can failures be detected and diagnosed quickly?
 
 ### Risk levels
 
-| Level | Testing approach |
-|---|---|
-| Low | Focused functional validation and basic regression |
-| Medium | Functional, negative, integration, and targeted regression |
-| High | Full risk-based validation, automation review, logs/monitoring checks, rollback awareness, and release follow-up |
+- **Low risk:** focused functional validation and basic regression.
+- **Medium risk:** functional, negative, integration, and targeted regression.
+- **High risk:** full risk-based validation, automation review, logs/monitoring checks, rollback awareness, and release follow-up.
 
 ---
 
@@ -215,23 +213,36 @@ QA should review contracts with the same seriousness as UI behavior.
 
 Frontend and backend testing protect different risks. A strong strategy covers both without overusing one layer.
 
-| Area | Main focus | Useful validation |
-|---|---|---|
-| Frontend / UX | User journey, usability, accessibility, clarity, visual feedback, error recovery | Exploratory testing, UI checks, accessibility checks, usability review, critical UI automation |
-| Backend / API | Business rules, contracts, data integrity, security, performance, integrations, error handling | API tests, contract tests, integration tests, logs, data validation, negative testing |
+### Frontend / UX focus
 
-### UI and UX reminders
+Validate the user journey, usability, accessibility, clarity, visual feedback, error recovery, permissions, and state changes.
 
-- Validate whether the user can complete the task easily.
-- Check copy, labels, empty states, errors, loading states, permissions, and recovery paths.
-- Use usability heuristics to support structured review.
-- Reference: [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
+Useful validation:
 
-### Backend and API reminders
+- exploratory testing;
+- UI checks;
+- accessibility checks;
+- usability review;
+- critical UI automation;
+- copy, labels, empty states, errors, loading states, and recovery paths.
 
-- Validate status codes, payloads, contracts, required fields, optional fields, and error responses.
-- Test authorization, invalid data, duplicate requests, timeouts, retries, and idempotency when relevant.
-- Confirm logs and correlation IDs support troubleshooting.
+Use usability heuristics to support structured review.  
+Reference: [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
+
+### Backend / API focus
+
+Validate business rules, contracts, data integrity, security, performance, integrations, error handling, and system behavior beyond the UI.
+
+Useful validation:
+
+- API tests;
+- contract tests;
+- integration tests;
+- logs and correlation IDs;
+- data validation;
+- negative testing;
+- authorization checks;
+- duplicate requests, timeouts, retries, and idempotency when relevant.
 
 ---
 
