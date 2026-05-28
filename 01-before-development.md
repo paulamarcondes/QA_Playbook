@@ -146,9 +146,7 @@ For medium or high-risk work, QA should start the **test strategy and test cases
 - Evidence expected for sign-off
 - Post-deploy checks when needed
 
-Use the [Test Strategy Template](templates/test-strategy-template.md) to define the validation approach, risks, scope, tools, environments, automation opportunities, and release confidence criteria.
-
-Use the [Test Cases Template](templates/test-cases-template.md) to draft early test scenarios while requirements are still being refined. These test cases can start as high-level scenarios and become more detailed as the implementation evolves.
+Use the [Test Strategy Template](templates/test-strategy-template.md) and [Test Cases Template](templates/test-cases-template.md) to define risks, scope, validation approach, and early scenarios before development starts.
 
 ### Why this helps
 
