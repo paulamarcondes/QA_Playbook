@@ -53,6 +53,8 @@ QA does not need to own unit testing, but QA should understand whether the chang
 - Code coverage meaningful for the changed area, not only globally high
 - Error handling and logs included for risky flows
 
+For deeper guidance on what meaningful unit tests should protect and how QA can review them with developers, see the [Unit Testing Guide for QA](resources/unit-test-guide.md).
+
 ### Practical question
 
 > Which risks are protected by developer tests, and which risks still need QA validation?
@@ -72,6 +74,8 @@ Pull request review is not only a developer activity. QA can review changes thro
 - Does the change affect existing flows, contracts, permissions, or data?
 - Are feature flags, configs, migrations, or environment differences clear?
 - Are documentation, user guide, or how-to-test notes needed?
+
+For deeper guidance on reviewing code quality, testability, observability, and maintainability, see the [Clean Code Review Guide for QA](resources/clean-code-guide.md).
 
 QA does not need to approve implementation style, but can raise risks that affect validation and release confidence.
 

@@ -2,7 +2,7 @@
 
 A practical Quality Engineering playbook for building reliable software **before, during, and after development**.
 
-This repository is a portfolio project that documents how modern QA can support delivery through shift-left practices, risk-based testing, automation, observability, release confidence, AI-assisted workflows, and continuous improvement.
+This repository is a portfolio project that documents how modern QA can support delivery through shift-left practices, risk-based testing, automation, release confidence, AI-assisted workflows, and continuous improvement.
 
 > Quality is not a final checkpoint. It is a system property built through clear requirements, technical collaboration, smart testing, user focus, and measurable learning.
 
@@ -44,10 +44,7 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 6. **Humans protect context**  
    AI can help generate ideas, analyze logs, summarize requirements, and speed up test design, but human judgment remains essential for product risk, usability, ethics, and real user impact.
 
-7. **Observability is a quality requirement**  
-   A feature is not truly ready if the team cannot understand, monitor, and troubleshoot it after release.
-
-8. **Metrics should improve decisions**  
+7. **Metrics should improve decisions**  
    Good QA metrics reveal risk, bottlenecks, learning opportunities, and product impact. They should never be used to blame people.
 
 ---
@@ -65,13 +62,24 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 - **[03 - After Development](03-after-development.md)**  
   Measure release confidence, production quality, leadership visibility, post-release learning, and continuous improvement.
 
-### References
+### Resources
 
-- **[Testing Types Reference](testing-types.md)**  
+- **[Testing Types Reference](resources/testing-types.md)**  
   Clarifies testing levels, methods, types, techniques, and practical selection criteria.
 
-- **[QA SDLC Glossary](qa-sdlc-glossary.md)**  
+- **[QA SDLC Glossary](resources/qa-sdlc-glossary.md)**  
   Defines common QA, SDLC, testing, release, AI, and metrics terms used across the playbook.
+
+- **[Quality Review Checklist](resources/quality-review-checklist.md)**  
+  Quick quality questions for refinement, development, PR review, environments, documentation, and release.
+
+- **[Clean Code Review Guide for QA](resources/clean-code-guide.md)**  
+  Practical guidance for QAs reviewing code and PRs with a quality, risk, testability, observability, and user-impact mindset.
+
+- **[Unit Testing Guide for QA](resources/unit-test-guide.md)**  
+  Concise guidance to help QAs collaborate with developers on unit testing strategy, meaningful coverage, and quality expectations.
+
+### AI tools
 
 - **[AI Tools](ai-tools/README.md)**  
   Reusable AI assistant instructions, agents, and skills for QA workflows.
@@ -87,9 +95,6 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 - **[Test Cases Template](templates/test-cases-template.md)**  
   Plain-text test case documentation for manual, exploratory, API, integration, regression, UX, and automation candidate scenarios.
 
-- **[Quality Review Checklist](templates/quality-review-checklist.md)**  
-  Quick quality questions for refinement, development, PR review, environments, documentation, and release.
-
 - **[Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md)**  
   Practical DoR/DoD quality gates for stories, tasks, and team working agreements.
 
@@ -104,6 +109,7 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 
 - **[QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md)**  
   Metrics model for quality visibility and team decisions.
+
 
 ---
 
@@ -122,7 +128,7 @@ Use this playbook as:
 
 ## References and inspiration
 
-This playbook is inspired by modern Quality Engineering practices, shift-left testing, risk-based testing, DevOps, observability, usability heuristics, AI-assisted QA, and continuous improvement.
+This playbook is inspired by modern Quality Engineering practices, shift-left testing, risk-based testing, DevOps, usability heuristics, AI-assisted QA, and continuous improvement.
 
 Useful references include:
 
@@ -139,6 +145,5 @@ Useful references include:
 ## Author
 
 Created by **Paula Marcondes**  
-QA Engineer focused on Quality Engineering, test automation, API and integration testing, risk-based validation, AI-assisted QA workflows, and release confidence.
 
 [Connect with me on LinkedIn](https://www.linkedin.com/in/paulamarcondes/)
