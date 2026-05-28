@@ -132,12 +132,11 @@ Environment strategy affects test reliability and release confidence.
 
 | Environment | Purpose | QA focus |
 |---|---|---|
-| Dev | Fast developer feedback and early checks | Pair testing, early API checks, obvious defects, testability feedback |
-| QA / Test | Dedicated validation environment | Functional, integration, regression, exploratory, test data validation |
-| Staging / Pre-prod | Production-like release validation | Final smoke, configuration, deployment validation, high-risk regression |
-| Production | Real user/system behavior | Smoke validation, monitoring, logs, alerts, incident signals |
+| Dev | Fast feedback while the change is still being built | Pair testing, early API checks, obvious defects, testability feedback, unit/integration signal review |
+| QA / Test | Main validation environment before release | Functional, integration, regression, exploratory testing, test data validation, defect retesting |
+| Production | Real user/system behavior after release | Smoke validation when appropriate, monitoring, logs, alerts, user feedback, incident signals |### Release reminder
 
-### Release reminder
+*Some teams may also have a staging or pre-production environment.*
 
 A feature moving between environments should have clear build/version information, deployment notes, known risks, and rollback or mitigation awareness when needed.
 
@@ -207,7 +206,7 @@ AI can support QA work, but it does not replace product understanding.
 
 > AI accelerates analysis. QA provides judgment.
 
-For reusable assistant configuration, see [AI Tools](ai-tools/README.md).
+For reusable assistant configuration and tools, see [AI Tools](ai-tools/README.md).
 
 ---
 
@@ -230,7 +229,7 @@ A bug is a product behavior that conflicts with a requirement, acceptance criter
 
 - New feature request
 - Product decision that works as designed
-- Cosmetic preference without user or brand impact
+- Cosmetic preference/improvement without user or brand impact
 - Environment issue unrelated to the product change
 - Known limitation already documented and accepted
 - Test data setup issue caused by invalid preconditions
@@ -259,6 +258,8 @@ A good bug report helps the team fix the issue faster.
 - severity and priority suggestion;
 - logs, IDs, payloads, or screenshots when relevant;
 - suspected area if known.
+
+Use the [Bug Report Template](templates/bug-report-template.md) to keep defect documentation clear, reproducible, and consistent across the team.
 
 ### Good bug title pattern
 
@@ -341,6 +342,8 @@ A change is done when:
 - known risks are communicated;
 - evidence is attached;
 - Product/QA/Dev agree the change is ready for the next step.
+
+Use the [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md) to align team expectations and make completion criteria clear, consistent, and visible.
 
 ---
 
