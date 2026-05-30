@@ -1,3 +1,7 @@
+.gitattributes text eol=lf
+* text=auto
 *.md text eol=lf
-*.robot text eol=lf
-*.resource text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf

@@ -2,103 +2,148 @@
 
 Use this template to document manual, exploratory, API, integration, regression, and automation candidate scenarios.
 
-Keep test documentation useful and easy to maintain. Avoid long click-by-click scripts unless they are truly needed.
+Test cases should be readable as plain text documentation. Keep executable automation logic in test/resource files, reusable keywords, fixtures, helpers, or framework-specific resources.
 
----
+> **How to use:** Avoid rigid click-by-click scripts unless they add value. Prefer clear scenarios, expected results, evidence, and risk coverage.
 
-## When to use detailed steps
+## 1. Test suite information
 
-Use detailed steps when the flow requires:
+| Field | Value |
+|---|---|
+| Feature / Story |  |
+| Jira / Work item |  |
+| Product / System |  |
+| Test owner |  |
+| Environment |  |
+| Version / Build |  |
+| Date |  |
 
-- repeated manual regression;
-- audit or compliance evidence;
-- complex setup;
-- onboarding support;
-- handoff to another tester;
-- a fragile or high-risk flow.
+## 2. Scope
 
-For most scenarios, prefer concise scenario notes or exploratory charters.
+### In scope
 
----
+- [Add item]
+- [Add item]
+- [Add item]
 
-## Test charter
+### Out of scope
 
-**Feature / Area:**  
-**Tester:**  
-**Date:**  
-**Risk Level:** Low / Medium / High / Critical  
-**Related story / bug:**  
+- [Add item]
+- [Add item]
+- [Add item]
 
-### Mission
+### Main risks covered
 
-What are we trying to learn or validate?
+- [Add item]
+- [Add item]
+- [Add item]
 
-- 
+## 3. Coverage matrix
 
-### Target areas
-
-- 
-
-### Risks to explore
-
-- 
-
-### Test data
-
-- 
-
-### Environment
-
-- 
-
----
-
-## Scenario list
-
-| ID | Scenario | Type | Priority | Result | Evidence |
+| Requirement / AC | Scenario | Type | Priority | Automated? | Test Case ID |
 |---|---|---|---|---|---|
-| TC-001 |  | Positive / Negative / Edge / Regression / Exploratory | Low / Medium / High | Pass / Fail / Blocked |  |
+| AC-001 |  | Positive / Negative / Regression / Integration | High / Medium / Low | Yes / No / Candidate | TC-001 |
 
----
+## 4. Test cases
 
-## Scenario notes
+### TC-001 - [Scenario title]
 
-### Scenario ID
+| Field | Details |
+|---|---|
+| Priority | Critical / High / Medium / Low |
+| Type | Positive / Negative / API / Integration / UI / Regression / Exploratory |
+| Automation | Automated / Candidate / Manual only |
+| Preconditions |  |
+| Test data |  |
+| Steps | 1. [Action]<br>2. [Action]<br>3. [Action] |
+| Expected result |  |
+| Evidence | Screenshot / logs / payload / file / database record / report |
+| Status | Not Run / Passed / Failed / Blocked |
+| Defect link |  |
 
-**Goal:**  
-**Preconditions:**  
-**Data:**  
-**Steps or actions:**  
-**Expected result:**  
-**Actual result:**  
-**Evidence:**  
-**Notes / findings:**  
+### TC-002 - [Scenario title]
 
----
+| Field | Details |
+|---|---|
+| Priority | Critical / High / Medium / Low |
+| Type | Positive / Negative / API / Integration / UI / Regression / Exploratory |
+| Automation | Automated / Candidate / Manual only |
+| Preconditions |  |
+| Test data |  |
+| Steps | 1. [Action]<br>2. [Action]<br>3. [Action] |
+| Expected result |  |
+| Evidence | Screenshot / logs / payload / file / database record / report |
+| Status | Not Run / Passed / Failed / Blocked |
+| Defect link |  |
 
-## Exploratory notes
+## 5. BDD scenario option
 
-Use this section for observations that do not fit scripted steps.
+Use this format when the scenario benefits from business-readable behavior.
 
-| Observation | Risk / Impact | Follow-up |
+```gherkin
+Scenario: [short scenario name]
+  Given [context]
+  When [action]
+  Then [expected result]
+  And [additional validation]
+```
+
+## 6. API / integration validation notes
+
+Use this section when validating APIs, files, events, queues, data transformations, or integrations.
+
+| Check | Expected result | Evidence |
 |---|---|---|
-|  |  |  |
+| Status code / response |  |  |
+| Required fields |  |  |
+| Optional fields |  |  |
+| Data mapping |  |  |
+| Error handling |  |  |
+| Duplicate handling |  |  |
+| Backward compatibility |  |  |
+| Logs / traceability |  |  |
 
----
+## 7. Exploratory testing charter
 
-## Automation candidates
+| Field | Details |
+|---|---|
+| Mission | What are we trying to learn or challenge? |
+| Area | Feature, flow, integration, or risk area |
+| Timebox | 30 / 60 / 90 minutes |
+| Data |  |
+| Heuristics | Boundary values, invalid data, permissions, interruptions, usability, performance, consistency |
+| Notes / Findings |  |
+| Follow-up actions |  |
 
-| Scenario | Why automate? | Suggested level | Priority |
-|---|---|---|---|
-|  |  | Unit / API / Contract / E2E | Low / Medium / High |
+## 8. Automation notes
 
-Automation should be considered when the scenario is stable, valuable, repeatable, and protects a meaningful risk.
+| Scenario | Automate? | Reason | Suggested level | Notes |
+|---|---|---|---|---|
+|  | Yes / No / Later |  | Unit / API / Contract / Integration / UI |  |
 
----
+### Automation guidance
 
-## Summary
+- Automate stable, valuable, and repetitive checks.
+- Prioritize critical flows, contracts, integrations, and regression-prone areas.
+- Avoid automating unclear or unstable behavior too early.
+- Keep test case documentation readable; keep executable logic in the automation framework.
+- In Robot Framework, keep Test Cases high-level and place reusable executable keywords in Resource files.
 
-**Overall result:** Pass / Fail / Blocked  
-**Main risks found:**  
-**Bugs opened:**  
-**Recommended next steps:**
+## 9. Execution summary
+
+| Result | Count |
+|---|---:|
+| Passed |  |
+| Failed |  |
+| Blocked |  |
+| Not Run |  |
+
+### Release recommendation
+
+Ready / Ready with risk / Not ready
+
+### Notes
+
+- [Add note]
+- [Add note]
+- [Add note]

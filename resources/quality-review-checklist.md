@@ -1,78 +1,67 @@
 # Quality Review Checklist
 
-Use this checklist to confirm quality outcomes across the delivery flow.
+Use this checklist during refinement, development, PR review, bug triage, release conversations, and post-release learning.
 
-It is intentionally short. The goal is to reveal risk and missing evidence, not to create process for its own sake.
+> **How to use:** Focus on outcomes, not checkbox theater. The goal is to reveal risk, improve decisions, and make quality visible.
 
----
+## Before development
 
-## 1. Before development
+- [ ] Is the user or business problem clear?
+- [ ] Is the impacted user, system, or journey known?
+- [ ] Are acceptance criteria clear and testable?
+- [ ] Did the team choose BDD or practical checklist criteria?
+- [ ] Is the happy path understood?
+- [ ] Are negative paths and edge cases discussed?
+- [ ] Are impacted systems, APIs, files, events, permissions, or configurations identified?
+- [ ] Are frontend/UX and backend/API risks visible?
+- [ ] Is regression impact understood?
+- [ ] Is required test data available or planned?
+- [ ] Are observability needs clear for risky flows?
+- [ ] Is a test strategy or draft test case outline needed before development?
+- [ ] Are tool/framework decisions clear for testing or automation?
+- [ ] Is the story ready for development?
 
-Expected outcome: the team can start development with clear value, known risk, and testable requirements.
+## During development
 
-- [ ] User value is clear.
-- [ ] Acceptance criteria are testable.
-- [ ] Risk level is documented.
-- [ ] API, file, data, or interface contract is clear when relevant.
-- [ ] Security and permissions expectations are clear when relevant.
-- [ ] Accessibility expectations are clear for user-facing changes.
-- [ ] Test data and environment needs are known.
-- [ ] Testing approach is roughly agreed.
+- [ ] Has QA reviewed scenarios before formal handoff?
+- [ ] Did QA and Dev review unit tests, integration tests, and static analysis when relevant?
+- [ ] Are SonarQube or similar static analysis findings reviewed?
+- [ ] Has QA reviewed the PR from a risk and testability perspective when relevant?
+- [ ] Are unit/API/integration/UI tests added at the right level?
+- [ ] Are errors handled clearly and safely?
+- [ ] Is the feature observable in production through logs, traces, metrics, or alerts when relevant?
+- [ ] Is the implementation testable without relying only on the UI?
+- [ ] Are critical paths protected?
+- [ ] Are environment differences between Dev, QA/Test, Staging, and Production understood?
+- [ ] Are known risks communicated?
+- [ ] Is evidence attached?
+- [ ] Are user guide or how-to-test notes updated when needed?
 
-Useful guide: [01 - Before Development](../01-before-development.md)
+## Bug classification
 
----
+- [ ] Does the behavior violate a requirement, acceptance criteria, contract, user need, or quality standard?
+- [ ] Is it a regression?
+- [ ] Is it caused by invalid test data or environment setup?
+- [ ] Is it expected behavior but poorly documented?
+- [ ] Is it actually a feature request or product decision?
+- [ ] Is impact clear enough to define severity and priority?
+- [ ] Is the bug report actionable enough for a developer to investigate quickly?
 
-## 2. During development
+## Before release
 
-Expected outcome: quality risks are reviewed while the change is still easy to adjust.
+- [ ] Did critical tests pass?
+- [ ] Was risk-based regression completed?
+- [ ] Are high-severity defects closed or explicitly accepted?
+- [ ] Is rollback or mitigation understood?
+- [ ] Are monitoring/logs available for critical areas?
+- [ ] Was production smoke validation planned when needed?
+- [ ] Is the release recommendation clear?
+- [ ] Is a QA report or release summary needed for leadership visibility?
 
-- [ ] PR review considers risk, testability, permissions, and edge cases.
-- [ ] Important business logic is protected by meaningful tests.
-- [ ] Contracts, payloads, mappings, or schemas are reviewed when relevant.
-- [ ] Failures will be visible through useful logs, IDs, metrics, or traces.
-- [ ] Sensitive data is not exposed in logs, errors, test data, or AI prompts.
-- [ ] Automation protects valuable feedback loops when it makes sense.
-- [ ] AI-generated output is reviewed by a human before use.
+## After release
 
-Useful resource: [Technical Quality Reference](technical-quality-reference.md)
-
----
-
-## 3. Before release
-
-Expected outcome: release confidence is based on evidence and known risk.
-
-- [ ] Critical and high-risk scenarios were validated.
-- [ ] Open defects and known risks are understood.
-- [ ] Regression impact was reviewed.
-- [ ] Deployment validation is planned when needed.
-- [ ] Rollback or recovery path is understood for risky releases.
-- [ ] Monitoring or post-deploy checks are clear for critical flows.
-- [ ] Evidence is attached or linked.
-
-Useful template: [Deployment Validation Template](../templates/deployment-validation-template.md)
-
----
-
-## 4. After release
-
-Expected outcome: the team learns from production behavior and improves the next cycle.
-
-- [ ] Production signals were reviewed for critical flows.
-- [ ] Critical or Blocker bugs updated the metrics dashboard when relevant.
-- [ ] Missed risks were added to the test strategy or checklist.
-- [ ] Repeated defects triggered an improvement action.
-- [ ] A short quality retro happened when a release or incident justified it.
-
-Useful guide: [03 - After Development](../03-after-development.md)
-
----
-
-## 5. Final question
-
-```text
-Do we have enough evidence to make a good quality decision?
-```
-
-If the answer is no, clarify the risk, gather better evidence, or agree on the known risk before moving forward.
+- [ ] Were production signals reviewed?
+- [ ] Were escaped defects or incidents analyzed without blame?
+- [ ] Was the root cause added to the test strategy, checklist, automation, monitoring, or documentation when relevant?
+- [ ] Were quality metrics updated when the release created measurable impact?
+- [ ] Are follow-up actions owned and visible?

@@ -1,136 +1,72 @@
 # QA Metrics Dashboard Template
 
-Use this template to track quality signals that help the team make better decisions.
+Use this template to track quality trends and support better team decisions.
 
-Metrics should show risk, bottlenecks, confidence, and improvement opportunities. They should not be used to blame people.
+## Dashboard principles
 
-This is the source of truth for metric tracking and DORA metric interpretation in this playbook.
+- Use metrics to improve the system, not to blame people.
+- Prefer trends over isolated numbers.
+- Connect metrics to decisions and actions.
+- Highlight risk, bottlenecks, and learning opportunities.
+- Review metrics regularly with QA, Dev, Product, and leadership.
 
----
+## Release confidence
 
-## Dashboard information
+| Metric | Current | Target | Status | Action |
+|---|---:|---:|---|---|
+| Critical tests passed |  |  |  |  |
+| Open critical/high defects |  |  |  |  |
+| Regression completion |  |  |  |  |
+| Known release risks |  |  |  |  |
+| Go/no-go recommendation |  |  |  |  |
 
-**Team / Project:**  
-**Period:**  
-**Owner:**  
-**Last updated:**  
+## Quality outcomes
 
----
-
-## 1. Delivery speed and stability
-
-These metrics are inspired by DORA.
-
-| Metric | What it means | Current value | Trend | Notes / Action |
+| Metric | Formula / definition | Frequency | Data source | Action when red |
 |---|---|---|---|---|
-| Deployment frequency | How often the team releases successfully. |  | Up / Down / Stable |  |
-| Lead time for changes | Time from code commit to production. |  | Up / Down / Stable |  |
-| Change failure rate | Percentage of releases that cause production failure, rollback, hotfix, or degraded service. |  | Up / Down / Stable |  |
-| Time to restore service | Time to recover from production failure. |  | Up / Down / Stable |  |
+| Defect escape rate | Escaped defects / total defects | Sprint/month | Jira/TestRail/Support | Review test strategy and risk mapping |
+| Production incidents | Count by severity | Sprint/month | Incident tool/logs | Run RCA and add prevention action |
+| Change failure rate | Failed releases / total releases | Month | CI/CD/incident records | Improve release readiness and monitoring |
+| Reopened defect rate | Reopened defects / closed defects | Sprint | Jira | Improve fix validation |
+| Customer-reported defects | Defects reported by users/support | Month | Support tool | Prioritize user pain points |
 
-Use these metrics to understand delivery health, not individual performance.
+## Process health
 
-Reference: [Glossary](../resources/glossary.md)
+| Metric | Formula / definition | Frequency | Data source | Action when red |
+|---|---|---|---|---|
+| Requirement readiness | Stories meeting DoR / total stories | Sprint | Jira checklist | Improve refinement |
+| Validation cycle time | Ready for QA to QA sign-off | Sprint | Jira | Remove testing bottlenecks |
+| Defect resolution time | Bug created to verified fix | Sprint | Jira | Improve triage and ownership |
+| Defects by origin | Requirement/code/test data/environment/etc. | Sprint/month | RCA labels | Target root causes |
 
----
+## Automation health
 
-## 2. Release quality
+| Metric | Formula / definition | Frequency | Data source | Action when red |
+|---|---|---|---|---|
+| Critical flow automation coverage | Automated critical flows / total critical flows | Month | Test inventory | Automate highest-risk gaps |
+| Automated test pass rate | Passed tests / executed tests | Build/sprint | CI/CD | Investigate failures |
+| Flaky test rate | Flaky failures / total failures | Sprint | CI/CD | Stabilize before expanding |
+| Regression execution time | Time to complete regression | Release | CI/CD/TestRail | Optimize suite and scope |
+| Automation maintenance effort | Time spent fixing tests | Sprint/month | Team tracking | Refactor brittle tests |
 
-| Metric | Current value | Trend | Notes / Action |
-|---|---|---|---|
-| Defects found before release |  | Up / Down / Stable |  |
-| Defects found after release |  | Up / Down / Stable |  |
-| Critical / high severity defects |  | Up / Down / Stable |  |
-| Escaped defects by area |  | Up / Down / Stable |  |
-| Release confidence level | Low / Medium / High |  |  |
+## Production signals
 
-Useful question:
-
-```text
-Are we finding important issues before users do?
-```
-
----
-
-## 3. Risk and bottlenecks
-
-| Signal | What to check | Notes / Action |
+| Metric | What to watch | Action |
 |---|---|---|
-| High-risk stories without clear risk level | Are risky changes being identified early? |  |
-| Stories blocked by unclear requirements | Is refinement strong enough? |  |
-| Environment blockers | Are test environments slowing feedback? |  |
-| Reopened bugs | Are fixes or requirements unclear? |  |
-| Repeated defects in same area | Is there a deeper quality gap? |  |
+| Error rate | New or increasing failures | Investigate and classify impact |
+| Latency | Slower critical operations | Check performance degradation |
+| Traffic/volume | Abnormal spikes or drops | Compare with expected usage |
+| Saturation | Resource limits or queue buildup | Prevent instability |
+| MTTD | Time to detect failures | Improve alerts |
+| MTTR | Time to restore service | Improve incident response |
 
-Risk framework reference: [Test Strategy Template](test-strategy-template.md)
+## Monthly quality review
 
----
+Answer these questions:
 
-## 4. Automation value
-
-Do not track only number of automated tests. Track whether automation improves feedback.
-
-| Metric | Current value | Notes / Action |
-|---|---|---|
-| Critical paths covered by automation |  |  |
-| Contract/API checks in CI/CD |  |  |
-| Useful regression checks automated |  |  |
-| Flaky tests |  |  |
-| Time saved or feedback improved |  |  |
-| Automation gaps for high-risk areas |  |  |
-
-Useful question:
-
-```text
-Is automation protecting important behavior with reliable feedback?
-```
-
----
-
-## 5. Product and user impact
-
-| Signal | Current value | Notes / Action |
-|---|---|---|
-| User complaints related to quality |  |  |
-| Support tickets by feature |  |  |
-| Failed critical journeys |  |  |
-| Accessibility or usability issues |  |  |
-| Data quality issues |  |  |
-
----
-
-## 6. Team improvement
-
-| Signal | Current value | Notes / Action |
-|---|---|---|
-| QA maturity survey result |  |  |
-| Retros with quality actions |  |  |
-| Improvements added to checklist |  |  |
-| Risks added to strategy after incidents |  |  |
-| AI usage reviewed safely |  |  |
-
-Reference: [QA Assessment Survey Template](qa-assessment-survey-template.md)
-
----
-
-## Bug and incident follow-up
-
-For Critical or Blocker bugs, update this dashboard when the issue affects production quality, release confidence, escaped defect count, or Change Failure Rate.
-
-Reference: [Bug Report Template](bug-report-template.md)
-
----
-
-## Decisions from this dashboard
-
-| Finding | Decision | Owner | Due date |
-|---|---|---|---|
-|  |  |  |  |
-
----
-
-## Summary
-
-**Main quality concern:**  
-**Main improvement opportunity:**  
-**Action for next cycle:**
+1. What improved?
+2. What got worse?
+3. Which risk repeated?
+4. Which defect should have been caught earlier?
+5. Which metric needs better data?
+6. What is the smallest process, test, automation, or observability improvement we can make next?

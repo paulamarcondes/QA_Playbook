@@ -1,21 +1,4 @@
-# OS files
 .DS_Store
-Thumbs.db
-
-# Editor files
 .vscode/
 .idea/
-
-# Python cache
-__pycache__/
-*.pyc
-
-# Robot Framework outputs
-output.xml
-log.html
-report.html
-selenium-screenshot-*.png
-
-# Local files
-.env
-*.zip
+*.log

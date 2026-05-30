@@ -1,243 +1,332 @@
 # 02 - During Development
 
-Build quality while the change is being implemented.
+Test design, execution, and collaboration while the work is being built.
 
-This phase is about fast feedback, technical collaboration, useful tests, observable behavior, and early risk reduction.
+The goal during development is to create **fast feedback, shared ownership, and continuous validation**. QA should not work as the final gate after everything is built. QA should help the team build the right thing, test the right risks, and detect problems while they are still cheap to fix.
 
----
+> **Key idea:** QA is not only testing finished work. QA helps the team make better technical and product decisions during implementation.
 
-## Main goal
+## Outcomes expected during development
 
-During development, QA should help the team answer:
+During implementation, the team should be able to:
 
-- Is the implementation matching the requirement?
-- Are important risks being covered?
-- Are unit tests meaningful?
-- Are contracts and payloads still correct?
-- Are failures visible and easy to investigate?
-- Is automation adding useful feedback?
-- Is the feature moving toward Done with confidence?
+- validate changes incrementally;
+- review quality risks before merge;
+- test critical behavior at the right level;
+- check developer quality signals, such as unit tests and static analysis;
+- automate stable and valuable checks;
+- use environments intentionally;
+- document evidence and how-to-test guidance clearly;
+- report defects in a way that accelerates resolution;
+- keep product quality visible to the whole team.
 
----
+## 1. Collaborate before the handoff
 
-## Team habit: review quality before the end
+Avoid the pattern where development finishes and QA receives a surprise.
 
-Do not wait for a finished build to start quality review.
+### Better practices
 
-QA can add value during development by:
+- QA reviews scenarios while development is still in progress.
+- Developer and QA do quick pair testing before formal QA.
+- QA asks for logs, test hooks, or test data improvements early.
+- Developers share implementation notes that may affect testing.
+- Product clarifies ambiguous behavior as soon as questions appear.
 
-- reviewing acceptance criteria with the developer;
-- reviewing payloads, contracts, and mappings;
-- discussing unit test coverage;
-- checking logs and error handling;
-- pair-testing high-risk flows;
-- identifying automation candidates early;
-- raising defects with useful technical context.
+> **Useful question:** What can we validate today instead of waiting until the entire feature is done?
 
-Useful resource: [Technical Quality Reference](resources/technical-quality-reference.md)
+## 2. Check developer quality signals
 
----
+QA does not need to own unit testing, but QA should understand whether the change is protected at the right technical level.
 
-## 1. Review PRs with a QA mindset
+### Signals to review with developers
 
-QA does not need to review code like a developer. QA should review code for quality signals.
+- Unit tests added or updated for business rules, validators, calculations, and transformations
+- Integration or component tests added when behavior crosses boundaries
+- Static analysis reviewed, such as SonarQube issues, code smells, duplication, and security hotspots
+- CI pipeline passing
+- Code coverage meaningful for the changed area, not only globally high
+- Error handling and logs included for risky flows
 
-Look for:
+For deeper guidance, see the [Unit Testing Guide for QA](resources/unit-test-guide.md).
 
-- changed business rules;
-- missing edge cases;
-- unclear error handling;
-- risky data transformations;
-- permission or access gaps;
-- missing or weak tests;
-- logging and traceability gaps;
-- hardcoded values or fragile logic;
-- possible accessibility or usability issues.
+> **Practical question:** Which risks are protected by developer tests, and which risks still need QA validation?
 
----
+## 3. Participate in PR review as a QA task
 
-## 2. Review unit test strategy
+Pull request review is not only a developer activity. QA can review changes through a risk and testability lens.
 
-Unit tests should protect important logic, not only increase coverage numbers.
+### QA PR review focus
 
-Discuss with developers:
+- Does the change match the requirement and acceptance criteria?
+- Are edge cases and negative paths considered?
+- Are unit/API/integration tests included at the right level?
+- Are logs, errors, and validation messages useful?
+- Does the change affect existing flows, contracts, permissions, or data?
+- Are feature flags, configs, migrations, or environment differences clear?
+- Are documentation, user guide, or how-to-test notes needed?
 
-- What logic changed?
-- Which rules should be protected by unit tests?
-- Are negative and edge cases covered?
-- Are assertions meaningful?
-- Would these tests fail if the logic was broken?
+For deeper guidance, see the [Clean Code Review Guide for QA](resources/clean-code-guide.md).
 
-Detailed guidance: [Technical Quality Reference](resources/technical-quality-reference.md)
+QA does not need to approve implementation style, but can raise risks that affect validation and release confidence.
 
----
+## 4. Use the right test level for the risk
 
-## 3. Validate contracts and payloads early
+Not everything should be tested through the UI. Strong QA strategy uses different layers.
 
-For APIs, files, events, or integrations, review examples before full testing starts.
+| Test level | Best for |
+|---|---|
+| Unit tests | Business rules, validators, calculations, small transformations |
+| Component tests | Isolated service behavior |
+| API tests | Contracts, status codes, payloads, errors, integration rules |
+| Contract tests | Compatibility between providers and consumers |
+| Integration tests | End-to-end communication between systems |
+| UI tests | Critical user journeys and visual/user-facing behavior |
+| Exploratory testing | Unknown risks, usability, edge cases, workflow quality |
+| Regression tests | Protecting existing critical flows |
 
-Check:
+> **Principle:** Push tests as low as possible and as high as necessary.
 
-- required fields;
-- optional fields;
-- valid and invalid payloads;
-- error responses;
-- status transitions;
-- backward compatibility;
-- consumer expectations;
-- data mapping rules.
+For a broader reference, see [Testing Types Reference](resources/testing-types.md).
 
-Early contract review prevents expensive integration bugs.
+## 5. Design tests around risk and value
 
----
+For each story, prioritize:
 
-## 4. Use pair testing for high-risk changes
+1. Critical happy path
+2. Most likely failure paths
+3. Highest-impact edge cases
+4. Integration and data risks
+5. Regression around affected areas
+6. User experience and clarity
 
-Pair testing is useful when the change is complex, risky, or hard to understand.
+### Test design prompts
 
-Use it for:
+- What input could break this?
+- What user behavior could be unexpected?
+- What system dependency could fail?
+- What data could be missing, duplicated, outdated, or invalid?
+- What existing flow could regress?
+- What would be hard to troubleshoot later?
 
-- critical flows;
-- integration changes;
-- data transformations;
-- permission-sensitive features;
-- confusing defects;
-- unstable areas;
-- changes with unclear behavior.
+## 6. Use environments intentionally
 
-Keep it short and focused. The goal is fast shared understanding.
+Environment strategy affects test reliability and release confidence.
 
----
+| Environment | Purpose | QA focus |
+|---|---|---|
+| Dev | Fast feedback while the change is still being built | Pair testing, early API checks, obvious defects, testability feedback, unit/integration signal review |
+| QA / Test | Main validation environment before release | Functional, integration, regression, exploratory testing, test data validation, defect retesting |
+| Production | Real user/system behavior after release | Smoke validation when appropriate, monitoring, logs, alerts, user feedback, incident signals |
 
-## 5. Review observability and monitoring
+> **Release reminder:** Some teams may also have a staging or pre-production environment. A feature moving between environments should have clear build/version information, deployment notes, known risks, and rollback or mitigation awareness when needed.
 
-Modern QA should help ensure failures are visible after release.
+## 7. Automate strategically
 
-Ask during review:
+Automation should reduce risk and shorten feedback loops.
 
-- Are important failures logged?
-- Do logs include useful IDs, status, and context?
-- Can support or engineering trace what happened?
-- Are sensitive values protected?
-- Are metrics or alerts needed for this change?
-- Would we know if this broke in production?
+### Good automation candidates
 
-Checklist item:
+- Stable critical user journeys
+- API contract validations
+- Data transformation checks
+- Regression-prone flows
+- Repetitive setup or validation steps
+- High-risk integrations
+- Smoke tests for release and post-deploy validation
 
-```text
-Does this change include enough logs, metrics, or traceability to make failures visible in production?
-```
+### Avoid automating first
 
----
+- Unstable requirements
+- Highly volatile UI
+- One-time scenarios
+- Tests with unclear expected results
+- Flows that require heavy manual judgment
 
-## 6. Test continuously
+### Automation quality bar
 
-Start with the fastest useful feedback.
+Automated tests should be:
 
-Depending on the change, use:
+- readable;
+- deterministic;
+- independent where possible;
+- easy to debug;
+- tagged by scope and risk;
+- connected to CI/CD when valuable;
+- maintained as product behavior evolves.
 
-- local validation;
-- unit test review;
-- API checks;
-- contract checks;
-- integration checks;
-- targeted exploratory testing;
-- regression checks;
-- accessibility or security checks;
-- automation updates.
+## 8. Use AI as an assistant, not as ownership
 
-Useful resource: [Testing Guide](resources/testing-guide.md)
+AI can support QA work, but it does not replace product understanding.
 
----
+### Useful AI-assisted QA tasks
 
-## 7. Automate for feedback
+- Generate test ideas from requirements
+- Identify edge cases
+- Summarize logs
+- Draft bug reports
+- Review acceptance criteria
+- Suggest automation structure
+- Compare expected vs actual data
+- Support exploratory testing charters
 
-Automation should protect valuable feedback loops.
+### Required human validation
 
-Prioritize automation for:
+- Confirm business context
+- Check real user impact
+- Validate expected results
+- Protect sensitive data
+- Review AI-generated tests for correctness
+- Decide testing depth based on risk
 
-- critical paths;
-- API contracts;
-- stable regression flows;
-- integration checks;
-- repetitive checks;
-- high-risk scenarios that must be retested often.
+> **Principle:** AI accelerates analysis. QA provides judgment.
 
-Avoid automating unstable, unclear, low-value, or one-time scenarios.
+For reusable assistant configuration and tools, see [AI Tools](ai-tools/README.md).
 
-Checklist item:
+## 9. Define what is a bug and what is not
 
-```text
-Are critical paths and contracts protected by automated checks when valuable?
-```
+A bug is a product behavior that conflicts with a requirement, acceptance criteria, contract, expected user outcome, security rule, data integrity rule, or agreed quality standard.
 
----
+### Usually a bug
 
-## 8. Report bugs with context
+- Requirement or acceptance criteria not met
+- Incorrect data, missing data, or data corruption
+- Broken integration, API, file, event, or workflow
+- Security, permission, or access control issue
+- Critical user journey blocked
+- Error handling is missing, misleading, or unsafe
+- Regression in existing behavior
+- Significant usability problem that prevents task completion
+
+### Usually not a bug
+
+- New feature request
+- Product decision that works as designed
+- Cosmetic preference/improvement without user or brand impact
+- Environment issue unrelated to the product change
+- Known limitation already documented and accepted
+- Test data setup issue caused by invalid preconditions
+
+### When unsure
+
+Document the observation, impact, evidence, and question. Then align with Product, Dev, and QA before classifying it.
+
+## 10. Report bugs with resolution in mind
 
 A good bug report helps the team fix the issue faster.
 
-Include:
+### Include
 
-- clear title;
-- environment and build;
-- affected area;
-- steps or trigger condition;
-- expected and actual result;
+- concise title;
+- environment;
+- build/version;
+- preconditions;
+- steps to reproduce;
+- expected result;
+- actual result;
 - evidence;
-- logs, IDs, traces, or payloads when relevant;
-- risk level;
-- business or user impact;
+- impact;
+- severity and priority suggestion;
+- logs, IDs, payloads, or screenshots when relevant;
 - suspected area if known.
 
-Useful template: [Bug Report Template](templates/bug-report-template.md)
+Use the [Bug Report Template](templates/bug-report-template.md) to keep defect documentation clear, reproducible, and consistent across the team.
 
----
+### Good bug title pattern
 
-## 9. Validate AI-generated output
+```text
+[Area] Action fails when condition happens
+```
 
-If AI was used for test design, code, automation, or documentation, validate the output before using it.
+Example:
 
-Check:
+```text
+[Checkout] Payment confirmation is not displayed after approved transaction
+```
 
-- Did the AI invent requirements?
-- Are expected results realistic?
-- Are important risks missing?
-- Is the logic biased, generic, or unrelated to the product?
-- Is sensitive data protected?
-- Does the output support real user value?
+## 11. Collect evidence that proves behavior
 
-Useful guide: [AI Tools](ai-tools/README.md)
+Evidence should make validation clear and reusable.
 
----
+### Examples
 
-## 10. Definition of Done
+- Screenshots or short videos
+- API requests and responses
+- Logs with correlation IDs
+- Test execution results
+- Database record comparison when appropriate
+- Input and output files
+- Before/after behavior
+- CI pipeline result
+- Link to automated test
 
-A change is Done when the team has enough evidence to trust it.
+Good evidence reduces rework, improves trust, and helps future debugging.
 
-Done should include:
+## 12. Document user guides and how-to-test notes
 
-- acceptance criteria met;
-- risk-based scenarios validated;
-- technical quality reviewed;
-- contracts and payloads checked when relevant;
-- security, permissions, and accessibility considered when relevant;
-- observability reviewed for critical behavior;
-- automation added or updated when valuable;
-- evidence attached;
-- known risks communicated.
+Documentation is part of quality when it helps users, support, QA, and developers validate or operate the feature correctly.
 
-Full template: [Definition of Ready / Done Template](templates/definition-of-ready-done-template.md)
+### User guide updates
 
----
+Update user-facing or support-facing documentation when the change affects:
 
-## Output of this phase
+- user workflow;
+- permissions or roles;
+- configuration;
+- error messages;
+- expected behavior;
+- operational steps;
+- known limitations.
 
-At the end of this phase, the team should have:
+### How-to-test notes
 
-- fewer late defects;
-- better technical confidence;
-- clearer evidence;
-- useful automation;
-- observable behavior;
-- stronger readiness for release.
+Add lightweight technical notes when the feature needs specific validation context:
+
+- environment setup;
+- test users and roles;
+- required data;
+- API payloads or files;
+- feature flags or configuration;
+- expected logs;
+- troubleshooting tips.
+
+A good how-to-test note makes future regression faster and reduces knowledge loss.
+
+## 13. Definition of Done
+
+A change is done when:
+
+- acceptance criteria are met;
+- relevant positive and negative scenarios are validated;
+- unit/static analysis/pipeline quality signals are reviewed;
+- regression risk is covered;
+- critical tests pass;
+- automated tests were added or updated when valuable;
+- logs and errors are useful for troubleshooting;
+- documentation, user guide, how-to-test notes, or release notes are updated when needed;
+- known risks are communicated;
+- evidence is attached;
+- Product/QA/Dev agree the change is ready for the next step.
+
+Use the [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md) to align team expectations and make completion criteria clear, consistent, and visible.
+
+## During development checklist
+
+- [ ] QA and Dev aligned before handoff.
+- [ ] Unit tests and static analysis reviewed when relevant.
+- [ ] QA reviewed PR risk/testability when relevant.
+- [ ] Risk-based scenarios designed.
+- [ ] Right test levels selected.
+- [ ] Correct environment used for the validation purpose.
+- [ ] Critical paths validated.
+- [ ] Negative and edge cases covered.
+- [ ] Automation opportunities reviewed.
+- [ ] Defects classified and documented clearly.
+- [ ] Evidence attached.
+- [ ] User guide or how-to-test notes updated when needed.
+- [ ] Logs/observability checked when relevant.
+- [ ] Definition of Done met.
+
+## Key message
+
+> QA is not only a tester.  
+> QA is a quality strategist who helps the team make better technical and product decisions while the work is being built.
