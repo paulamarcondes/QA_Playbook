@@ -6,6 +6,24 @@ The goal before development is simple: **make the work clear, testable, valuable
 
 > **Key idea:** A story is not ready just because it has a description. It is ready when the team understands value, risk, contracts, testability, and expected evidence.
 
+## On this page
+
+1. [Start with user value](#1-start-with-user-value)
+2. [Run a lightweight Three Amigos review](#2-run-a-lightweight-three-amigos-review)
+3. [Write acceptance criteria that are testable](#3-write-acceptance-criteria-that-are-testable)
+4. [Map risk before defining test depth](#4-map-risk-before-defining-test-depth)
+5. [Create the test strategy and draft test cases early](#5-create-the-test-strategy-and-draft-test-cases-early)
+6. [Validate testability before implementation](#6-validate-testability-before-implementation)
+7. [Treat contracts as quality assets](#7-treat-contracts-as-quality-assets)
+8. [Separate frontend/UX and backend/API strategies](#8-separate-frontendux-and-backendapi-strategies)
+9. [Choose tools, languages, and frameworks intentionally](#9-choose-tools-languages-and-frameworks-intentionally)
+10. [Prepare test data and environments early](#10-prepare-test-data-and-environments-early)
+11. [Assess QA maturity when joining a team](#11-assess-qa-maturity-when-joining-a-team)
+12. [Build QA community through a QA Guild](#12-build-qa-community-through-a-qa-guild)
+13. [Definition of Ready](#13-definition-of-ready)
+
+Companion reference: [Quality Review Checklist - Before development](resources/quality-review-checklist.md#before-development).
+
 ## Outcomes expected before coding starts
 
 A story or feature should enter development only when the team understands:
@@ -90,19 +108,27 @@ Use this when the team needs a faster, simpler format.
 - Logs include [ID/context] for troubleshooting
 ```
 
+### Weak vs strong, in practice
+
+> **Weak:** "Login works."
+> **Strong:** "Given an invalid password, login is rejected, the user sees error X, and the attempt is logged with a correlation ID."
+
+The strong version names the condition, the observable result, and the troubleshooting signal, so it is testable without guessing.
+
 ### Add quality criteria, not only functional criteria
 
-Examples:
+Cover failure and operability, not just the happy path:
 
-- Error messages must be clear and actionable.
-- Invalid data must fail explicitly, not silently.
-- The system must log the correlation ID for troubleshooting.
-- The API response must keep backward compatibility.
-- The critical flow must be covered by automated regression when valuable.
+- Invalid data fails explicitly, not silently.
+- Errors are clear, actionable, and logged with a correlation ID.
+- The API response keeps backward compatibility.
+- Critical flows are covered by automated regression when valuable.
 
 ## 4. Map risk before defining test depth
 
 Not every change deserves the same testing effort. Testing depth should follow risk.
+
+> **Shortcut:** Risk = Impact × Likelihood. Score both High/Medium/Low, take the higher of the two, and let that drive the risk level and testing depth.
 
 For full risk assessment, use the [Test Strategy Template](templates/test-strategy-template.md).
 
@@ -122,6 +148,7 @@ For full risk assessment, use the [Test Strategy Template](templates/test-strate
 | Low | Focused functional validation and basic regression. |
 | Medium | Functional, negative, integration, and targeted regression. |
 | High | Full risk-based validation, automation review, observability checks, rollback awareness, and release follow-up. |
+| Critical | Release-blocking validation: full risk-based coverage, mandatory automated regression, observability and rollback verification, and post-release monitoring. |
 
 ## 5. Create the test strategy and draft test cases early
 
@@ -264,6 +291,8 @@ Late test data is a common reason for blocked QA.
 
 Keep a small, reusable set of **golden test data** for critical flows.
 
+> **Note:** Sections 11 and 12 are team-level practices that run over weeks and months, not per-story checks. Use them when joining a team or building quality culture.
+
 ## 11. Assess QA maturity when joining a team
 
 When QA joins a new team, start by understanding how quality currently works before proposing changes.
@@ -343,3 +372,8 @@ For a full template, see [Definition of Ready & Definition of Done Template](tem
 
 > QA does not need to wait for code to create value.  
 > The earlier QA exposes ambiguity, user risk, and testability gaps, the cheaper and safer the delivery becomes.
+
+---
+
+**Playbook:** **01 - Before Development** · [02 - During Development →](02-during-development.md) · [03 - After Development](03-after-development.md)  
+[↑ Back to README](README.md)

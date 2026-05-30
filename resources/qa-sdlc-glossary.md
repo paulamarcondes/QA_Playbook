@@ -61,14 +61,16 @@ The goal is to reduce ambiguity and help teams use the same language when discus
 | Technical Risk | Potential failure caused by architecture, code, dependencies, integrations, data, or environments. |
 | User Impact | The effect a change or issue has on the user's ability to complete a real task. |
 | Critical Flow | A user journey, business process, or system workflow that must work reliably because failure has high impact. |
-| Golden Path | The most important successful end-to-end path that represents expected system behavior. |
-| Happy Path | The expected successful flow when inputs, dependencies, and conditions are valid. |
+| Golden Path | The single most important successful end-to-end journey through the product. If only one flow could be protected, this is it. Often used as a synonym for the critical path. |
+| Happy Path | Any expected successful flow when inputs, dependencies, and conditions are valid. A feature can have several happy paths; it usually has one golden path. |
 | Negative Scenario | A scenario validating invalid, missing, unavailable, or unexpected conditions. |
 | Edge Case | A less common condition that may still cause failure, confusion, data issues, or unexpected behavior. |
 | Assumption | Something believed to be true but not yet confirmed. |
 | Out of Scope | A behavior, area, or scenario intentionally not covered by the current delivery or test effort. |
 
 ## Testing types and techniques
+
+For fuller descriptions, ownership, and a practical selection guide, see the [Testing Types Reference](testing-types.md).
 
 | Term | Meaning |
 |---|---|
@@ -205,6 +207,7 @@ For metric tracking, use the [QA Metrics Dashboard Template](../templates/qa-met
 | QA Report | Concise report communicating scope, results, risks, defects, release recommendation, and improvement actions. |
 | QA Assessment Survey | Lightweight survey to understand team quality maturity, culture, tooling, and improvement opportunities. |
 | Nielsen Heuristics | Usability principles used to evaluate whether a UI is clear, consistent, recoverable, and easy to use. |
+| WCAG | Web Content Accessibility Guidelines: the standard for making digital content usable by people with disabilities (covers perceivable, operable, understandable, and robust content). |
 | CLI | Command Line Interface: text-based way to run commands, scripts, tests, searches, and file operations. |
 | MCP | Model Context Protocol: a way for AI tools to connect with external systems. |
 

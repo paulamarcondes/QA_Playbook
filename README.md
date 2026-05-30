@@ -1,10 +1,25 @@
 # QA Playbook
 
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Focus: Quality Engineering](https://img.shields.io/badge/Focus-Quality%20Engineering-blue)
+![Audience: QA · Dev · Product](https://img.shields.io/badge/Audience-QA%20%C2%B7%20Dev%20%C2%B7%20Product-orange)
+
 A practical Quality Engineering playbook for building reliable software **before, during, and after development**.
 
 This repository is a portfolio project that documents how modern QA can support delivery through shift-left practices, risk-based testing, automation, release confidence, AI-assisted workflows, and continuous improvement.
 
 > **Key idea:** Quality is not a final checkpoint. It is a system property built through clear requirements, technical collaboration, smart testing, user focus, and measurable learning.
+
+## Contents
+
+- [Why this playbook exists](#why-this-playbook-exists)
+- [Quick navigation](#quick-navigation)
+- [Core principles](#core-principles)
+- [Playbook structure](#playbook-structure)
+- [Recommended use](#recommended-use)
+- [References and inspiration](#references-and-inspiration)
+- [License](#license)
+- [Author](#author)
 
 ## Why this playbook exists
 
@@ -56,13 +71,7 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 
 ## Playbook structure
 
-### Core guides
-
-| Guide | Focus |
-|---|---|
-| [01 - Before Development](01-before-development.md) | Quality planning, risk prevention, contracts, testability, tool decisions, and early scenarios. |
-| [02 - During Development](02-during-development.md) | Collaboration, PR review, technical signals, test design, execution, evidence, and bug reporting. |
-| [03 - After Development](03-after-development.md) | Release confidence, metrics, production validation, reporting, and learning. |
+The three core guides ([01 - Before](01-before-development.md), [02 - During](02-during-development.md), [03 - After](03-after-development.md)) are mapped in [Quick navigation](#quick-navigation) above. The resources, templates, and AI tools that support them are listed below.
 
 ### Resources
 
@@ -78,13 +87,13 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 
 | Template | Purpose |
 |---|---|
-| [Story / Requirements / Interface Template](templates/story-requirements-template.md) | Structure for clear, testable, user-focused requirements and contracts. |
+| [Story / Requirements / Interface Document Template](templates/story-requirements-template.md) | Structure for clear, testable, user-focused requirements and contracts. |
 | [Test Strategy Template](templates/test-strategy-template.md) | Risk assessment, scope, approach, tools, automation, observability, and release confidence. |
 | [Test Cases Template](templates/test-cases-template.md) | Plain-text scenario documentation for manual, exploratory, API, integration, regression, and automation candidate scenarios. |
-| [DoR / DoD Template](templates/definition-of-ready-done-template.md) | Practical quality standards for readiness and completion. |
+| [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md) | Practical quality standards for readiness and completion. |
 | [QA Assessment Survey Template](templates/qa-assessment-survey-template.md) | Team survey for quality maturity, collaboration, tooling, and improvement. |
 | [Bug Report Template](templates/bug-report-template.md) | Clear defect documentation focused on reproduction, impact, evidence, and technical context. |
-| [Deployment Validation Template](templates/deployment-validation-guide-template.md) | Release readiness, validation, rollback awareness, monitoring, and post-release learning. |
+| [Deployment Validation Guide Template](templates/deployment-validation-guide-template.md) | Release readiness, validation, rollback awareness, monitoring, and post-release learning. |
 | [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md) | Quality visibility model for trends, risks, bottlenecks, and decisions. |
 
 ### AI tools
@@ -121,6 +130,10 @@ Useful references include:
 - [Atlassian - User Stories](https://www.atlassian.com/agile/project-management/user-stories)
 - [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
 - [Software Testing QA Mind Map](https://mm.tt/map/3489122534?t=03NPIthAMR)
+
+## License
+
+Released under the [MIT License](LICENSE). You are free to use, adapt, and share this playbook, with attribution.
 
 ## Author
 

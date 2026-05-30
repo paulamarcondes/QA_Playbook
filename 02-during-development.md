@@ -6,6 +6,24 @@ The goal during development is to create **fast feedback, shared ownership, and 
 
 > **Key idea:** QA is not only testing finished work. QA helps the team make better technical and product decisions during implementation.
 
+## On this page
+
+1. [Collaborate before the handoff](#1-collaborate-before-the-handoff)
+2. [Check developer quality signals](#2-check-developer-quality-signals)
+3. [Participate in PR review as a QA task](#3-participate-in-pr-review-as-a-qa-task)
+4. [Use the right test level for the risk](#4-use-the-right-test-level-for-the-risk)
+5. [Design tests around risk and value](#5-design-tests-around-risk-and-value)
+6. [Use environments intentionally](#6-use-environments-intentionally)
+7. [Automate strategically](#7-automate-strategically)
+8. [Use AI as an assistant, not as ownership](#8-use-ai-as-an-assistant-not-as-ownership)
+9. [Define what is a bug and what is not](#9-define-what-is-a-bug-and-what-is-not)
+10. [Report bugs with resolution in mind](#10-report-bugs-with-resolution-in-mind)
+11. [Collect evidence that proves behavior](#11-collect-evidence-that-proves-behavior)
+12. [Document user guides and how-to-test notes](#12-document-user-guides-and-how-to-test-notes)
+13. [Definition of Done](#13-definition-of-done)
+
+Companion reference: [Quality Review Checklist - During development](resources/quality-review-checklist.md#during-development).
+
 ## Outcomes expected during development
 
 During implementation, the team should be able to:
@@ -86,7 +104,7 @@ Not everything should be tested through the UI. Strong QA strategy uses differen
 
 > **Principle:** Push tests as low as possible and as high as necessary.
 
-For a broader reference, see [Testing Types Reference](resources/testing-types.md).
+For a broader reference and a context-to-validation map, see the [Testing Types Reference](resources/testing-types.md#practical-selection-guide).
 
 ## 5. Design tests around risk and value
 
@@ -115,7 +133,7 @@ Environment strategy affects test reliability and release confidence.
 | Environment | Purpose | QA focus |
 |---|---|---|
 | Dev | Fast feedback while the change is still being built | Pair testing, early API checks, obvious defects, testability feedback, unit/integration signal review |
-| QA / Test | Main validation environment before release | Functional, integration, regression, exploratory testing, test data validation, defect retesting |
+| QA/Test | Main validation environment before release | Functional, integration, regression, exploratory testing, test data validation, defect retesting |
 | Production | Real user/system behavior after release | Smoke validation when appropriate, monitoring, logs, alerts, user feedback, incident signals |
 
 > **Release reminder:** Some teams may also have a staging or pre-production environment. A feature moving between environments should have clear build/version information, deployment notes, known risks, and rollback or mitigation awareness when needed.
@@ -330,3 +348,8 @@ Use the [Definition of Ready & Definition of Done Template](templates/definition
 
 > QA is not only a tester.  
 > QA is a quality strategist who helps the team make better technical and product decisions while the work is being built.
+
+---
+
+**Playbook:** [← 01 - Before Development](01-before-development.md) · **02 - During Development** · [03 - After Development →](03-after-development.md)  
+[↑ Back to README](README.md)

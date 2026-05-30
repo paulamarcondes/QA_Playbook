@@ -4,6 +4,8 @@ Use this checklist during refinement, development, PR review, bug triage, releas
 
 > **How to use:** Focus on outcomes, not checkbox theater. The goal is to reveal risk, improve decisions, and make quality visible.
 
+This checklist mirrors the core guides: [01 - Before Development](../01-before-development.md), [02 - During Development](../02-during-development.md), and [03 - After Development](../03-after-development.md).
+
 ## Before development
 
 - [ ] Is the user or business problem clear?

@@ -100,7 +100,6 @@ Target non-production environments by default:
 
 - Dev
 - QA/Test
-- Training
 - Staging
 
 Production actions must be read-only, approved, and limited to monitoring, log review, or smoke validation unless an official process allows otherwise.
@@ -292,7 +291,7 @@ For leadership, keep it outcome-focused:
 
 ```text
 QA Status: Green / Yellow / Red
-Release Recommendation: Go / Conditional Go / No-Go
+Release Recommendation: Ready / Ready with risk / Not ready
 Main Risks:
 Customer/User Impact:
 Defects Summary:

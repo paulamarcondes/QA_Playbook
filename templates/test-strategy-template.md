@@ -16,7 +16,7 @@ This template includes risk assessment, test scope, test levels, manual vs autom
 | Owner |  |
 | Release / Sprint |  |
 | Overall risk | Low / Medium / High / Critical |
-| Recommendation | Proceed / Proceed with risk / Do not proceed |
+| Recommendation | Ready / Ready with risk / Not ready |
 
 ### Objective
 

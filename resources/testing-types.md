@@ -50,7 +50,7 @@ A mature strategy usually combines both. Manual testing is strong for exploratio
 | Recovery Testing | Checks whether the system can recover after failure. |
 | Security Testing | Validates access control, data protection, vulnerabilities, and misuse scenarios. |
 | Compatibility Testing | Checks behavior across browsers, devices, operating systems, versions, or platforms. |
-| Accessibility Testing | Validates usability for people with different abilities. |
+| Accessibility Testing | Validates usability for people with different abilities, against the Web Content Accessibility Guidelines (WCAG). |
 | Usability Testing | Checks whether users can complete tasks clearly, efficiently, and with low friction. |
 | Reliability Testing | Evaluates whether the system performs consistently over time. |
 | Maintainability Testing | Evaluates whether the system is easy to change, support, and troubleshoot. |

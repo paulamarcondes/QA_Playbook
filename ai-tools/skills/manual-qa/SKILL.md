@@ -10,11 +10,9 @@ Use this skill for requirements review, test planning, test case design, bug rep
 ## Core principles
 
 - Test early, not only at the end.
-- Requirements must be testable.
+- Requirements are the contract; they must be testable.
 - Risk drives priority.
-- User impact matters.
 - Evidence beats opinion.
-- Testing is context-dependent.
 - Exhaustive testing is impossible.
 - Quality is shared across the team.
 
@@ -265,7 +263,7 @@ Steps to Reproduce:
 Expected Result: [Based on requirement]
 Actual Result: [Observed behavior]
 Impact: [User/business/technical impact]
-Severity: Blocker/Critical/Major/Minor/Trivial
+Severity: Critical/High/Medium/Low
 Priority: Critical/High/Medium/Low
 Evidence: [Screenshots, logs, network trace, video]
 Frequency: Always/Intermittent/Rare
@@ -295,7 +293,7 @@ Include:
 - open risks;
 - blockers;
 - regression status;
-- recommendation: Go / Conditional Go / No-Go.
+- release recommendation: Ready / Ready with risk / Not ready.
 
 ## QA report for leadership
 
@@ -303,7 +301,7 @@ Keep it outcome-focused:
 
 ```text
 QA Status: Green / Yellow / Red
-Release Recommendation: Go / Conditional Go / No-Go
+Release Recommendation: Ready / Ready with risk / Not ready
 Scope Tested:
 Key Risks:
 Customer/User Impact:

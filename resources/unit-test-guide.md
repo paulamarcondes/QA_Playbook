@@ -175,4 +175,4 @@ A story is stronger when:
 - risky logic is not validated only through manual or UI tests;
 - QA understands what is covered and what still needs validation.
 
-Unit tests are part of the team’s quality safety net.
+Unit tests are part of the team's quality safety net.

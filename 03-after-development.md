@@ -8,6 +8,20 @@ The goal after development is to answer one question:
 
 Quality does not end when QA testing is complete. Release readiness, production validation, observability, metrics, leadership visibility, and retrospectives are part of modern QA.
 
+## On this page
+
+1. [Define release readiness](#1-define-release-readiness)
+2. [Run focused regression](#2-run-focused-regression)
+3. [Validate production behavior](#3-validate-production-behavior)
+4. [Create a QA report for leadership visibility](#4-create-a-qa-report-for-leadership-visibility)
+5. [Use metrics that drive decisions](#5-use-metrics-that-drive-decisions)
+6. [Start with a small set of strong QA metrics](#6-start-with-a-small-set-of-strong-qa-metrics)
+7. [Avoid vanity metrics](#7-avoid-vanity-metrics)
+8. [Turn metrics into action](#8-turn-metrics-into-action)
+9. [Run blame-free post-release reviews](#9-run-blame-free-post-release-reviews)
+
+Companion reference: [Quality Review Checklist - After release](resources/quality-review-checklist.md#after-release).
+
 ## Outcomes expected after development
 
 After implementation, the team should be able to:
@@ -119,6 +133,8 @@ For a detailed dashboard format, see [QA Metrics Dashboard Template](templates/q
 
 Use only metrics that help the team make better decisions.
 
+> **Rule:** If a metric has no target and no agreed action when it breaches, do not track it.
+
 ### Strong metrics to start with
 
 - **Escaped defects:** shows what reached users or production.
@@ -208,3 +224,8 @@ Examples:
 
 > Quality after development is not about proving that QA tested.  
 > It is about proving that the team can release, observe, communicate, learn, and improve.
+
+---
+
+**Playbook:** [← 01 - Before Development](01-before-development.md) · [02 - During Development](02-during-development.md) · **03 - After Development**  
+[↑ Back to README](README.md)
