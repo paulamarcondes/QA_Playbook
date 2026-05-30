@@ -135,8 +135,14 @@ Use these rules in every AI-assisted QA workflow:
 
 ## Good AI workflow
 
-```text
-Gather context -> Draft proposal -> Review -> Approve -> Execute -> Summarize result
+```mermaid
+flowchart LR
+    G["Gather<br/>context"]:::step --> D["Draft<br/>proposal"]:::step --> P{"Human<br/>approval?"}:::gate
+    P -->|Approved| E["Execute"]:::step --> C["Confirm<br/>result"]:::done
+    P -->|Changes| D
+    classDef step fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a;
+    classDef gate fill:#fef9c3,stroke:#eab308,color:#713f12;
+    classDef done fill:#dcfce7,stroke:#22c55e,color:#14532d;
 ```
 
 The assistant should be useful, but the QA professional remains accountable for quality decisions.

@@ -118,6 +118,23 @@ Testing depth should follow risk; not every change deserves the same effort.
 
 > **Shortcut:** Risk = Impact × Likelihood. Score both High/Medium/Low, take the higher of the two, and let that drive the risk level and testing depth.
 
+```mermaid
+flowchart TD
+    Start["Assess the change<br/><b>Risk = Impact × Likelihood</b>"] --> Q{"Take the higher<br/>of the two"}
+    Q -->|Low| L["<b>Low</b><br/>Focused functional<br/>+ basic regression"]
+    Q -->|Medium| M["<b>Medium</b><br/>Functional · negative<br/>integration · targeted regression"]
+    Q -->|High| H["<b>High</b><br/>Risk-based validation<br/>automation review<br/>observability · rollback"]
+    Q -->|Critical| C["<b>Critical</b><br/>Release-blocking validation<br/>mandatory automation<br/>post-release monitoring"]
+    classDef low  fill:#dcfce7,stroke:#22c55e,color:#14532d;
+    classDef med  fill:#fef9c3,stroke:#eab308,color:#713f12;
+    classDef high fill:#ffedd5,stroke:#f97316,color:#7c2d12;
+    classDef crit fill:#fee2e2,stroke:#ef4444,color:#7f1d1d;
+    class L low
+    class M med
+    class H high
+    class C crit
+```
+
 For full risk assessment, use the [Test Strategy Template](templates/test-strategy-template.md).
 
 ### Risk factors to review
@@ -137,6 +154,8 @@ For full risk assessment, use the [Test Strategy Template](templates/test-strate
 | Medium | Functional, negative, integration, and targeted regression. |
 | High | Full risk-based validation, automation review, observability checks, rollback awareness, and release follow-up. |
 | Critical | Release-blocking validation: full risk-based coverage, mandatory automated regression, observability and rollback verification, and post-release monitoring. |
+
+> **Data point:** ~80% of avoidable rework traces to ~20% of defects, and projects spend 40–50% of effort on avoidable rework (Boehm & Basili, 2001). Testing the risky few beats testing everything evenly — that is the case for risk-based depth.
 
 ## 5. Create the test strategy and draft test cases early
 

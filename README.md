@@ -10,6 +10,21 @@ This repository is a portfolio project that documents how modern QA can support 
 
 > **Key idea:** Quality is not a final checkpoint. It is a system property built through clear requirements, technical collaboration, smart testing, user focus, and measurable learning.
 
+```mermaid
+flowchart LR
+    A["<b>01 · Before</b><br/>Clarify value &amp; risk<br/>Testability &amp; contracts<br/>Early test design"]
+    B["<b>02 · During</b><br/>Collaborate &amp; PR review<br/>Right test level<br/>Automate strategically"]
+    C["<b>03 · After</b><br/>Release confidence<br/>Metrics &amp; observability<br/>Blame-free learning"]
+    A --> B --> C
+    C -. "learn &amp; improve" .-> A
+    classDef before fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a;
+    classDef during fill:#fef9c3,stroke:#eab308,color:#713f12;
+    classDef after  fill:#dcfce7,stroke:#22c55e,color:#14532d;
+    class A before
+    class B during
+    class C after
+```
+
 ## Contents
 
 - [Why this playbook exists](#why-this-playbook-exists)
@@ -22,6 +37,8 @@ This repository is a portfolio project that documents how modern QA can support 
 - [Author](#author)
 
 ## Why this playbook exists
+
+> **The stakes:** inadequate software testing was estimated to cost the US economy **~$59.5 billion per year** (NIST/RTI, 2002). Most of that traces to defects caught too late — exactly what good QA prevents.
 
 Modern software teams need more than test execution. They need quality practices that help them:
 
@@ -124,8 +141,14 @@ This playbook is inspired by modern Quality Engineering practices, shift-left te
 Useful references include:
 
 - [DORA Metrics](https://dora.dev/guides/dora-metrics/)
+- [Accelerate - Forsgren, Humble & Kim (the science behind the four key delivery metrics)](https://itrevolution.com/product/accelerate/)
+- [NIST/RTI - The Economic Impacts of Inadequate Infrastructure for Software Testing (2002)](https://www.nist.gov/document/report02-3pdf)
+- [Dijkstra - Notes on Structured Programming, EWD249 ("testing shows the presence, not the absence, of bugs")](https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD249/EWD249.html)
+- [Mike Cohn - Succeeding with Agile (test pyramid origin)](https://www.mountaingoatsoftware.com/books/succeeding-with-agile-software-development-using-scrum)
 - [Google SRE Book - Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)
 - [IBM - Shift-left testing](https://www.ibm.com/think/topics/shift-left-testing)
+- [Boehm & Basili - Software Defect Reduction Top 10 List (cost of fixing defects by phase, IEEE Computer 2001)](https://www.cs.umd.edu/projects/SoftEng/ESEG/papers/82.78.pdf)
+- [Martin Fowler - Test Pyramid](https://martinfowler.com/bliki/TestPyramid.html)
 - [ISTQB Glossary](https://glossary.istqb.org/)
 - [Atlassian - User Stories](https://www.atlassian.com/agile/project-management/user-stories)
 - [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)

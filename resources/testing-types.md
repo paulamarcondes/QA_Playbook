@@ -6,6 +6,20 @@ This reference is connected to my original Software Testing QA mind map: [Softwa
 
 > **Key idea:** Testing is not only execution. It includes planning, analysis, design, implementation, execution, monitoring, reporting, and completion.
 
+> **Dijkstra:** "Program testing can be used to show the presence of bugs, but never to show their absence." This is why QA prioritizes by risk instead of chasing exhaustive coverage.
+
+## Seven testing principles (ISTQB)
+
+1. Testing shows the presence of defects, not their absence.
+2. Exhaustive testing is impossible — guide effort with risk and priorities.
+3. Early testing saves time and money (shift-left).
+4. Defects cluster — a few areas usually hold most of them.
+5. Pesticide paradox — repeated tests stop finding new bugs; vary and refresh them.
+6. Testing is context-dependent.
+7. Absence-of-errors fallacy — a defect-free build can still fail user needs.
+
+Reference: [ISTQB Glossary](https://glossary.istqb.org/).
+
 ## Testing levels
 
 | Level | Purpose | Typical ownership |

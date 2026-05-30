@@ -94,6 +94,19 @@ Not everything should be tested through the UI. Strong QA strategy uses differen
 
 > **Principle:** Push tests as low as possible and as high as necessary.
 
+```mermaid
+flowchart TB
+    U["<b>Unit / Component</b><br/>many, fast<br/>rules · validators · calculations"]:::base
+    I["<b>Integration · API · Contract</b><br/>some<br/>service &amp; system boundaries"]:::mid
+    E["<b>UI / E2E</b><br/>few<br/>critical user journeys"]:::top
+    U --> I --> E
+    classDef base fill:#dcfce7,stroke:#22c55e,color:#14532d;
+    classDef mid  fill:#fef9c3,stroke:#eab308,color:#713f12;
+    classDef top  fill:#fee2e2,stroke:#ef4444,color:#7f1d1d;
+```
+
+> **Why low and early wins:** the later a defect is found, the more it costs to fix. Boehm & Basili found that fixing a problem after release is often **~100× more expensive** than fixing it during requirements or design — less on small projects, far more on safety-critical ones. Catching defects at the unit and integration layers keeps them cheap. See [References](README.md#references-and-inspiration).
+
 For a broader reference and a context-to-validation map, see the [Testing Types Reference](resources/testing-types.md#practical-selection-guide).
 
 ## 5. Design tests around risk and value
@@ -193,6 +206,21 @@ For reusable assistant configuration and tools, see [AI Tools](ai-tools/README.m
 ## 9. Define what is a bug and what is not
 
 A bug is a product behavior that conflicts with a requirement, acceptance criteria, contract, expected user outcome, security rule, data integrity rule, or agreed quality standard.
+
+```mermaid
+flowchart TD
+    O["Observed behavior"] --> C["Check against the agreed spec:<br/>requirement · AC · business rule<br/>contract · security · data integrity"]:::check
+    C --> Q1{"Conflict<br/>found?"}
+    Q1 -->|No| N["<b>Usually not a bug</b><br/>feature request · works as designed<br/>test data · env · known limitation"]:::no
+    Q1 -->|Unsure| U["<b>Investigate</b><br/>document · capture evidence<br/>align with Product / Dev / QA"]:::wait
+    Q1 -->|Yes| Q2{"Reproducible<br/>with evidence?"}
+    Q2 -->|No| U
+    Q2 -->|Yes| B["<b>Log a bug</b><br/>impact · severity · priority<br/>steps · evidence"]:::bug
+    classDef check fill:#e0e7ff,stroke:#6366f1,color:#312e81;
+    classDef bug  fill:#fee2e2,stroke:#ef4444,color:#7f1d1d;
+    classDef no   fill:#dcfce7,stroke:#22c55e,color:#14532d;
+    classDef wait fill:#fef9c3,stroke:#eab308,color:#713f12;
+```
 
 ### Usually a bug
 
