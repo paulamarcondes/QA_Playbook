@@ -4,6 +4,8 @@ Use this template to define clear, practical quality standards for stories, task
 
 The goal is not to create bureaucracy. The goal is to reduce rework, prevent unclear handoffs, and make quality a shared team responsibility.
 
+> **Real world:** most teams that succeed with DoR/DoD use a 3–5 item subset, not the full list. Treat everything below as a menu to pick from, not a mandate — start small and add only what repeatedly bites you.
+
 ## 1. Purpose
 
 This document defines the minimum quality expectations for:

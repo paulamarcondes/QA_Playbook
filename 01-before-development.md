@@ -46,12 +46,14 @@ Quality starts with the real user journey, not only the technical change.
 
 Hold a short **Product + Development + QA** conversation before implementation.
 
+> **Real world:** a formal Three Amigos is rare, and QA is often pulled in late. If that is your situation, start small — ask one or two of the questions below in refinement, or directly to the developer. Influence beats ceremony.
+
 ### Questions to answer
 
 - What is the expected happy path?
 - What are the most important negative paths and likely edge cases?
 - What should never break?
-- How will we validate this across Dev, QA/Test, Staging, and Production?
+- How will we validate this across Dev, Staging, and Production?
 - What logs, metrics, or traces will help troubleshoot it later?
 
 ### Output

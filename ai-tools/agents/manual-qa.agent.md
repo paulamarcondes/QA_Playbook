@@ -99,7 +99,6 @@ Do not use MCP when a local read, search, or command is enough.
 Target non-production environments by default:
 
 - Dev
-- QA/Test
 - Staging
 
 Production actions must be read-only, approved, and limited to monitoring, log review, or smoke validation unless an official process allows otherwise.

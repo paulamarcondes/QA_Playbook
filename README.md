@@ -152,6 +152,7 @@ Useful references include:
 - [ISTQB Glossary](https://glossary.istqb.org/)
 - [Atlassian - User Stories](https://www.atlassian.com/agile/project-management/user-stories)
 - [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
+- [Cartoon Tester - Bug Advocacy / "Bugs Have Feelings Too" (Andy Glover, 2010)](https://cartoontester.blogspot.com/2010/03/bug-advocacy.html)
 - [Software Testing QA Mind Map](https://mm.tt/map/3489122534?t=03NPIthAMR)
 
 ## License

@@ -75,7 +75,7 @@ The goal is not to audit people. The goal is to understand how quality currently
 
 | Question | Score | Evidence / Notes |
 |---|---:|---|
-| Dev, QA/Test, Staging, and Production purposes are clear |  |  |
+| Dev, Staging, and Production purposes are clear |  |  |
 | Test environments are stable enough for reliable validation |  |  |
 | Test data is available before testing starts |  |  |
 | External dependencies can be simulated or controlled when needed |  |  |

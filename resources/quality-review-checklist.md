@@ -34,7 +34,7 @@ This checklist mirrors the core guides: [01 - Before Development](../01-before-d
 - [ ] Is the feature observable in production through logs, traces, metrics, or alerts when relevant?
 - [ ] Is the implementation testable without relying only on the UI?
 - [ ] Are critical paths protected?
-- [ ] Are environment differences between Dev, QA/Test, Staging, and Production understood?
+- [ ] Are environment differences between Dev, Staging, and Production understood?
 - [ ] Are known risks communicated?
 - [ ] Is evidence attached?
 - [ ] Are user guide or how-to-test notes updated when needed?

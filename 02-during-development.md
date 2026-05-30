@@ -136,10 +136,10 @@ Environment strategy affects test reliability and release confidence.
 | Environment | Purpose | QA focus |
 |---|---|---|
 | Dev | Fast feedback while the change is still being built | Pair testing, early API checks, obvious defects, testability feedback, unit/integration signal review |
-| QA/Test | Main validation environment before release | Functional, integration, regression, exploratory testing, test data validation, defect retesting |
+| Staging (STG) | Production-like environment; main validation before release | Functional, integration, regression, exploratory testing, test data validation, defect retesting |
 | Production | Real user/system behavior after release | Smoke validation when appropriate, monitoring, logs, alerts, user feedback, incident signals |
 
-> **Release reminder:** Some teams may also have a staging or pre-production environment. A feature moving between environments should have clear build/version information, deployment notes, known risks, and rollback or mitigation awareness when needed.
+> **Release reminder:** Dev → Staging → Production is the common baseline. Larger or regulated orgs may add dedicated QA, integration, UAT, or pre-production environments. A feature moving between environments should carry clear build/version information, deployment notes, known risks, and rollback or mitigation awareness.
 
 ## 7. Automate strategically
 
@@ -278,6 +278,8 @@ Example:
 ```text
 [Checkout] Payment confirmation is not displayed after approved transaction
 ```
+
+> **Worth a smile:** Andy Glover's *Bugs Have Feelings Too* cartoon nails bug advocacy — report it, report it quick, be honest, and get to know it. See [Cartoon Tester - Bug Advocacy (2010)](https://cartoontester.blogspot.com/2010/03/bug-advocacy.html).
 
 ## 11. Collect evidence that proves behavior
 

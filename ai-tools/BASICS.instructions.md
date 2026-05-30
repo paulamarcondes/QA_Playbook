@@ -28,7 +28,7 @@ Use this file as the always-on context for an AI assistant supporting QA and Qua
 - **Functional:** [Yes/No and main responsibilities]
 - **Non-Functional:** [Performance, security, accessibility, usability, reliability]
 - **Automation:** [Tools, coverage goals, automation boundaries]
-- **Environments:** [Dev, QA/Test, Staging, Production read-only access]
+- **Environments:** [Dev, Staging, Production read-only access]
 
 ### Toolchain
 
@@ -148,8 +148,7 @@ Use the simplest tool that gives the right result.
 | Environment | Purpose |
 |---|---|
 | Dev | Fast validation, developer checks, early feedback |
-| QA/Test | Main functional, integration, regression, exploratory testing |
-| Staging | Production-like pre-release validation and smoke testing |
+| Staging | Main functional, integration, regression, and exploratory testing in a production-like, pre-release environment |
 | Production | Monitoring, read-only validation, post-release smoke checks when approved |
 
 Do not run destructive tests, data mutation, load tests, or experimental automation in production.

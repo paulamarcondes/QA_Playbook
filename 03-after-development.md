@@ -84,6 +84,8 @@ Post-deploy validation confirms that real systems are healthy after release.
 
 > **Principle:** A release is not fully complete until the team confirms that production behavior is healthy.
 
+> **Real world:** many QAs have no production access, especially in regulated or enterprise systems. If you cannot touch prod, partner with Ops, SRE, or on-call to run these checks and share the signals — the validation still has to happen, even if you do not run it yourself.
+
 ## 4. Create a QA report for leadership visibility
 
 QA reporting should make quality visible without overwhelming stakeholders.
