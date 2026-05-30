@@ -104,18 +104,7 @@ Focus on:
 - visual consistency;
 - user friction.
 
-Useful UX lens:
-
-- visibility of system status;
-- match between system and real world;
-- user control and freedom;
-- consistency and standards;
-- error prevention;
-- recognition rather than recall;
-- flexibility and efficiency;
-- minimalist design;
-- help users recognize and recover from errors;
-- help and documentation.
+Useful UX lens (Nielsen heuristics): system status visibility, match to the real world, user control and freedom, consistency and standards, error prevention, recognition over recall, flexibility and efficiency, minimalist design, error recovery, and help/documentation.
 
 ## Backend, API, and integration testing
 

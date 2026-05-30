@@ -2,7 +2,7 @@
 
 Quality planning and risk prevention before coding starts.
 
-The goal before development is simple: **make the work clear, testable, valuable, and safe to build**. QA should be involved early enough to prevent ambiguity, expose risk, align the team on user value, and define how the change will be validated before code is written.
+The goal: **make the work clear, testable, valuable, and safe to build**. Involve QA early enough to expose ambiguity and risk, align on user value, and define how the change will be validated before code is written.
 
 > **Key idea:** A story is not ready just because it has a description. It is ready when the team understands value, risk, contracts, testability, and expected evidence.
 
@@ -26,53 +26,41 @@ Companion reference: [Quality Review Checklist - Before development](resources/q
 
 ## Outcomes expected before coding starts
 
-A story or feature should enter development only when the team understands:
-
-- what user or business problem it solves;
-- which users, systems, flows, data, and environments are impacted;
-- what could fail and how serious the impact would be;
-- how success and failure will be validated;
-- what test strategy, test data, and evidence will be needed;
-- what should be automated, manually validated, or explored;
-- what needs to be observable after release.
+By the end of this phase, the team can explain what to build and why, what could fail, how success and failure will be validated, and what must be observable after release — captured formally in the [Definition of Ready](#13-definition-of-ready).
 
 ## 1. Start with user value
 
-Quality starts by understanding the real user journey, not only the technical change.
+Quality starts with the real user journey, not only the technical change.
 
 ### Questions to ask
 
-- Who is the user, customer, support team, or system consuming this change?
-- What problem are we solving for them?
-- What task must they complete successfully?
+- Who consumes this change — user, customer, support team, or system?
+- What problem are we solving, and what task must they complete?
 - What could frustrate, block, confuse, or mislead them?
-- What would make this change feel reliable and easy to use?
-- How will we know this improved the product experience?
+- What would make it feel reliable and easy to use?
+- How will we know the experience improved?
 
-> **Principle:** A feature can be technically correct and still fail in practice if the user journey is unclear, slow, confusing, or hard to recover from.
+> **Principle:** A feature can be technically correct and still fail if the user journey is unclear, slow, confusing, or hard to recover from.
 
 ## 2. Run a lightweight Three Amigos review
 
-Use a short conversation with **Product + Development + QA** before implementation.
+Hold a short **Product + Development + QA** conversation before implementation.
 
 ### Questions to answer
 
-- What problem are we solving?
-- Who is the user or system consuming this change?
 - What is the expected happy path?
-- What are the most important negative paths?
-- What edge cases are likely?
+- What are the most important negative paths and likely edge cases?
 - What should never break?
-- How will we validate this in Dev, QA/Test, Staging, and Production?
-- What logs, metrics, or traces will help us troubleshoot it later?
+- How will we validate this across Dev, QA/Test, Staging, and Production?
+- What logs, metrics, or traces will help troubleshoot it later?
 
 ### Output
 
-A story should leave refinement with clear acceptance criteria, known risks, test data needs, dependencies, and a shared understanding of done.
+A story should leave refinement with clear acceptance criteria, known risks, test data needs, dependencies, and a shared definition of done.
 
 ## 3. Write acceptance criteria that are testable
 
-Good acceptance criteria are specific, observable, and connected to behavior.
+Good acceptance criteria are specific, observable, and tied to behavior.
 
 ### Strong acceptance criteria include
 
@@ -87,7 +75,7 @@ Good acceptance criteria are specific, observable, and connected to behavior.
 
 ### Option A - BDD format
 
-Use this when behavior needs to be business-readable and shared across Product, Dev, and QA.
+Use when behavior needs to be business-readable across Product, Dev, and QA.
 
 ```gherkin
 Given a valid user or system context
@@ -98,7 +86,7 @@ And the system should provide clear feedback or traceability
 
 ### Option B - Practical checklist format
 
-Use this when the team needs a faster, simpler format.
+Use when the team needs a faster, simpler format.
 
 ```text
 - User can complete [main action] when [condition]
@@ -126,7 +114,7 @@ Cover failure and operability, not just the happy path:
 
 ## 4. Map risk before defining test depth
 
-Not every change deserves the same testing effort. Testing depth should follow risk.
+Testing depth should follow risk; not every change deserves the same effort.
 
 > **Shortcut:** Risk = Impact × Likelihood. Score both High/Medium/Low, take the higher of the two, and let that drive the risk level and testing depth.
 
@@ -152,7 +140,7 @@ For full risk assessment, use the [Test Strategy Template](templates/test-strate
 
 ## 5. Create the test strategy and draft test cases early
 
-For medium or high-risk work, QA should start the **test strategy and test cases before development**, not after handoff.
+For medium or high-risk work, start the **test strategy and test cases before development**, not after handoff.
 
 ### What to define early
 
@@ -165,18 +153,17 @@ For medium or high-risk work, QA should start the **test strategy and test cases
 - Evidence expected for sign-off
 - Post-deploy checks when needed
 
-Use the [Test Strategy Template](templates/test-strategy-template.md) and [Test Cases Template](templates/test-cases-template.md) to define risks, scope, validation approach, and early scenarios before development starts.
+Use the [Test Strategy Template](templates/test-strategy-template.md) and [Test Cases Template](templates/test-cases-template.md) to define risks, scope, validation approach, and early scenarios.
 
 ### Why this helps
 
 - Developers see expected validations before implementation.
-- Missing requirements are discovered earlier.
-- Automation candidates are identified sooner.
+- Missing requirements and automation candidates surface earlier.
 - QA execution becomes faster and less reactive.
 
 ### AI-assisted option
 
-AI agents, skills, and instructions can speed up test strategy and test case drafting when used with human review. See [AI Tools](ai-tools/README.md).
+AI agents, skills, and instructions can speed up strategy and test-case drafting, with human review. See [AI Tools](ai-tools/README.md).
 
 Useful prompts:
 
@@ -188,7 +175,7 @@ Review this story for ambiguity, risk, missing acceptance criteria, and testabil
 Create a lightweight test strategy and risk-based test case outline for this feature.
 ```
 
-Human QA still owns the final judgment, expected results, risk priority, and product context.
+Human QA still owns final judgment, expected results, risk priority, and product context.
 
 ## 6. Validate testability before implementation
 
@@ -200,8 +187,7 @@ A feature is easier to test when testability is designed in.
 - Can we prepare reliable test data?
 - Can we mock or simulate external dependencies?
 - Can we validate the result through API, database, logs, UI, files, or events?
-- Can failures be reproduced?
-- Can the team identify which step failed?
+- Can failures be reproduced, and can the team identify which step failed?
 - Do we need feature flags, test hooks, or better logs?
 
 If the answer is unclear, the story needs more design discussion before development starts.
@@ -215,8 +201,7 @@ For APIs, files, events, schemas, data mappings, or integrations, the contract i
 - version;
 - required and optional fields;
 - data types and formats;
-- default values;
-- allowed values;
+- default and allowed values;
 - backward compatibility expectations;
 - sample valid and invalid payloads;
 - error responses;
@@ -235,8 +220,7 @@ Validate the user journey, usability, accessibility, clarity, visual feedback, e
 Useful validation:
 
 - exploratory testing;
-- UI checks;
-- accessibility checks;
+- UI and accessibility checks;
 - usability review;
 - critical UI automation;
 - copy, labels, empty states, errors, loading states, and recovery paths.
@@ -249,9 +233,7 @@ Validate business rules, contracts, data integrity, security, performance, integ
 
 Useful validation:
 
-- API tests;
-- contract tests;
-- integration tests;
+- API, contract, and integration tests;
 - logs and correlation IDs;
 - data validation;
 - negative testing;
@@ -280,8 +262,7 @@ Late test data is a common reason for blocked QA.
 ### Plan ahead
 
 - Required users, roles, permissions, and accounts
-- Valid and invalid input data
-- Boundary values
+- Valid and invalid input data, plus boundary values
 - Existing records needed for regression
 - External system availability
 - Files, payloads, or events needed for integrations
@@ -295,7 +276,7 @@ Keep a small, reusable set of **golden test data** for critical flows.
 
 ## 11. Assess QA maturity when joining a team
 
-When QA joins a new team, start by understanding how quality currently works before proposing changes.
+When QA joins a new team, understand how quality currently works before proposing changes.
 
 ### Run a simple team survey
 
@@ -303,16 +284,15 @@ Measure the current state of:
 
 - requirement quality;
 - Definition of Ready and Definition of Done;
-- test strategy and test coverage;
+- test strategy and coverage;
 - automation health;
 - environment and test data stability;
 - defect management;
 - observability;
 - release confidence;
-- user focus;
-- quality culture.
+- user focus and quality culture.
 
-Repeat the same survey after a few sprints or months to show improvement, gaps, and culture change.
+Repeat the survey after a few sprints or months to show improvement, gaps, and culture change.
 
 For a reusable model, see [QA Assessment Survey Template](templates/qa-assessment-survey-template.md).
 
@@ -322,8 +302,7 @@ A QA Guild is a recurring space where QAs from different teams share knowledge, 
 
 ### Useful guild topics
 
-- testing techniques;
-- automation patterns;
+- testing techniques and automation patterns;
 - flaky tests;
 - accessibility and UX testing;
 - API and contract testing;
@@ -340,8 +319,7 @@ A story is ready for development when:
 
 - the goal and value are clear;
 - acceptance criteria are testable;
-- main risks are identified;
-- dependencies are known;
+- main risks and dependencies are identified;
 - test data needs are understood;
 - UX/API/contract expectations are documented;
 - frontend and backend validation needs are understood;

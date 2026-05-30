@@ -6,7 +6,7 @@ The goal after development is to answer one question:
 
 > **Can we release with confidence, detect issues quickly, and learn from what happens next?**
 
-Quality does not end when QA testing is complete. Release readiness, production validation, observability, metrics, leadership visibility, and retrospectives are part of modern QA.
+Quality does not end when QA testing is complete — release readiness, production validation, observability, metrics, and retrospectives are part of modern QA.
 
 ## On this page
 
@@ -24,15 +24,7 @@ Companion reference: [Quality Review Checklist - After release](resources/qualit
 
 ## Outcomes expected after development
 
-After implementation, the team should be able to:
-
-- understand release risk;
-- validate the most important flows before and after deployment;
-- detect failures quickly;
-- communicate QA status clearly to stakeholders;
-- measure quality trends;
-- learn from incidents and escaped defects;
-- improve the next delivery cycle.
+After implementation, the team understands release risk, validates key flows before and after deploy, detects failures quickly, communicates QA status to stakeholders, measures quality trends, and learns from incidents to improve the next cycle — recapped in the [after development checklist](#after-development-checklist).
 
 ## 1. Define release readiness
 

@@ -2,7 +2,7 @@
 
 Test design, execution, and collaboration while the work is being built.
 
-The goal during development is to create **fast feedback, shared ownership, and continuous validation**. QA should not work as the final gate after everything is built. QA should help the team build the right thing, test the right risks, and detect problems while they are still cheap to fix.
+The goal during development: **fast feedback, shared ownership, and continuous validation**. QA is not the final gate after everything is built — QA helps the team build the right thing, test the right risks, and catch problems while they are still cheap to fix.
 
 > **Key idea:** QA is not only testing finished work. QA helps the team make better technical and product decisions during implementation.
 
@@ -26,17 +26,7 @@ Companion reference: [Quality Review Checklist - During development](resources/q
 
 ## Outcomes expected during development
 
-During implementation, the team should be able to:
-
-- validate changes incrementally;
-- review quality risks before merge;
-- test critical behavior at the right level;
-- check developer quality signals, such as unit tests and static analysis;
-- automate stable and valuable checks;
-- use environments intentionally;
-- document evidence and how-to-test guidance clearly;
-- report defects in a way that accelerates resolution;
-- keep product quality visible to the whole team.
+During implementation, the team validates changes incrementally, reviews risk before merge, tests at the right level, checks developer quality signals, automates valuable checks, and keeps defects, evidence, and quality visible to everyone — converging on the [Definition of Done](#13-definition-of-done).
 
 ## 1. Collaborate before the handoff
 

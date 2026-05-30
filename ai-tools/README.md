@@ -37,23 +37,14 @@ ai-tools/
         └── SKILL.md
 ```
 
-## What to use when
-
-| Need | Use |
-|---|---|
-| General AI behavior rules | `BASICS.instructions.md` |
-| Manual QA assistant behavior | `agents/manual-qa.agent.md` |
-| Manual QA workflow knowledge | `skills/manual-qa/SKILL.md` |
-| Robot Framework QA support | `skills/robot-qa/SKILL.md` |
-
 ## Files
 
 | File | Purpose |
 |---|---|
 | `BASICS.instructions.md` | Always-on QA context: role, systems, tools, communication style, safety rules, SDLC principles. |
-| `agents/manual-qa.agent.md` | Manual QA agent workflow for requirements review, test strategy, test cases, execution support, and reporting. |
-| `skills/manual-qa/SKILL.md` | QA knowledge base with test types, techniques, strategy, bug reporting, metrics, CI/CD, and test documentation standards. |
-| `skills/robot-qa/SKILL.md` | Robot Framework automation guidance focused on clean, maintainable, robust test code. |
+| `agents/manual-qa.agent.md` | Manual QA agent workflow: requirements review, test strategy, test cases, execution, and reporting. |
+| `skills/manual-qa/SKILL.md` | Manual QA knowledge base: test types, techniques, strategy, bug reporting, metrics, CI/CD, documentation. |
+| `skills/robot-qa/SKILL.md` | Robot Framework automation guidance: clean, maintainable, robust test code. |
 
 ## Recommended usage
 
