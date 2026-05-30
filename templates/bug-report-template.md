@@ -1,67 +1,136 @@
 # Bug Report Template
 
-Use this format to make defects clear, reproducible, and easier to fix.
+A good bug report helps the team reproduce, investigate, prioritize, and learn from the issue.
+
+It should explain what happened, where to look, and why it matters.
 
 ---
 
-## Title
+## Summary
 
-```text
-[Area] Short description of the problem
-```
+**Title:** `[Area] Action fails when condition happens`  
+**Reported by:**  
+**Date:**  
+**Related story / release:**  
 
 ---
 
-## Description
+## Severity, priority, and risk
 
-Describe the issue in 1-2 sentences, concise and clear.
-Explain the user, business, technical, or release impact.
+**Severity:** Low / Medium / High / Critical  
+**Priority:** Low / Medium / High / Urgent  
+**Risk Level:** Low / Medium / High / Critical  
+
+**Why it matters:**  
+
+- 
+
+Reference: Core Principle #3 — Risk drives testing depth.
 
 ---
 
 ## Environment
 
-- Environment:
-- Build/version:
-- Browser/device:
-- User/role:
-- Test data:
+| Item | Details |
+|---|---|
+| Environment | Dev / QA / Staging / Production |
+| Build / Version |  |
+| Browser / Device |  |
+| User / Role |  |
+| Test data |  |
+| Feature flag |  |
+| External system |  |
+
+---
+
+## Affected area
+
+**Feature / Flow:**  
+**API / Service / Component:**  
+**Integration / External System:**  
+**Data affected:**  
+
+---
+
+## Steps to reproduce or trigger condition
+
+1. 
+2. 
+3. 
+
+**Reproducibility:** Always / Sometimes / Once / Unknown  
 
 ---
 
 ## Expected result
 
-What should happen?
+- 
 
 ---
 
 ## Actual result
 
-What actually happened?
-
----
-
-## Steps to reproduce
-
-1.
-2.
-3.
-
----
-
-## Severity / Priority suggestion
-
-**Severity:** Critical / High / Medium / Low  
-**Priority:** High / Medium / Low  
+- 
 
 ---
 
 ## Evidence
 
-Attach screenshots, video, logs, API payloads, files, IDs, or links.
+Add useful evidence, not noise.
+
+| Evidence type | Link / Details |
+|---|---|
+| Screenshot / Video |  |
+| Logs |  |
+| Trace ID / Correlation ID |  |
+| Request / Response payload |  |
+| Error message |  |
+| Database record / ID |  |
+| Automation report |  |
+
+Do not include secrets, passwords, tokens, or sensitive personal data.
 
 ---
 
-## Additional notes
+## Technical context
 
-Include suspected area, workaround, related bugs, or regression notes.
+**Suspected area:**  
+**Recent change related to this issue:**  
+**Possible root cause:**  
+**Workaround:**  
+
+---
+
+## User / business impact
+
+Who is affected and what is the consequence?
+
+- 
+
+Examples:
+
+- User cannot complete a critical journey.
+- Incorrect data is sent to another system.
+- Permission rules allow the wrong access.
+- Production support cannot investigate due to missing logs.
+
+---
+
+## Resolution notes
+
+**Fixed by:**  
+**Fix version:**  
+**Validation performed:**  
+**Regression needed:** Yes / No  
+**Automation candidate:** Yes / No  
+
+---
+
+## Critical / Blocker follow-up
+
+For Critical or Blocker bugs:
+
+- [ ] Update the [QA Metrics Dashboard](qa-metrics-dashboard-template.md) when relevant.
+- [ ] Review whether a post-release learning discussion is needed.
+- [ ] Check whether the [Test Strategy](test-strategy-template.md) or [Quality Review Checklist](../resources/quality-review-checklist.md) should be updated.
+- [ ] Follow the learning process from [03 - After Development](../03-after-development.md).

@@ -1,145 +1,135 @@
-# Clean Code Review Guide for QA
+# Clean Code Guide for QA
 
-A concise resource to help QAs review code and PRs with a quality, risk, and user-impact mindset.
+QAs do not need to review code like developers. But QAs can review code changes with a quality mindset.
 
-QA does not need to rewrite the code. QA helps the team identify risk earlier and confirm that the change is clear, testable, observable, secure, and aligned with the expected behavior.
-
----
-
-## QA Focus in PR Review
-
-Review the change to understand:
-
-- What changed
-- What could break
-- What needs to be tested
-- Whether the implementation matches the requirement
-- Whether the change is easy to test, maintain, and troubleshoot
+The goal is to identify risk, testability issues, missing scenarios, weak error handling, and maintainability concerns before defects reach users.
 
 ---
 
-## What QA Should Look For
+## What QA should look for in code review
 
-### Clear Intent
-
-- Names are meaningful and aligned with the domain
-- Logic is easy to understand
-- Functions/classes have one clear responsibility
+### 1. Requirement fit
 
 Ask:
 
-- Can I understand the purpose of this change?
-- Does the code reflect the requirement clearly?
-
-### Focused Change
-
-- The PR has one main purpose
-- No unrelated refactoring or formatting noise
-- Regression impact is easy to identify
-
-Ask:
-
-- Is this PR too large?
-- Are unrelated changes increasing risk?
-
-### Simple and Testable Logic
-
-- Conditions are not overly complex
-- Edge cases are handled explicitly
-- Business logic can be tested without relying only on the UI
-
-Ask:
-
-- Can this be validated at unit, API, or integration level?
-- Is the logic deterministic and easy to isolate?
-
-### Error Handling
-
-- Invalid, missing, duplicated, or unexpected data is handled safely
-- No silent failures or empty catch blocks
-- Error messages are useful and actionable
-
-Ask:
-
-- What happens when this fails?
-- Would the team understand the failure quickly?
-
-### Observability
-
-- Critical flows have useful logs or signals
-- Logs help identify the affected user, record, request, or transaction
-- Sensitive data is not exposed
-
-Ask:
-
-- If this breaks after release, how will we know?
-- Is there enough information to troubleshoot?
-
-### Security and Data Safety
-
-- Input validation exists
-- Authorization is handled on the backend
-- No hardcoded secrets
-- Sensitive data is not exposed in logs, UI, URLs, or errors
-
-Ask:
-
-- Can a user access something they should not?
-- Can invalid input corrupt or expose data?
+- Does the code match the acceptance criteria?
+- Are all expected paths handled?
+- Are negative paths considered?
+- Is there any behavior not described in the story?
 
 ---
 
-## QA PR Review Checklist
+### 2. Readability and maintainability
 
-- [ ] Requirement and acceptance criteria are reflected in the change.
-- [ ] Critical paths and risks are clear.
-- [ ] Unit, API, or integration tests exist where expected.
-- [ ] UI validation is not the only protection for critical logic.
-- [ ] Error scenarios are handled.
-- [ ] Logs/observability are sufficient.
-- [ ] No sensitive data is exposed.
-- [ ] Regression impact is understood.
-- [ ] Documentation or how-to-test notes were updated if needed.
+Ask:
 
----
+- Is the logic easy to understand?
+- Are names clear?
+- Is the change smaller than it could be?
+- Is duplicated logic being introduced?
+- Would another developer understand this later?
 
-## Common Red Flags
-
-- Large PR with mixed concerns
-- No tests for changed logic
-- Only happy path covered
-- Hardcoded values
-- Silent failures
-- Generic error messages
-- Missing authorization checks
-- Business rules duplicated in multiple places
-- UI-only validation for critical behavior
-- Logs missing for important flows
-- Logs exposing sensitive data
+Clean code reduces future bugs.
 
 ---
 
-## Useful QA Questions
+### 3. Testability
 
-- What is the riskiest part of this change?
-- Which tests protect this logic?
-- What happens with invalid or missing data?
-- What existing behavior could be affected?
-- Can we validate this without relying only on the UI?
-- What logs or signals confirm success or failure?
+Ask:
+
+- Can this logic be tested easily?
+- Is important logic isolated enough for unit tests?
+- Are dependencies mocked or controlled where needed?
+- Are there clear inputs and outputs?
+
+Poor testability usually means higher regression risk.
 
 ---
 
-## Quality Gate
+### 4. Error handling
 
-A PR is healthier when:
+Ask:
 
-- The intent is clear
-- The change is focused
-- The logic is testable
-- Failures are explicit
-- Critical paths are protected by tests
-- Logs support troubleshooting
-- Risk and regression impact are understood
+- What happens when input is invalid?
+- What happens when a dependency fails?
+- Are error messages useful?
+- Are failures handled safely?
+- Are retry, timeout, or fallback behaviors clear when relevant?
 
-Clean code is not about perfection. It is about reducing risk and making the system easier to understand, test, and evolve.
+---
+
+### 5. Logs and observability
+
+Ask:
+
+- Are important failures logged?
+- Do logs include useful IDs or context?
+- Can support or engineering trace what happened?
+- Are sensitive values protected?
+- Are metrics or alerts needed?
+
+Good logs help the team investigate production issues faster.
+
+---
+
+### 6. Security and data safety
+
+Ask:
+
+- Are permissions checked correctly?
+- Is least privilege respected?
+- Is sensitive data protected?
+- Are secrets or credentials exposed?
+- Are logs free from personal or confidential data?
+
+Security should be reviewed early, not only tested at the end.
+
+---
+
+### 7. Accessibility and user impact
+
+For UI changes, ask:
+
+- Are labels and messages clear?
+- Are errors understandable?
+- Is keyboard navigation relevant?
+- Could visual-only feedback create a problem?
+- Could this change make the flow harder for users?
+
+---
+
+### 8. AI-generated code or tests
+
+If AI helped generate code or tests, check:
+
+- Does it match the real requirement?
+- Are expected results correct?
+- Are edge cases missing?
+- Is the logic generic or hallucinated?
+- Are there biased assumptions?
+- Was sensitive data used in the prompt?
+
+AI output must always be reviewed by a human.
+
+---
+
+## PR review checklist for QA
+
+- [ ] Acceptance criteria are reflected in the implementation.
+- [ ] Important edge cases are handled.
+- [ ] Risky logic has meaningful tests.
+- [ ] Errors are handled clearly.
+- [ ] Logs support troubleshooting.
+- [ ] Security and permissions are respected.
+- [ ] Sensitive data is protected.
+- [ ] Accessibility and user impact were considered when relevant.
+- [ ] Automation was added or updated when it provides useful feedback.
+- [ ] Known risks are communicated.
+
+---
+
+## Related resources
+
+- [Unit Testing Guide](unit-testing-guide.md)
+- [Testing Guide](testing-guide.md)
+- [Definition of Ready / Done Template](../templates/definition-of-ready-done-template.md)

@@ -1,154 +1,83 @@
-# AI Tools for QA Workflows
+# AI Tools for QA
 
-Reusable AI assistant templates for Quality Engineering work across the SDLC.
+This folder contains practical AI instructions, agents, and skills to support QA work.
 
-These files help configure AI assistants such as GitHub Copilot, Claude Code, or similar coding agents to support QA activities from requirements review to test strategy, test case design, defect reporting, automation support, and test reporting.
+AI can help QA move faster, but it should not replace human judgment.
 
-## Goals
+---
 
-- Support shift-left QA practices
-- Improve test planning and test design quality
-- Standardize bug reports, test cases, and QA documentation
-- Keep AI usage safe, concise, and approval-driven
-- Encourage token-efficient workflows using local tools first and MCP only when useful
+## Good uses for AI in QA
 
-## Compatibility Note
+AI can help with:
 
-These files are reusable templates. Folder structure, loading behavior, and feature support vary by AI tool.
+- summarizing requirements;
+- finding missing acceptance criteria;
+- suggesting positive and negative scenarios;
+- improving bug reports;
+- reviewing logs;
+- creating exploratory test ideas;
+- identifying automation candidates;
+- refactoring Robot Framework keywords;
+- improving documentation clarity.
 
-- GitHub Copilot custom instructions and prompts may require placement in your VS Code or repository configuration.
-- Claude Code supports agents and skills, but file locations may vary depending on local or global setup.
-- Other AI tools may require copying the relevant content into their own instruction or agent format.
+---
 
-Always validate how your specific tool loads instructions before relying on them in daily work.
+## Human validation rule
 
-## Folder Structure
+Every AI-generated output must be reviewed by a human before use.
 
-```text
-ai-tools/
-├── README.md
-├── BASICS.instructions.md
-├── agents/
-│   └── manual-qa.agent.md
-└── skills/
-    ├── manual-qa/
-    │   └── SKILL.md
-    └── robot-qa/
-        └── SKILL.md
-```
+Check for:
 
-## Files
+- hallucinated requirements;
+- incorrect expected results;
+- missing edge cases;
+- generic scenarios that do not fit the product;
+- biased assumptions;
+- sensitive or confidential data exposure;
+- mismatch with real user impact;
+- automation that creates maintenance without value.
+
+---
+
+## Data safety
+
+Do not paste into AI tools:
+
+- passwords;
+- tokens;
+- secrets;
+- customer personal data;
+- production confidential data;
+- private business information not approved for AI use.
+
+Use sanitized examples whenever possible.
+
+---
+
+## Files in this folder
 
 | File | Purpose |
-|------|---------|
-| `BASICS.instructions.md` | Always-on QA context: role, systems, tools, communication style, safety rules, SDLC principles. |
-| `agents/manual-qa.agent.md` | Manual QA agent workflow for requirements review, test strategy, test cases, execution support, and reporting. |
-| `skills/manual-qa/SKILL.md` | QA knowledge base with test types, techniques, strategy, bug reporting, metrics, CI/CD, and test documentation standards. |
-| `skills/robot-qa/SKILL.md` | Robot Framework automation guidance focused on clean, maintainable, robust test code. |
+|---|---|
+| [BASICS.instructions.md](BASICS.instructions.md) | Base instructions for QA-focused AI assistants. |
+| [manual-qa.agent.md](agent/manual-qa.agent.md) | Agent instructions for manual QA support. |
+| [manual-qa/SKILL.md](manual-qa/SKILL.md) | Skill guidance for manual QA workflows. |
+| [robot-qa/SKILL.md](robot-qa/SKILL.md) | Skill guidance for Robot Framework workflows. |
 
-## Recommended Usage
+---
 
-### 1. Start with the basics file
-
-Customize `BASICS.instructions.md` with your team context:
-
-- Product or system under test
-- Architecture and integration points
-- Testing scope
-- Test management and defect tracking tools
-- Automation framework
-- CI/CD pipeline
-- Environments
-- Definition of Ready and Definition of Done
-
-### 2. Use the Manual QA Agent for SDLC work
-
-Typical prompts:
+## Simple prompt pattern
 
 ```text
-Review this user story for testability and missing acceptance criteria.
+Act as a QA Engineer.
+Review the requirement below.
+Identify risks, missing acceptance criteria, negative scenarios, test data needs, automation candidates, and questions for the team.
+Keep the answer concise and practical.
 ```
 
-```text
-Create a test strategy and test cases for this feature. Ask for approval before writing anything.
-```
+---
 
-```text
-Analyze this defect and draft a clear bug report with severity, priority, impact, and evidence.
-```
+## Reminder
 
-```text
-Create a QA summary report for leadership based on these test results.
-```
+AI should make QA thinking faster, clearer, and more complete.
 
-### 3. Use the Robot QA skill for automation support
-
-Typical prompts:
-
-```text
-Review this Robot Framework test for readability, robustness, and maintainability.
-```
-
-```text
-Convert these manual test cases into Robot Framework automation candidates.
-```
-
-```text
-Refactor this keyword with minimal changes and better failure messages.
-```
-
-## CLI vs MCP Guidance
-
-Use the simplest tool that gives the right result.
-
-### Prefer CLI or local tools for
-
-- Searching local files
-- Reading repository structure
-- Running tests
-- Checking git status or diffs
-- Editing small files
-- Inspecting logs already available locally
-
-### Prefer MCP for
-
-- Structured access to Jira, Azure DevOps, TestRail, Zephyr, Confluence, GitHub, or similar systems
-- Multi-resource workflows, such as linking stories, test cases, defects, and documentation
-- Operations where the assistant needs context from several external tools
-
-### Avoid MCP when
-
-- A local file read, grep, or test command is enough
-- The task does not require external system context
-- It would increase token usage without improving accuracy
-
-## Safety Rules
-
-Use these rules in every AI-assisted QA workflow:
-
-- Never include secrets, credentials, tokens, private keys, customer data, production data, or proprietary system details in prompts or examples.
-- Use synthetic or anonymized test data.
-- Do not allow AI to write to issue trackers, test management tools, documentation tools, repositories, or production systems without explicit approval.
-- Treat production as read-only unless a formally approved operational process says otherwise.
-- Review all generated test cases, bug reports, and automation code before using them.
-- Keep AI-generated content traceable to requirements, risks, and evidence.
-
-## Good AI Workflow
-
-```text
-Gather context -> Draft proposal -> Review -> Approve -> Execute -> Summarize result
-```
-
-The assistant should be useful, but the QA professional remains accountable for quality decisions.
-
-## What to Customize
-
-- Replace placeholders with your real tool names and paths.
-- Remove sections that do not apply to your team.
-- Add product-specific risks, test data rules, and environment constraints.
-- Update automation standards to match your framework.
-- Add links to your internal templates, examples, and documentation.
-
-## Portfolio Note
-
-This folder demonstrates how QA can use AI responsibly as a productivity layer, not as a replacement for engineering judgment. The focus is practical: better requirements, stronger test strategy, cleaner test cases, safer automation, and clearer communication.
+It should not make quality decisions without human review.

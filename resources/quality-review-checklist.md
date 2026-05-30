@@ -1,65 +1,71 @@
 # Quality Review Checklist
 
-Use this checklist during refinement, development, PR review, and release conversations.
+A quick checklist to support quality decisions before, during, and after development.
+
+Use this as a lightweight reminder, not a heavy process.
 
 ---
 
 ## Before development
 
-- [ ] What user or business problem are we solving?
-- [ ] Who is impacted and what journey must work?
-- [ ] Are acceptance criteria clear and testable?
-- [ ] Did we choose BDD or practical checklist criteria?
-- [ ] What is the happy path?
-- [ ] What are the most important negative paths?
-- [ ] What edge cases could matter?
-- [ ] What systems, APIs, files, events, permissions, or configurations are impacted?
-- [ ] What frontend/UX and backend/API risks exist?
-- [ ] What could break existing behavior?
-- [ ] What test data is required?
-- [ ] What needs to be observable after release?
-- [ ] Do we need a test strategy or draft test cases before development?
-- [ ] Are tool/framework decisions clear for testing or automation?
-- [ ] Is the story ready for development?
+- [ ] User value is clear.
+- [ ] Acceptance criteria are testable.
+- [ ] Risk level is defined.
+- [ ] Dependencies are known.
+- [ ] Interface or contract expectations are documented when relevant.
+- [ ] Security and permissions are considered.
+- [ ] Accessibility is considered for user-facing changes.
+- [ ] Test data and environment needs are clear.
+- [ ] Testing approach is roughly agreed.
+- [ ] Story meets Definition of Ready.
 
 ---
 
 ## During development
 
-- [ ] Has QA reviewed scenarios before handoff?
-- [ ] Did QA and Dev review unit tests, integration tests, and static analysis results when relevant?
-- [ ] Are SonarQube or similar static analysis findings reviewed?
-- [ ] Has QA reviewed the PR from a risk and testability perspective when relevant?
-- [ ] Are unit/API/integration/UI tests added at the right level?
-- [ ] Are errors handled clearly?
-- [ ] Are logs useful for troubleshooting?
-- [ ] Is the implementation testable?
-- [ ] Are critical paths protected?
-- [ ] Are environment differences between Dev, QA/Test, Staging, and Production understood?
-- [ ] Are known risks communicated?
-- [ ] Is evidence attached?
-- [ ] Are user guide or how-to-test notes updated when needed?
-
----
-
-## Bug classification
-
-- [ ] Does the behavior violate a requirement, acceptance criteria, contract, user need, or quality standard?
-- [ ] Is it a regression?
-- [ ] Is it caused by invalid test data or environment setup?
-- [ ] Is it expected behavior but poorly documented?
-- [ ] Is it actually a feature request or product decision?
-- [ ] Is impact clear enough to define severity and priority?
+- [ ] PR review considers quality risks.
+- [ ] Unit test strategy was reviewed when relevant.
+- [ ] Contracts, payloads, and mappings were checked when relevant.
+- [ ] Logs and errors support troubleshooting.
+- [ ] Sensitive data is protected.
+- [ ] Pair testing was used for high-risk work when useful.
+- [ ] Automation was added or updated when it provides useful feedback.
+- [ ] Bugs include technical context and impact.
+- [ ] AI-generated output was reviewed by a human when used.
 
 ---
 
 ## Before release
 
-- [ ] Did critical tests pass?
-- [ ] Was risk-based regression completed?
-- [ ] Are high-severity defects closed or accepted?
-- [ ] Is rollback or mitigation understood?
-- [ ] Are monitoring/logs available?
-- [ ] Was production smoke validation planned?
-- [ ] Is the release recommendation clear?
-- [ ] Is a QA report or release summary needed for leadership visibility?
+- [ ] Acceptance criteria are met.
+- [ ] Relevant regression risk was covered.
+- [ ] Critical checks passed.
+- [ ] Known issues are documented.
+- [ ] Rollback or recovery plan is understood when needed.
+- [ ] Monitoring or logs are available for important flows.
+- [ ] Deployment validation plan is clear.
+- [ ] Stakeholders understand remaining risks.
+
+---
+
+## After release
+
+- [ ] Production signals were reviewed.
+- [ ] Critical flows are behaving as expected.
+- [ ] Incidents or high-severity bugs were reviewed.
+- [ ] Metrics were updated when relevant.
+- [ ] Missed risks were added to the strategy or checklist.
+- [ ] Automation candidates were reviewed.
+- [ ] One improvement action was captured.
+
+---
+
+## 15-minute quality retro
+
+Use after releases or production incidents:
+
+1. What went well?
+2. What was missed?
+3. What risk should have been clearer?
+4. What test, log, automation, or checklist should improve?
+5. What is the next action?

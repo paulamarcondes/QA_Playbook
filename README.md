@@ -1,115 +1,106 @@
 # QA Playbook
 
-A practical Quality Engineering playbook for building reliable software **before, during, and after development**.
+A practical QA Engineering playbook for building quality before, during, and after software development.
 
-This repository is a portfolio project that documents how modern QA can support delivery through shift-left practices, risk-based testing, automation, release confidence, AI-assisted workflows, and continuous improvement.
+> Quality is not a final checkpoint. It is built through clear requirements, smart risk decisions, technical collaboration, useful automation, and continuous learning.
 
-> Quality is not a final checkpoint. It is a system property built through clear requirements, technical collaboration, smart testing, user focus, and measurable learning.
+This repository is intentionally concise and practical. It can be used by junior, mid-level, and senior QAs, as well as developers, product owners, tech leads, and teams that want a shared quality standard.
 
 ---
 
 ## Why this playbook exists
 
-Modern software teams need more than test execution. They need quality practices that help them:
+Modern QA is more than executing test cases. A strong QA practice helps the team:
 
-- prevent defects before implementation starts;
-- validate what matters most to users and the business;
-- reduce regression and production risk;
-- make failures visible, traceable, and actionable;
-- choose the right test strategy, tools, and automation approach;
-- use AI responsibly to improve feedback loops;
-- learn from releases, incidents, metrics, and team maturity signals.
-
-This playbook is intentionally concise and practical. It is designed to be reused by QA Engineers, Developers, Product Owners, Tech Leads, and teams that want to make quality part of the delivery system.
+- prevent defects early;
+- understand user and business risk;
+- define clear requirements and contracts;
+- choose the right testing depth;
+- improve release confidence;
+- use automation where it brings value;
+- use AI responsibly;
+- learn from bugs, releases, and production feedback.
 
 ---
 
 ## Core principles
 
 1. **Prevention beats detection**  
-   The best bug is the one removed during refinement, design, or code review.
+   The best bug is the one removed during refinement, design, code review, or early testing.
 
 2. **User value drives quality**  
-   A technically correct feature still fails if users cannot complete the journey with clarity, trust, and low friction.
+   A feature is not successful only because it works technically. Users must be able to complete the journey with clarity, trust, and low friction.
 
 3. **Risk drives testing depth**  
-   Critical flows, integrations, data transformations, security, payments, permissions, and customer-impacting changes deserve deeper validation.
+   Critical flows, integrations, data transformations, security, permissions, payments, and customer-impacting changes deserve deeper validation.
 
 4. **Quality is a team responsibility**  
-   QA leads quality thinking, but Developers, Product, UX, Support, and Engineering leaders all contribute to product confidence.
+   QA leads quality thinking, but quality depends on Product, Developers, UX, Support, and Engineering leaders.
 
-5. **Automation accelerates feedback**  
+5. **Automation should improve feedback**  
    Automated tests should protect critical paths, contracts, integrations, and repetitive checks. Automation is not a goal by itself.
 
 6. **Humans protect context**  
-   AI can help generate ideas, analyze logs, summarize requirements, and speed up test design, but human judgment remains essential for product risk, usability, ethics, and real user impact.
+   AI can support analysis, test design, log review, and documentation, but human judgment remains responsible for business risk, ethics, usability, and real user impact.
 
 7. **Metrics should improve decisions**  
-   Good QA metrics reveal risk, bottlenecks, learning opportunities, and product impact. They should never be used to blame people.
+   Good metrics reveal risks, bottlenecks, learning opportunities, and product impact. They should never be used to blame people.
 
 ---
 
 ## Playbook structure
 
-### Core guides
+### Core workflow guides
 
-- **[01 - Before Development](01-before-development.md)**  
-  Build quality into requirements, risks, contracts, testability, tool decisions, user focus, and early test design.
-
-- **[02 - During Development](02-during-development.md)**  
-  Collaborate with developers, validate continuously, review quality signals, support PR review, and automate smartly.
-
-- **[03 - After Development](03-after-development.md)**  
-  Measure release confidence, production quality, leadership visibility, post-release learning, and continuous improvement.
+| Guide | Purpose |
+|---|---|
+| [01 - Before Development](01-before-development.md) | Build quality into requirements, risks, contracts, security, accessibility, and testability before coding starts. |
+| [02 - During Development](02-during-development.md) | Collaborate during implementation through PR review, unit test discussions, pair testing, observability checks, and smart automation. |
+| [03 - After Development](03-after-development.md) | Validate release confidence, deployment readiness, production signals, metrics, and post-release learning. |
 
 ### Resources
 
-- **[Testing Types Reference](resources/testing-types.md)**  
-  Clarifies testing levels, methods, types, techniques, and practical selection criteria.
-
-- **[QA SDLC Glossary](resources/qa-sdlc-glossary.md)**  
-  Defines common QA, SDLC, testing, release, AI, and metrics terms used across the playbook.
-
-- **[Quality Review Checklist](resources/quality-review-checklist.md)**  
-  Quick quality questions for refinement, development, PR review, environments, documentation, and release.
-
-- **[Clean Code Review Guide for QA](resources/clean-code-guide.md)**  
-  Practical guidance for QAs reviewing code and PRs with a quality, risk, testability, observability, and user-impact mindset.
-
-- **[Unit Testing Guide for QA](resources/unit-test-guide.md)**  
-  Concise guidance to help QAs collaborate with developers on unit testing strategy, meaningful coverage, and quality expectations.
-
-### AI tools
-
-- **[AI Tools](ai-tools/README.md)**  
-  Reusable AI assistant instructions, agents, and skills for QA workflows.
+| Resource | Purpose |
+|---|---|
+| [Testing Guide](resources/testing-guide.md) | Helps choose the right testing approach based on risk, layer, speed, and confidence. |
+| [Clean Code Guide](resources/clean-code-guide.md) | Helps QAs review code and PRs with a quality, risk, and maintainability mindset. |
+| [Unit Testing Guide](resources/unit-testing-guide.md) | Helps QAs collaborate with developers on useful unit tests and meaningful coverage. |
+| [Quality Review Checklist](resources/quality-review-checklist.md) | Quick checklist for refinement, development, release, and improvement. |
+| [Glossary](resources/glossary.md) | Simple definitions for the most important QA, delivery, AI, and metrics terms used in this playbook. |
 
 ### Templates
 
-- **[Story / Requirements / Interface Document Template](templates/story-requirements-template.md)**  
-  Structure for user stories, requirements, interfaces, contracts, user focus, and testability expectations.
+| Template | Purpose |
+|---|---|
+| [Story / Requirements Template](templates/story-requirements-template.md) | Captures user value, requirements, contracts, risk, security, accessibility, and testability. |
+| [Test Strategy Template](templates/test-strategy-template.md) | Defines scope, risk, test levels, automation, tools, data, environments, and release confidence. |
+| [Test Cases Template](templates/test-cases-template.md) | Supports practical scenario notes and exploratory charters without forcing outdated click-by-click scripts. |
+| [Bug Report Template](templates/bug-report-template.md) | Captures reproducibility, technical context, logs, risk, impact, and follow-up learning. |
+| [Definition of Ready / Done Template](templates/definition-of-ready-done-template.md) | Defines shared quality standards before work starts and before it is considered done. |
+| [Deployment Validation Template](templates/deployment-validation-template.md) | Supports release checks, rollback awareness, monitoring, and post-deploy validation. |
+| [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md) | Organizes DORA, quality, risk, automation, and improvement metrics for better decisions. |
+| [QA Assessment Survey Template](templates/qa-assessment-survey-template.md) | Helps teams assess QA maturity, collaboration, tooling, and improvement opportunities. |
 
-- **[Test Strategy Template](templates/test-strategy-template.md)**  
-  Lightweight strategy with risk assessment, test scope, tool/framework choices, automation, observability, and release confidence.
+### AI tools
 
-- **[Test Cases Template](templates/test-cases-template.md)**  
-  Plain-text test case documentation for manual, exploratory, API, integration, regression, UX, and automation candidate scenarios.
+| File | Purpose |
+|---|---|
+| [AI Tools](ai-tools/README.md) | Practical guidance for using AI in QA without losing human judgment. |
+| [Basic AI Instructions](ai-tools/BASICS.instructions.md) | Reusable base instructions for QA-focused AI assistants. |
+| [Manual QA Agent](ai-tools\agent\manual-qa.agent.md) | Agent instructions for manual QA support. |
+| [Manual QA Skill](ai-tools/manual-qa/SKILL.md) | Practical skill file for manual QA workflows. |
+| [Robot QA Skill](ai-tools/robot-qa/SKILL.md) | Practical skill file for Robot Framework QA workflows. |
 
-- **[Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md)**  
-  Practical DoR/DoD quality gates for stories, tasks, and team working agreements.
+---
 
-- **[QA Assessment Survey Template](templates/qa-assessment-survey-template.md)**  
-  Team survey to measure QA maturity, culture, tooling, collaboration, and improvement over time.
+## How the documents connect
 
-- **[Bug Report Template](templates/bug-report-template.md)**  
-  Clear and reproducible bug documentation.
+This playbook works as a simple quality loop:
 
-- **[Deployment Validation Guide Template](templates/deployment-validation-guide-template.md)**  
-  QA-focused guide for release readiness, deployment validation, rollback awareness, and post-deploy monitoring.
-
-- **[QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md)**  
-  Metrics model for quality visibility and team decisions.
-
+1. **Before development**, define value, risk, contracts, data, security, accessibility, and testability.
+2. **During development**, review implementation quality, unit tests, logs, contracts, and automation value.
+3. **After development**, validate release confidence, observe production behavior, learn from bugs, and improve the process.
+4. **Templates and resources** keep the standards practical and repeatable.
 
 ---
 
@@ -118,32 +109,29 @@ This playbook is intentionally concise and practical. It is designed to be reuse
 Use this playbook as:
 
 - a GitHub portfolio project;
-- a reference for QA interviews;
+- a QA interview reference;
 - a team working agreement;
-- a starting point for QA process improvement;
-- a lightweight quality governance model;
-- a foundation for AI-assisted QA workflows.
+- a starting point for improving QA practices;
+- a lightweight quality guide for real delivery teams;
+- a foundation for responsible AI-assisted QA workflows.
 
 ---
 
 ## References and inspiration
 
-This playbook is inspired by modern Quality Engineering practices, shift-left testing, risk-based testing, DevOps, usability heuristics, AI-assisted QA, and continuous improvement.
+This playbook is inspired by Quality Engineering, shift-left testing, risk-based testing, DevOps, usability practices, AI-assisted QA, and continuous improvement.
 
-Useful references include:
+Useful references:
 
-- [DORA Metrics](https://dora.dev/guides/dora-metrics/)
+- [DORA Metrics](https://dora.dev/)
 - [Google SRE Book - Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)
 - [IBM - Shift-left testing](https://www.ibm.com/think/topics/shift-left-testing)
 - [ISTQB Glossary](https://glossary.istqb.org/)
 - [Atlassian - User Stories](https://www.atlassian.com/agile/project-management/user-stories)
-- [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
-- [Software Testing QA Mind Map](https://mm.tt/map/3489122534?t=03NPIthAMR)
 
 ---
 
 ## Author
 
-Created by **Paula Marcondes**  
-
+Created by Paula Marcondes  
 [Connect with me on LinkedIn](https://www.linkedin.com/in/paulamarcondes/)

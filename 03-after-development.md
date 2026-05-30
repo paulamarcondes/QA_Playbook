@@ -1,240 +1,162 @@
-# 03 - After Development: Release Confidence, Metrics & Continuous Improvement
+# 03 - After Development
 
-The goal after development is to answer one question:
+Use release validation, production feedback, metrics, and learning to improve future quality.
 
-> Can we release with confidence, detect issues quickly, and learn from what happens next?
-
-Quality does not end when QA testing is complete. Release readiness, production validation, observability, metrics, leadership visibility, and retrospectives are part of modern QA.
+This phase is not only about confirming that a release happened. It is about understanding whether the change is safe, useful, observable, and ready for continuous improvement.
 
 ---
 
-## Outcomes expected after development
+## Main goal
 
-After implementation, the team should be able to:
+After development, QA helps the team answer:
 
-- understand release risk;
-- validate the most important flows before and after deployment;
-- detect failures quickly;
-- communicate QA status clearly to stakeholders;
-- measure quality trends;
-- learn from incidents and escaped defects;
-- improve the next delivery cycle.
-
----
-
-## 1. Define release readiness
-
-Before release, the team should confirm that the change is functionally correct, technically safe, and operationally observable.
-
-### Release readiness checklist
-
-- Critical acceptance criteria passed
-- High-risk regression executed
-- Critical automated tests passing
-- Known defects reviewed and accepted or fixed
-- Rollback or mitigation plan understood
-- Logs and monitoring available for critical flows
-- Support/Product aware of relevant behavior changes
-- Test evidence attached
-- Release notes or documentation updated when needed
-- Go/no-go decision made with visible risk
-
-For a reusable structure, see [Deployment Validation Guide Template](templates/deployment-validation-guide-template.md).
+- Are we confident enough to release?
+- What risks remain?
+- Is deployment validation clear?
+- Would we notice if the feature failed in production?
+- Did production behavior match expectations?
+- What should we improve next time?
 
 ---
 
-## 2. Run focused regression
+## 1. Confirm release confidence
 
-Regression should protect what matters most, not blindly repeat everything.
+Release confidence should be based on evidence, not feelings.
 
-### Regression should prioritize
+Review:
 
-- critical user journeys;
-- high-traffic areas;
-- revenue, compliance, safety, or trust-related flows;
-- recently changed components;
-- historically unstable areas;
-- integrations and contracts;
-- permissions and data-sensitive flows.
+- scope delivered;
+- risks covered;
+- tests executed;
+- defects found and fixed;
+- known issues;
+- environment limitations;
+- automation results;
+- deployment risks;
+- rollback awareness;
+- monitoring readiness.
 
-### Good regression questions
-
-- What could this change break?
-- Which users would be most affected?
-- Which integrations depend on this behavior?
-- Which automated tests already protect this?
-- What still needs manual judgment?
+Useful template: [Deployment Validation Template](templates/deployment-validation-template.md)
 
 ---
 
-## 3. Validate production behavior
+## 2. Review regression risk
 
-Post-deploy validation confirms that real systems are healthy after release.
+Regression testing should be risk-based.
 
-### Recommended post-deploy checks
+Ask:
 
-- Smoke test critical journeys
-- Confirm deployment version
-- Check error logs
-- Review monitoring dashboards
-- Validate API/file/event processing when relevant
-- Confirm expected data is created or transformed correctly
-- Check alerts or support channels for early signals
-- Track known risks during the stabilization window
+- What existing flows could be affected?
+- Which critical paths need retesting?
+- Which integrations or contracts changed?
+- What data or permissions could be impacted?
+- Which automation results matter for this release?
+- Is exploratory testing needed for confidence?
 
-### Principle
-
-A release is not fully complete until the team confirms that production behavior is healthy.
+Useful resource: [Testing Guide](resources/testing-guide.md)
 
 ---
 
-## 4. Create a QA report for leadership visibility
+## 3. Validate deployment readiness
 
-QA reporting should make quality visible without overwhelming stakeholders.
+Before or during deployment, confirm:
 
-### A strong QA report includes
+- release scope is clear;
+- deployment steps are known;
+- smoke checks are defined;
+- rollback or recovery plan is understood;
+- logs and monitoring are available;
+- responsible people are aligned;
+- known risks are communicated.
 
-- Scope tested and not tested
-- Release recommendation: Ready / Ready with risk / Not ready
-- Key risks and mitigations
-- Test execution summary
-- Critical defects and current status
-- Escaped defects or production concerns when relevant
-- Automation and regression coverage for critical flows
-- Environment or test data blockers
-- User impact and business impact
-- Metrics trend and improvement actions
-
-### Recommended format
-
-Use a concise one-page document or short presentation for leadership and a more detailed dashboard for the team.
-
-### Principle
-
-Leadership does not need every test step. They need the risk picture, release confidence, business impact, and decisions required.
+Do not confuse story-level Done with deployment readiness. A story can be Done while the release still needs environment-level validation.
 
 ---
 
-## 5. Use metrics that drive decisions
+## 4. Observe production signals
 
-Metrics should help the team improve quality, not create blame.
+After release, check whether the system behaves as expected.
 
-A strong QA metrics approach should combine a few useful signals:
+Look at:
 
-- **Outcome signals:** escaped defects, production incidents, support ticket trends, user-impacting issues.
-- **Delivery health signals:** validation cycle time, blocked testing time, rework, release readiness risk.
-- **Automation health signals:** critical-flow automation coverage, flaky test rate, failed pipeline patterns.
-- **Observability signals:** time to detect, time to restore, useful logs, alerts, dashboards, traceability.
-- **Culture and maturity signals:** QA assessment survey trends, Definition of Ready/Done adoption, repeated root causes.
+- errors;
+- logs;
+- alerts;
+- support tickets;
+- user complaints;
+- key business flows;
+- performance or availability signals;
+- integration failures;
+- data issues.
 
-For a detailed dashboard format, see [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md).
-
----
-
-## 6. Start with a small set of strong QA metrics
-
-Use only metrics that help the team make better decisions.
-
-Strong metrics to start with:
-
-- **Escaped defects:** shows what reached users or production.
-- **Production incidents:** shows real stability and operational impact.
-- **Change failure rate:** connects release quality to delivery performance.
-- **Reopened defect rate:** reveals unclear fixes, weak validation, or poor communication.
-- **Validation cycle time:** highlights QA blockers, test data gaps, or environment problems.
-- **Critical-flow automation coverage:** shows whether automation protects what matters most.
-- **Flaky test rate:** protects trust in automation results.
-- **MTTR / MTTD:** shows how quickly the team detects and recovers from issues.
-- **Support ticket trend:** connects quality to real user friction.
-- **Team QA maturity trend:** shows whether quality culture and practices are improving.
+Testing does not stop when code is merged.
 
 ---
 
-## 7. Avoid vanity metrics
+## 5. Learn from bugs
 
-Some metrics look impressive but do not prove quality by themselves.
+A bug is not only a fix request. It is also a learning signal.
 
-Use these with context:
+For high-severity defects, review:
 
-- total number of test cases;
-- raw test coverage percentage;
-- number of bugs found by QA;
-- number of automated tests;
-- number of executed scenarios.
+- why the issue was missed;
+- whether requirements were unclear;
+- whether risk was underestimated;
+- whether tests were missing;
+- whether logs were insufficient;
+- whether automation should be added;
+- whether the checklist or strategy should change.
 
-These can be useful only when connected to risk, critical-flow coverage, defect trends, release outcomes, and user impact.
-
-### Better question
-
-> What decision will this metric help us make?
+Useful template: [Bug Report Template](templates/bug-report-template.md)
 
 ---
 
-## 8. Turn metrics into action
+## 6. Use metrics for decisions
 
-Metrics should trigger improvement, not just reporting.
+Metrics should help the team improve quality, not blame individuals.
 
-Examples:
+Useful questions:
 
-- If escaped defects are increasing, review risk analysis and regression strategy.
-- If many defects are requirement-related, improve refinement and Definition of Ready.
-- If reopened bugs are frequent, improve fix validation and acceptance criteria.
-- If QA cycle time is long, review test data, environment stability, and automation opportunities.
-- If flaky tests are high, stabilize automation before expanding coverage.
-- If observability is weak, add logs, alerts, correlation IDs, or dashboard visibility.
-- If incidents repeat in one area, run root cause analysis and add targeted regression.
-- If QA maturity survey scores are low, create a focused improvement plan with the team.
+- Are production defects increasing?
+- Are releases becoming safer?
+- Where are bottlenecks happening?
+- Are automated checks giving useful feedback?
+- Are high-risk areas getting enough attention?
+- Are incidents generating improvements?
 
----
-
-## 9. Run blame-free post-release reviews
-
-After important releases or incidents, the team should learn without blame.
-
-### Questions to ask
-
-- What happened?
-- What was the user or business impact?
-- How was it detected?
-- Could we have detected it earlier?
-- Why did our process or tests miss it?
-- What small change would prevent a similar issue?
-- Do we need a new test, monitor, alert, checklist item, or documentation update?
-- Who owns the follow-up action?
-
-### Output
-
-Every review should produce one or more practical improvements.
-
-Examples:
-
-- add an automated regression test;
-- improve logs;
-- add a contract validation;
-- update Definition of Ready;
-- improve test data;
-- add a monitoring alert;
-- clarify ownership.
+Useful template: [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md)
 
 ---
 
-## After development checklist
+## 7. Run a 15-minute quality retro
 
-- [ ] Regression completed based on risk
-- [ ] Critical automated tests passing
-- [ ] Release risks documented
-- [ ] QA report or release summary prepared when relevant
-- [ ] Production smoke validation planned
-- [ ] Observability checked
-- [ ] Known defects reviewed
-- [ ] Metrics updated
-- [ ] Post-release feedback reviewed
-- [ ] Lessons learned captured
-- [ ] Follow-up actions assigned
+After a release or production incident, run a short quality retro.
+
+Keep it practical:
+
+1. What went well?
+2. What was missed?
+3. What risk should have been clearer?
+4. What test, log, automation, or checklist should be improved?
+5. What is one action for the next cycle?
+
+Checklist item:
+
+```text
+Was the root cause or missed risk added to the Quality Review Checklist or Test Strategy?
+```
+
+Useful resource: [Quality Review Checklist](resources/quality-review-checklist.md)
 
 ---
 
-## Key message
+## Output of this phase
 
-> Quality after development is not about proving that QA tested.  
-> It is about proving that the team can release, observe, communicate, learn, and improve.
+At the end of this phase, the team should have:
+
+- release evidence;
+- clear known risks;
+- production visibility;
+- better metrics;
+- improved checklists;
+- stronger test strategy for the next cycle.
