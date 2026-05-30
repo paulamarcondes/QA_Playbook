@@ -2,45 +2,28 @@
 
 Use this template to plan release checks, post-deploy validation, rollback awareness, and production monitoring.
 
-This is different from Definition of Done. DoD is story-level completion. Deployment validation is environment-level release confidence.
+Deployment validation supports the release learning flow described in [03 - After Development](../03-after-development.md).
 
 ---
 
-## Release information
+## Deployment information
 
 **Release / Version:**  
-**Date:**  
 **Environment:**  
+**Date / Time:**  
 **Owner:**  
-**Related tickets:**  
-
----
-
-## Release scope
-
-### Included changes
-
-- 
-
-### Out of scope
-
-- 
-
-### Known risks
-
-- 
+**Related stories / bugs:**  
+**Risk Level:** Low / Medium / High / Critical  
 
 ---
 
 ## Pre-deployment checks
 
-- [ ] Release scope is confirmed.
-- [ ] Required approvals are complete.
-- [ ] Critical defects are reviewed.
-- [ ] Known issues are documented.
-- [ ] Test evidence is available.
-- [ ] Dependencies are ready.
-- [ ] Test data or configuration needs are clear.
+- [ ] Release scope is clear.
+- [ ] Known risks are documented.
+- [ ] Critical bugs are resolved or accepted.
+- [ ] Smoke checks are defined.
+- [ ] Required data and configuration are ready.
 - [ ] Rollback or recovery plan is understood.
 - [ ] Monitoring and logs are available for critical flows.
 
@@ -100,3 +83,9 @@ If issues happened after deployment:
 - [ ] Test Strategy updated when a risk was missed.
 - [ ] Quality Review Checklist updated when a process gap was found.
 - [ ] 15-minute quality retro completed when needed.
+
+References:
+
+- [03 - After Development](../03-after-development.md)
+- [QA Metrics Dashboard Template](qa-metrics-dashboard-template.md)
+- [Bug Report Template](bug-report-template.md)

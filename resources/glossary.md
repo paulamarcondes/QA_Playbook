@@ -1,125 +1,122 @@
 # Glossary
 
-Simple definitions for key terms used in this playbook.
+A short glossary for the concepts used across this playbook.
 
-This is not a full testing dictionary. It focuses on terms that support practical quality decisions.
-
----
-
-## Acceptance Criteria
-
-Clear conditions a story must meet to be accepted. Good acceptance criteria are specific, testable, and connected to user value.
+This file avoids basic testing definitions and focuses on terms that help teams make better quality decisions.
 
 ---
 
-## AI Hallucination
+## Automation value
 
-When an AI tool produces information that sounds correct but is wrong, invented, incomplete, or not aligned with the actual context.
+Automation value means an automated check provides useful, reliable, and maintainable feedback.
 
----
+Good automation protects critical paths, contracts, integrations, and repetitive regression risks. It should not exist only to increase test count.
 
-## Automation Value
-
-The practical benefit of an automated test. Valuable automation gives fast, reliable feedback on important behavior with reasonable maintenance cost.
+Reference: [Testing Guide](testing-guide.md)
 
 ---
 
-## Change Failure Rate
+## Change failure rate
 
-A DORA metric that tracks how often deployments cause production incidents, failures, rollbacks, or urgent fixes.
+The percentage of deployments that cause production failures, incidents, rollbacks, hotfixes, or degraded service.
 
----
-
-## Contract Testing
-
-Testing that verifies whether two systems agree on the expected request, response, file, event, or data format.
+This is one of the DORA metrics and should be tracked in the [QA Metrics Dashboard Template](../templates/qa-metrics-dashboard-template.md).
 
 ---
 
-## Contract-First
+## Contract testing
 
-Defining the interface contract before implementation starts. This helps reduce integration defects and unclear expectations.
+Testing that validates whether a provider and consumer agree on the expected API, event, file, or data structure.
 
----
+It helps prevent integration failures by checking expectations before or during development.
 
-## Definition of Done
-
-A shared quality standard that describes when a story or task is complete enough to move forward.
+Reference: [01 - Before Development](../01-before-development.md)
 
 ---
 
-## Definition of Ready
+## DORA metrics
 
-A shared quality standard that describes when a story has enough clarity to start development.
+A set of delivery performance metrics commonly used to understand software delivery health:
 
----
+- deployment frequency;
+- lead time for changes;
+- change failure rate;
+- time to restore service.
 
-## Deployment Frequency
-
-A DORA metric that tracks how often the team successfully releases changes.
-
----
-
-## DORA Metrics
-
-Delivery metrics used to understand software delivery performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, and Time to Restore Service.
+Use the [QA Metrics Dashboard Template](../templates/qa-metrics-dashboard-template.md) as the source of truth for tracking and interpreting these metrics in this playbook.
 
 ---
 
-## Exploratory Testing
+## Escaped defect
 
-Human-driven testing guided by a mission, risks, curiosity, and evidence. It is useful for finding issues that scripted tests may miss.
+A defect found after the expected validation stage, especially after release to production or users.
 
----
+Escaped defects should be reviewed as learning signals, not only as isolated bugs.
 
-## Human-in-the-Loop
-
-A practice where humans review, validate, and approve AI-generated outputs before they are used in real work.
+Reference: [03 - After Development](../03-after-development.md)
 
 ---
 
-## Lead Time for Changes
+## Human-in-the-loop review
 
-A DORA metric that tracks how long it takes for a change to go from commit to production.
+A required human review of AI-generated output before it is used.
+
+It protects against hallucinated requirements, missing context, biased assumptions, weak expected results, and sensitive data exposure.
+
+Reference: [AI Tools](../ai-tools/README.md)
+
+---
+
+## Lead time for changes
+
+The time it takes for a code change to move from commit to production.
+
+This is a DORA metric. Track it in the [QA Metrics Dashboard Template](../templates/qa-metrics-dashboard-template.md).
 
 ---
 
 ## Observability
 
-The ability to understand what is happening inside a system by using logs, metrics, traces, alerts, IDs, and production signals.
+The ability to understand what the system is doing through logs, metrics, traces, alerts, IDs, and other signals.
+
+For QA, observability helps confirm whether failures are visible, traceable, and actionable after release.
+
+Reference: [Technical Quality Reference](technical-quality-reference.md)
 
 ---
 
-## Regression Candidate
+## Release confidence
 
-A scenario that may be worth repeating in future cycles because it protects important behavior or a known risk.
+The team’s evidence-based confidence that a change is ready to release.
 
----
+It should consider risk, test results, known issues, regression impact, deployment readiness, and monitoring.
 
-## Risk Level
-
-A simple classification of how much impact a change or defect may have. Common levels: Low, Medium, High, Critical.
+Reference: [03 - After Development](../03-after-development.md)
 
 ---
 
-## Shift-Left Testing
+## Risk-based testing
 
-Moving quality activities earlier in the process, such as reviewing requirements, risks, contracts, testability, and unit tests before final QA validation.
+A testing approach where testing depth is proportional to product, user, business, technical, or operational risk.
 
----
-
-## Testing in Production
-
-Using production signals, logs, monitoring, alerts, and safe validation practices to understand real behavior after release.
+The risk framework should be defined in the [Test Strategy Template](../templates/test-strategy-template.md).
 
 ---
 
-## Three Amigos
+## Shift-left testing
 
-A short collaboration session between Product, Development, and QA to align on requirements, risks, examples, and testability before implementation.
+The practice of moving quality activities earlier in the delivery process.
+
+Examples include requirement review, contract definition, risk assessment, testability checks, and early technical review before full implementation is complete.
+
+Reference: [01 - Before Development](../01-before-development.md)
 
 ---
 
-## Time to Restore Service
+## Testing in production
 
-A DORA metric that tracks how long it takes to recover from a production failure.
+Using safe production signals such as monitoring, logs, alerts, feature flags, canary releases, or post-deploy checks to confirm real behavior.
+
+This does not replace pre-release testing. It helps teams detect real issues faster.
+
+Reference: [Deployment Validation Template](../templates/deployment-validation-template.md)

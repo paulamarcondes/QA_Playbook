@@ -1,117 +1,142 @@
 # Testing Guide
 
-Use this guide to choose the right testing approach for each change.
+Use this guide to choose the right testing approach.
 
-The goal is not to run every possible test. The goal is to get the right confidence at the right speed.
+This is the knowledge base: it explains how to think about testing options. The [Test Strategy Template](../templates/test-strategy-template.md) is the project plan: it defines what a specific project will use.
 
 ---
 
-## Start with these questions
+## Simple decision flow
 
 Before choosing tests, ask:
 
-- What changed?
-- What can break?
-- Who is affected?
-- What is the risk level?
-- What is the fastest useful feedback?
-- What needs human exploration?
-- What should be automated for future feedback?
+1. What changed?
+2. What can break?
+3. Who or what is affected?
+4. How risky is the change?
+5. What is the fastest useful feedback?
+6. What evidence do we need to trust the release?
+7. What should be automated because it will matter again?
 
 ---
 
-## Risk-based testing depth
-
-| Risk level | Recommended depth |
-|---|---|
-| Low | Lightweight review, smoke check, or focused validation. |
-| Medium | Positive and negative scenarios, affected area regression, basic evidence. |
-| High | Deeper scenario coverage, contract/API checks, regression, exploratory testing, automation review. |
-| Critical | Full risk review, strong evidence, automation for critical paths, monitoring, rollback awareness, stakeholder alignment. |
-
-Risk should be defined in the [Test Strategy Template](../templates/test-strategy-template.md).
-
----
-
-## Choose testing by change type
+## Testing by risk and layer
 
 | Change type | Useful testing approach |
 |---|---|
-| Business rule | Unit tests, API checks, scenario testing, edge cases. |
-| API change | Contract checks, API tests, negative responses, backward compatibility. |
-| Integration change | Contract tests, integration tests, data mapping checks, failure scenarios. |
-| Data transformation | Input/output validation, boundary cases, invalid data, regression. |
-| UI change | Exploratory testing, accessibility checks, UX review, regression. |
-| Permission change | Role-based scenarios, negative access tests, audit/log review. |
-| Security-sensitive change | Permission checks, data exposure review, error handling, logs without sensitive data. |
-| Critical flow | Automated regression, exploratory testing, monitoring, rollback awareness. |
-| Low-risk content change | Review, smoke check, visual confirmation. |
+| Business rule | Unit tests, API checks, targeted exploratory testing |
+| API or contract | Contract tests, API tests, negative scenarios, backward compatibility checks |
+| Integration | Integration tests, payload validation, error handling, monitoring review |
+| Data mapping or transformation | Input/output validation, edge cases, schema checks, sample files or payloads |
+| UI or user flow | Exploratory testing, accessibility checks, usability review, regression checks |
+| Permissions or roles | Authorization checks, negative access scenarios, audit/log review |
+| Critical production flow | Automated regression, monitoring, rollback awareness, post-deploy validation |
+| Low-risk text or cosmetic change | Lightweight review, smoke check, accessibility when relevant |
 
 ---
 
-## Choose testing by level
+## Unit testing
 
-| Level | Best used for | Watch out for |
-|---|---|---|
-| Unit | Business rules, calculations, small logic decisions. | Passing unit tests do not prove the full flow works. |
-| API | Service behavior, status codes, payloads, validations. | API tests may miss UI or end-to-end user issues. |
-| Contract | Provider/consumer expectations, required fields, compatibility. | Contracts must be agreed before they can protect the team. |
-| Integration | Data flow between systems, mappings, external dependencies. | Environments and test data can make results noisy. |
-| E2E | Critical user journeys and release confidence. | Expensive and fragile if overused. |
-| Exploratory | Unknown risks, usability, edge cases, human judgment. | Needs a clear mission and evidence. |
-| Regression | Existing behavior that must not break. | Should be risk-based, not everything every time. |
-| Smoke | Basic health after build or deployment. | Not enough for deep confidence. |
+Use unit tests when logic can be validated close to the code.
+
+Good targets:
+
+- calculations;
+- validations;
+- mapping rules;
+- status transitions;
+- permission logic;
+- error handling;
+- boundary conditions.
+
+Unit testing expectations are covered in the [Technical Quality Reference](technical-quality-reference.md).
 
 ---
 
-## What to automate
+## API and contract testing
 
-Good automation candidates:
+Use API and contract checks when systems exchange data.
+
+Validate:
+
+- required and optional fields;
+- valid and invalid payloads;
+- response codes;
+- error messages;
+- authentication and authorization;
+- backward compatibility;
+- provider and consumer expectations.
+
+---
+
+## Integration testing
+
+Use integration testing when the risk is between systems, services, files, queues, databases, or external providers.
+
+Focus on:
+
+- data movement;
+- transformations;
+- retries and failures;
+- missing or malformed data;
+- timing and dependencies;
+- observability and troubleshooting.
+
+---
+
+## Exploratory testing
+
+Use exploratory testing when human judgment adds value.
+
+Good targets:
+
+- unclear behavior;
+- new user journeys;
+- complex flows;
+- usability risks;
+- edge cases;
+- areas with recent bugs;
+- behavior that is hard to capture in scripts.
+
+Use the [Test Cases Template](../templates/test-cases-template.md) for concise scenario notes and exploratory charters.
+
+---
+
+## Regression testing
+
+Regression testing should focus on what can realistically break.
+
+Prioritize:
 
 - critical paths;
-- stable regression checks;
-- API contracts;
-- repetitive checks;
-- high-risk flows that run often;
-- scenarios that give fast feedback in CI/CD.
+- areas touched by the change;
+- recent bug areas;
+- integrations;
+- permissions;
+- data transformations;
+- stable automated checks.
 
-Poor automation candidates:
+Avoid running large regression suites without risk focus.
 
-- unclear requirements;
-- unstable UI flows;
-- one-time checks;
-- low-risk scenarios rarely repeated;
-- tests that require heavy maintenance with low value.
+---
 
-Automation should answer:
+## Automation decision
+
+Automate when the scenario is:
+
+- valuable;
+- repeatable;
+- stable;
+- connected to regression risk;
+- useful for fast feedback;
+- maintainable.
+
+Avoid automation when the scenario is unclear, unstable, one-time, or cheaper to explore manually.
+
+---
+
+## Quick rule
 
 ```text
-Will this test give useful, reliable feedback faster than manual testing?
+Use the smallest test that gives reliable confidence for the risk.
 ```
-
----
-
-## What to keep exploratory
-
-Use exploratory testing when the team needs human judgment.
-
-Good areas:
-
-- new flows;
-- unclear behavior;
-- UX issues;
-- accessibility concerns;
-- edge cases;
-- production-like scenarios;
-- defects that need investigation;
-- risk areas not fully covered by automation.
-
-Use the [Test Cases Template](../templates/test-cases-template.md) to document charters and findings.
-
----
-
-## Practical rule
-
-Start small, test what matters, and increase depth based on risk.
-
-Do not create test volume. Create confidence.

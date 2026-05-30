@@ -34,6 +34,8 @@ QA can add value during development by:
 - identifying automation candidates early;
 - raising defects with useful technical context.
 
+Useful resource: [Technical Quality Reference](resources/technical-quality-reference.md)
+
 ---
 
 ## 1. Review PRs with a QA mindset
@@ -52,8 +54,6 @@ Look for:
 - hardcoded values or fragile logic;
 - possible accessibility or usability issues.
 
-Useful resource: [Clean Code Guide](resources/clean-code-guide.md)
-
 ---
 
 ## 2. Review unit test strategy
@@ -68,7 +68,7 @@ Discuss with developers:
 - Are assertions meaningful?
 - Would these tests fail if the logic was broken?
 
-Useful resource: [Unit Testing Guide](resources/unit-testing-guide.md)
+Detailed guidance: [Technical Quality Reference](resources/technical-quality-reference.md)
 
 ---
 
@@ -196,37 +196,36 @@ Useful template: [Bug Report Template](templates/bug-report-template.md)
 
 ## 9. Validate AI-generated output
 
-If AI was used for test design, code, scripts, summaries, or bug analysis, a human must review it.
+If AI was used for test design, code, automation, or documentation, validate the output before using it.
 
-Check for:
+Check:
 
-- hallucinated requirements;
-- generic or unrealistic tests;
-- missing edge cases;
-- biased assumptions;
-- sensitive data exposure;
-- mismatch with business risk;
-- incorrect expected results.
+- Did the AI invent requirements?
+- Are expected results realistic?
+- Are important risks missing?
+- Is the logic biased, generic, or unrelated to the product?
+- Is sensitive data protected?
+- Does the output support real user value?
 
-AI supports QA. It does not own quality decisions.
+Useful guide: [AI Tools](ai-tools/README.md)
 
 ---
 
 ## 10. Definition of Done
 
-A story is Done when the team has enough evidence that the change is safe, useful, and maintainable.
+A change is Done when the team has enough evidence to trust it.
 
-Minimum checks:
+Done should include:
 
-- [ ] Acceptance criteria are met.
-- [ ] Risk level was considered.
-- [ ] Relevant positive and negative scenarios were validated.
-- [ ] Unit tests and code quality were reviewed when relevant.
-- [ ] Contracts, payloads, logs, and errors were reviewed when relevant.
-- [ ] Security and accessibility expectations were validated when relevant.
-- [ ] Automation was added or updated when it provides useful feedback.
-- [ ] Evidence is attached or documented.
-- [ ] Known risks are communicated.
+- acceptance criteria met;
+- risk-based scenarios validated;
+- technical quality reviewed;
+- contracts and payloads checked when relevant;
+- security, permissions, and accessibility considered when relevant;
+- observability reviewed for critical behavior;
+- automation added or updated when valuable;
+- evidence attached;
+- known risks communicated.
 
 Full template: [Definition of Ready / Done Template](templates/definition-of-ready-done-template.md)
 
@@ -236,9 +235,9 @@ Full template: [Definition of Ready / Done Template](templates/definition-of-rea
 
 At the end of this phase, the team should have:
 
-- fewer surprises in QA validation;
-- stronger implementation quality;
+- fewer late defects;
+- better technical confidence;
 - clearer evidence;
-- better automation decisions;
-- better logs and troubleshooting signals;
-- higher confidence before release.
+- useful automation;
+- observable behavior;
+- stronger readiness for release.

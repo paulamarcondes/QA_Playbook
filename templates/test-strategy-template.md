@@ -1,23 +1,30 @@
 # Test Strategy Template
 
-Use this template to define how the team will test a feature, epic, release, or project.
+Use this template to define the testing approach for a feature, project, epic, or release.
 
-Keep it lightweight. The goal is clarity, not documentation volume.
+The strategy should be lightweight, risk-based, and useful for real decisions.
 
 ---
 
-## Overview
+## Strategy information
 
 **Project / Feature:**  
 **Owner:**  
 **Date:**  
-**Related links:**  
-
-**Goal:**  
+**Version:**  
+**Related tickets / links:**  
 
 ---
 
-## Scope
+## 1. Goal
+
+What quality decision should this strategy support?
+
+- 
+
+---
+
+## 2. Scope
 
 ### In scope
 
@@ -29,112 +36,109 @@ Keep it lightweight. The goal is clarity, not documentation volume.
 
 ---
 
-## Risk assessment
+## 3. Risk framework
 
-| Area / Flow | Risk Level | Why it matters | Testing depth | Mitigation |
-|---|---|---|---|---|
-|  | Low / Medium / High / Critical |  |  |  |
+Use this section as the source of truth for risk-based testing decisions.
 
-Risk guidance:
+| Risk level | When to use | Expected testing depth |
+|---|---|---|
+| Low | Small, isolated, low-impact change | Lightweight validation and basic evidence |
+| Medium | Normal feature change with limited dependencies | Positive, negative, and affected regression checks |
+| High | Critical flow, integration, data, security, permissions, or production impact | Deeper test design, technical review, automation consideration, stronger evidence |
+| Critical | Business-critical, customer-impacting, compliance, payment, safety, or major production risk | Full alignment, strong evidence, monitoring, rollback awareness, and leadership visibility when needed |
 
-| Risk Level | Suggested depth |
-|---|---|
-| Low | Lightweight validation or smoke check. |
-| Medium | Positive, negative, and affected regression scenarios. |
-| High | Deeper testing, contract/API checks, exploratory testing, automation review. |
-| Critical | Strong evidence, automation for critical paths, release visibility, monitoring, rollback awareness. |
+Risk drivers:
 
-Reference: Core Principle #3 — Risk drives testing depth.
+- user or business impact;
+- production stability;
+- integrations or external systems;
+- data transformation or migration;
+- security and permissions;
+- accessibility or user access;
+- compliance or audit needs;
+- recent defects in the same area;
+- complexity or uncertainty.
 
 ---
 
-## Test approach
+## 4. Testing approach
 
-| Test area | Approach | Owner | Notes |
+| Area / Risk | Testing approach | Owner | Notes |
 |---|---|---|---|
-| Unit testing |  |  |  |
-| API testing |  |  |  |
-| Contract testing |  |  |  |
-| Integration testing |  |  |  |
-| UI / UX testing |  |  |  |
-| Exploratory testing |  |  |  |
-| Regression testing |  |  |  |
-| Security / permissions |  |  |  |
-| Accessibility |  |  |  |
-| Performance / reliability |  |  |  |
+|  | Unit / API / Contract / Integration / E2E / Exploratory / Regression |  |  |
 
 Useful resource: [Testing Guide](../resources/testing-guide.md)
 
 ---
 
-## Automation strategy
+## 5. Automation approach
 
-Automate where it improves feedback.
+Automation should improve feedback, not only increase test count.
 
-| Candidate | Why automate? | Level | Priority | Notes |
-|---|---|---|---|---|
-|  |  | Unit / API / Contract / E2E | Low / Medium / High |  |
+| Candidate | Why automate? | Level | Priority |
+|---|---|---|---|
+|  | Critical path / Contract / Regression / Repetitive check | Unit / API / Contract / E2E | Low / Medium / High |
 
-Do not automate only to increase test count. Prioritize critical paths, contracts, integrations, and stable regression checks.
+Automation risks or limitations:
 
----
-
-## Data and environments
-
-| Need | Details |
-|---|---|
-| Test data |  |
-| Accounts / roles |  |
-| Environment |  |
-| External systems |  |
-| Feature flags |  |
-| Mocks / stubs |  |
-| Known limitations |  |
+- 
 
 ---
 
-## Observability
+## 6. Data and environments
 
-- Logs needed:
-- IDs or traceability needed:
-- Metrics or alerts needed:
-- Sensitive data restrictions:
-- Production signals to review after release:
+| Need | Details | Owner |
+|---|---|---|
+| Test data |  |  |
+| Accounts / roles |  |  |
+| Environment |  |  |
+| External systems |  |  |
+| Feature flags / configs |  |  |
 
 ---
 
-## Entry and exit criteria
+## 7. Observability and release confidence
+
+| Signal | What should be visible? | Notes |
+|---|---|---|
+| Logs |  |  |
+| Metrics |  |  |
+| Alerts |  |  |
+| IDs / traceability |  |  |
+| Post-deploy checks |  |  |
+
+---
+
+## 8. Entry and exit criteria
 
 ### Entry criteria
 
-- [ ] Requirements are clear enough.
-- [ ] Risk level is defined.
-- [ ] Test data and environments are available or limitations are known.
-- [ ] Contracts are documented when relevant.
+- [ ] Requirements are testable.
+- [ ] Risk level is known.
+- [ ] Data and environment needs are clear.
+- [ ] Dependencies are understood.
 
 ### Exit criteria
 
-- [ ] High-risk scenarios are validated.
-- [ ] Critical checks pass.
-- [ ] Known defects are documented.
-- [ ] Automation is updated when valuable.
-- [ ] Release risks are communicated.
+- [ ] Planned validation completed or risks accepted.
+- [ ] Critical defects resolved or accepted.
 - [ ] Evidence is available.
+- [ ] Release risks are communicated.
+- [ ] Monitoring or post-deploy checks are planned when needed.
 
 ---
 
-## Evidence and reporting
+## 9. Open risks and decisions
 
-| Evidence | Location |
-|---|---|
-| Test results |  |
-| Screenshots / videos |  |
-| Logs / traces |  |
-| Automation reports |  |
-| Known issues |  |
+| Risk / Decision | Owner | Status | Notes |
+|---|---|---|---|
+|  |  | Open / Accepted / Mitigated |  |
 
 ---
 
-## Open questions
+## Summary
 
--
+**Overall risk level:** Low / Medium / High / Critical  
+**Release confidence:** Low / Medium / High  
+**Main concern:**  
+**Recommended next step:**

@@ -62,23 +62,22 @@ Modern QA is more than executing test cases. A strong QA practice helps the team
 
 | Resource | Purpose |
 |---|---|
-| [Testing Guide](resources/testing-guide.md) | Helps choose the right testing approach based on risk, layer, speed, and confidence. |
-| [Clean Code Guide](resources/clean-code-guide.md) | Helps QAs review code and PRs with a quality, risk, and maintainability mindset. |
-| [Unit Testing Guide](resources/unit-testing-guide.md) | Helps QAs collaborate with developers on useful unit tests and meaningful coverage. |
-| [Quality Review Checklist](resources/quality-review-checklist.md) | Quick checklist for refinement, development, release, and improvement. |
-| [Glossary](resources/glossary.md) | Simple definitions for the most important QA, delivery, AI, and metrics terms used in this playbook. |
+| [Testing Guide](resources/testing-guide.md) | Knowledge base for choosing the right testing approach based on risk, layer, speed, and confidence. |
+| [Technical Quality Reference](resources/technical-quality-reference.md) | One place for clean code review, unit testing expectations, PR review, observability, maintainability, and QA-Dev collaboration. |
+| [Quality Review Checklist](resources/quality-review-checklist.md) | Outcome-based checklist for refinement, development, release, and improvement. |
+| [Glossary](resources/glossary.md) | Short definitions for the most important QA, delivery, AI, and metrics concepts used in this playbook. |
 
 ### Templates
 
 | Template | Purpose |
 |---|---|
 | [Story / Requirements Template](templates/story-requirements-template.md) | Captures user value, requirements, contracts, risk, security, accessibility, and testability. |
-| [Test Strategy Template](templates/test-strategy-template.md) | Defines scope, risk, test levels, automation, tools, data, environments, and release confidence. |
+| [Test Strategy Template](templates/test-strategy-template.md) | Defines project-level scope, risk, test levels, automation, tools, data, environments, and release confidence. |
 | [Test Cases Template](templates/test-cases-template.md) | Supports practical scenario notes and exploratory charters without forcing outdated click-by-click scripts. |
 | [Bug Report Template](templates/bug-report-template.md) | Captures reproducibility, technical context, logs, risk, impact, and follow-up learning. |
 | [Definition of Ready / Done Template](templates/definition-of-ready-done-template.md) | Defines shared quality standards before work starts and before it is considered done. |
 | [Deployment Validation Template](templates/deployment-validation-template.md) | Supports release checks, rollback awareness, monitoring, and post-deploy validation. |
-| [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md) | Organizes DORA, quality, risk, automation, and improvement metrics for better decisions. |
+| [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md) | Single source for DORA, quality, risk, automation, and improvement metrics. |
 | [QA Assessment Survey Template](templates/qa-assessment-survey-template.md) | Helps teams assess QA maturity, collaboration, tooling, and improvement opportunities. |
 
 ### AI tools
@@ -87,7 +86,7 @@ Modern QA is more than executing test cases. A strong QA practice helps the team
 |---|---|
 | [AI Tools](ai-tools/README.md) | Practical guidance for using AI in QA without losing human judgment. |
 | [Basic AI Instructions](ai-tools/BASICS.instructions.md) | Reusable base instructions for QA-focused AI assistants. |
-| [Manual QA Agent](ai-tools\agent\manual-qa.agent.md) | Agent instructions for manual QA support. |
+| [Manual QA Agent](ai-tools/manual-qa.agent.md) | Agent instructions for manual QA support. |
 | [Manual QA Skill](ai-tools/manual-qa/SKILL.md) | Practical skill file for manual QA workflows. |
 | [Robot QA Skill](ai-tools/robot-qa/SKILL.md) | Practical skill file for Robot Framework QA workflows. |
 
@@ -101,6 +100,12 @@ This playbook works as a simple quality loop:
 2. **During development**, review implementation quality, unit tests, logs, contracts, and automation value.
 3. **After development**, validate release confidence, observe production behavior, learn from bugs, and improve the process.
 4. **Templates and resources** keep the standards practical and repeatable.
+
+Clear separation:
+
+- The [Testing Guide](resources/testing-guide.md) explains **how to choose testing approaches**.
+- The [Test Strategy Template](templates/test-strategy-template.md) defines **what a specific project will use**.
+- The [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md) is the single place for metric tracking and interpretation.
 
 ---
 
@@ -126,7 +131,6 @@ Useful references:
 - [DORA Metrics](https://dora.dev/)
 - [Google SRE Book - Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)
 - [IBM - Shift-left testing](https://www.ibm.com/think/topics/shift-left-testing)
-- [ISTQB Glossary](https://glossary.istqb.org/)
 - [Atlassian - User Stories](https://www.atlassian.com/agile/project-management/user-stories)
 
 ---

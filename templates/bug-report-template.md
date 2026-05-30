@@ -1,68 +1,61 @@
 # Bug Report Template
 
-A good bug report helps the team reproduce, investigate, prioritize, and learn from the issue.
+Use this template to report bugs with enough context to help the team fix the issue faster and learn from it.
 
-It should explain what happened, where to look, and why it matters.
+A good bug report explains what happened, where to investigate, who is affected, and why it matters.
 
 ---
 
-## Summary
+## Bug summary
 
-**Title:** `[Area] Action fails when condition happens`  
+**Title:**  
 **Reported by:**  
 **Date:**  
 **Related story / release:**  
-
----
-
-## Severity, priority, and risk
-
 **Severity:** Low / Medium / High / Critical  
 **Priority:** Low / Medium / High / Urgent  
 **Risk Level:** Low / Medium / High / Critical  
 
-**Why it matters:**  
-
-- 
-
-Reference: Core Principle #3 — Risk drives testing depth.
-
----
-
-## Environment
-
-| Item | Details |
-|---|---|
-| Environment | Dev / QA / Staging / Production |
-| Build / Version |  |
-| Browser / Device |  |
-| User / Role |  |
-| Test data |  |
-| Feature flag |  |
-| External system |  |
+Risk should align with the framework in the [Test Strategy Template](test-strategy-template.md).
 
 ---
 
 ## Affected area
 
-**Feature / Flow:**  
-**API / Service / Component:**  
-**Integration / External System:**  
-**Data affected:**  
+**Feature / flow:**  
+**Component / service / API / integration:**  
+**Environment:**  
+**Build / version:**  
+**User role / permission:**  
+**Data used:**  
 
 ---
 
-## Steps to reproduce or trigger condition
+## Issue description
+
+Describe the issue clearly and concisely.
+
+```text
+What happened?
+Where did it happen?
+How often does it happen?
+```
+
+---
+
+## Steps or trigger condition
+
+Use steps when reproduction is clear. Use trigger condition when the issue depends on data, integration, timing, or environment state.
 
 1. 
 2. 
 3. 
 
-**Reproducibility:** Always / Sometimes / Once / Unknown  
-
 ---
 
 ## Expected result
+
+What should happen?
 
 - 
 
@@ -70,59 +63,69 @@ Reference: Core Principle #3 — Risk drives testing depth.
 
 ## Actual result
 
+What happened instead?
+
 - 
 
 ---
 
 ## Evidence
 
-Add useful evidence, not noise.
+Attach or link relevant evidence.
 
-| Evidence type | Link / Details |
+| Evidence type | Link / details |
 |---|---|
-| Screenshot / Video |  |
+| Screenshot / video |  |
 | Logs |  |
-| Trace ID / Correlation ID |  |
-| Request / Response payload |  |
-| Error message |  |
-| Database record / ID |  |
-| Automation report |  |
+| Trace ID / correlation ID |  |
+| Request / response payload |  |
+| File / message sample |  |
+| Console / network error |  |
 
-Do not include secrets, passwords, tokens, or sensitive personal data.
+Do not include sensitive data unless it is sanitized or approved.
 
 ---
 
 ## Technical context
 
-**Suspected area:**  
-**Recent change related to this issue:**  
-**Possible root cause:**  
-**Workaround:**  
+Add anything that helps investigation.
+
+| Item | Details |
+|---|---|
+| Suspected area |  |
+| Last known working version |  |
+| Recent related change |  |
+| Environment state |  |
+| External dependency |  |
+| Frequency | Always / Intermittent / Once |
+| Workaround |  |
 
 ---
 
-## User / business impact
+## Impact
 
-Who is affected and what is the consequence?
+Explain why this matters.
 
-- 
-
-Examples:
-
-- User cannot complete a critical journey.
-- Incorrect data is sent to another system.
-- Permission rules allow the wrong access.
-- Production support cannot investigate due to missing logs.
+| Impact area | Notes |
+|---|---|
+| User impact |  |
+| Business impact |  |
+| Data impact |  |
+| Security / permission impact |  |
+| Release impact |  |
 
 ---
 
 ## Resolution notes
 
-**Fixed by:**  
-**Fix version:**  
-**Validation performed:**  
-**Regression needed:** Yes / No  
-**Automation candidate:** Yes / No  
+Use after investigation or fix.
+
+**Root cause:**  
+**Fix summary:**  
+**Validation completed:**  
+**Regression added or updated:**  
+**Automation added or updated:**  
+**Monitoring or alert updated:**  
 
 ---
 
@@ -131,6 +134,7 @@ Examples:
 For Critical or Blocker bugs:
 
 - [ ] Update the [QA Metrics Dashboard](qa-metrics-dashboard-template.md) when relevant.
-- [ ] Review whether a post-release learning discussion is needed.
-- [ ] Check whether the [Test Strategy](test-strategy-template.md) or [Quality Review Checklist](../resources/quality-review-checklist.md) should be updated.
-- [ ] Follow the learning process from [03 - After Development](../03-after-development.md).
+- [ ] Review whether Change Failure Rate or escaped defect metrics were affected.
+- [ ] Trigger post-release learning according to [03 - After Development](../03-after-development.md).
+- [ ] Update the [Test Strategy Template](test-strategy-template.md) if a risk was missed.
+- [ ] Update the [Quality Review Checklist](../resources/quality-review-checklist.md) if a process gap was found.

@@ -1,63 +1,55 @@
-# Definition of Ready / Definition of Done Template
+# Definition of Ready / Done Template
 
-Use this template as a shared quality standard for stories, tasks, and team agreements.
+Use this template to define shared quality standards for stories, tasks, and team agreements.
 
-Avoid treating DoR and DoD as QA gates. They are team standards that help everyone reduce risk and deliver better software.
+DoR and DoD are not QA gates. They are team standards that help everyone understand when work is clear enough to start and safe enough to move forward.
 
----
-
-## Basic information
-
-**Team / Project:**  
-**Feature / Area:**  
-**Date:**  
-**Owner:**  
-
----
-
-## Risk level
-
-**Risk Level:** Low / Medium / High / Critical
-
-Testing depth, evidence, review effort, and automation expectations should match the documented risk.
-
-Reference: [Test Strategy Template](test-strategy-template.md)
+Reference: [Core Principles](../README.md#core-principles)
 
 ---
 
 ## Definition of Ready
 
-A story is Ready when the team has enough clarity to start development safely.
+A story is Ready when the team has enough clarity to start development with controlled risk.
+
+### Story information
+
+**Story / Task:**  
+**Owner:**  
+**Feature / Area:**  
+**Risk Level:** Low / Medium / High / Critical  
+
+Risk should be assessed using the framework in the [Test Strategy Template](test-strategy-template.md).
+
+### Ready checklist
 
 - [ ] User value is clear.
 - [ ] Acceptance criteria are testable.
-- [ ] Scope and out-of-scope are clear.
 - [ ] Risk level is defined.
 - [ ] Dependencies are known.
-- [ ] Test data and environment needs are understood.
-- [ ] API, file, data, or interface contract is documented when relevant.
-- [ ] Security and permission expectations are clear when relevant.
-- [ ] Accessibility expectations are clear when relevant.
-- [ ] Observability or logging needs are considered when relevant.
+- [ ] Data and environment needs are understood.
+- [ ] Interface or contract expectations are documented when relevant.
+- [ ] Security, permissions, and accessibility needs are considered when relevant.
 - [ ] Testing approach is roughly agreed.
-- [ ] Story aligns with [01 - Before Development](../01-before-development.md) standards for testability, risk, and contracts.
-- [ ] Story follows the [Story / Requirements Template](story-requirements-template.md) when applicable.
+- [ ] Story aligns with [01 - Before Development](../01-before-development.md) standards.
+- [ ] Story details are captured in the [Story / Requirements Template](story-requirements-template.md) when needed.
 
 ---
 
 ## Definition of Done
 
-A story is Done when the team has enough evidence that the change is correct, safe, useful, and maintainable.
+A story is Done when the team has enough evidence to trust the change based on its risk.
+
+### Done checklist
 
 - [ ] Acceptance criteria are met.
-- [ ] Relevant positive, negative, and edge scenarios were validated.
-- [ ] Risk level was considered in testing depth.
-- [ ] Unit test strategy was reviewed when relevant.
-- [ ] Code quality, maintainability, and testability were reviewed when relevant.
+- [ ] Risk-based scenarios were validated.
+- [ ] Positive, negative, and edge cases were covered according to risk.
 - [ ] Contracts, payloads, mappings, and backward compatibility were validated when relevant.
 - [ ] Security and permissions were validated when relevant.
 - [ ] Accessibility expectations were validated when relevant.
 - [ ] Logs, errors, and troubleshooting signals were reviewed when relevant.
+- [ ] Code and tests meet the [Technical Quality Reference](../resources/technical-quality-reference.md) standards.
 - [ ] Critical paths and contracts are protected by automated checks when valuable.
 - [ ] AI-generated output was reviewed by a human when AI was used.
 - [ ] Documentation, how-to-test notes, or release notes were updated when needed.
@@ -67,8 +59,7 @@ A story is Done when the team has enough evidence that the change is correct, sa
 
 Useful resources:
 
-- [Clean Code Guide](../resources/clean-code-guide.md)
-- [Unit Testing Guide](../resources/unit-testing-guide.md)
+- [Technical Quality Reference](../resources/technical-quality-reference.md)
 - [Testing Guide](../resources/testing-guide.md)
 
 ---

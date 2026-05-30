@@ -1,71 +1,78 @@
 # Quality Review Checklist
 
-A quick checklist to support quality decisions before, during, and after development.
+Use this checklist to confirm quality outcomes across the delivery flow.
 
-Use this as a lightweight reminder, not a heavy process.
+It is intentionally short. The goal is to reveal risk and missing evidence, not to create process for its own sake.
 
 ---
 
-## Before development
+## 1. Before development
+
+Expected outcome: the team can start development with clear value, known risk, and testable requirements.
 
 - [ ] User value is clear.
 - [ ] Acceptance criteria are testable.
-- [ ] Risk level is defined.
-- [ ] Dependencies are known.
-- [ ] Interface or contract expectations are documented when relevant.
-- [ ] Security and permissions are considered.
-- [ ] Accessibility is considered for user-facing changes.
-- [ ] Test data and environment needs are clear.
+- [ ] Risk level is documented.
+- [ ] API, file, data, or interface contract is clear when relevant.
+- [ ] Security and permissions expectations are clear when relevant.
+- [ ] Accessibility expectations are clear for user-facing changes.
+- [ ] Test data and environment needs are known.
 - [ ] Testing approach is roughly agreed.
-- [ ] Story meets Definition of Ready.
+
+Useful guide: [01 - Before Development](../01-before-development.md)
 
 ---
 
-## During development
+## 2. During development
 
-- [ ] PR review considers quality risks.
-- [ ] Unit test strategy was reviewed when relevant.
-- [ ] Contracts, payloads, and mappings were checked when relevant.
-- [ ] Logs and errors support troubleshooting.
-- [ ] Sensitive data is protected.
-- [ ] Pair testing was used for high-risk work when useful.
-- [ ] Automation was added or updated when it provides useful feedback.
-- [ ] Bugs include technical context and impact.
-- [ ] AI-generated output was reviewed by a human when used.
+Expected outcome: quality risks are reviewed while the change is still easy to adjust.
 
----
+- [ ] PR review considers risk, testability, permissions, and edge cases.
+- [ ] Important business logic is protected by meaningful tests.
+- [ ] Contracts, payloads, mappings, or schemas are reviewed when relevant.
+- [ ] Failures will be visible through useful logs, IDs, metrics, or traces.
+- [ ] Sensitive data is not exposed in logs, errors, test data, or AI prompts.
+- [ ] Automation protects valuable feedback loops when it makes sense.
+- [ ] AI-generated output is reviewed by a human before use.
 
-## Before release
-
-- [ ] Acceptance criteria are met.
-- [ ] Relevant regression risk was covered.
-- [ ] Critical checks passed.
-- [ ] Known issues are documented.
-- [ ] Rollback or recovery plan is understood when needed.
-- [ ] Monitoring or logs are available for important flows.
-- [ ] Deployment validation plan is clear.
-- [ ] Stakeholders understand remaining risks.
+Useful resource: [Technical Quality Reference](technical-quality-reference.md)
 
 ---
 
-## After release
+## 3. Before release
 
-- [ ] Production signals were reviewed.
-- [ ] Critical flows are behaving as expected.
-- [ ] Incidents or high-severity bugs were reviewed.
-- [ ] Metrics were updated when relevant.
-- [ ] Missed risks were added to the strategy or checklist.
-- [ ] Automation candidates were reviewed.
-- [ ] One improvement action was captured.
+Expected outcome: release confidence is based on evidence and known risk.
+
+- [ ] Critical and high-risk scenarios were validated.
+- [ ] Open defects and known risks are understood.
+- [ ] Regression impact was reviewed.
+- [ ] Deployment validation is planned when needed.
+- [ ] Rollback or recovery path is understood for risky releases.
+- [ ] Monitoring or post-deploy checks are clear for critical flows.
+- [ ] Evidence is attached or linked.
+
+Useful template: [Deployment Validation Template](../templates/deployment-validation-template.md)
 
 ---
 
-## 15-minute quality retro
+## 4. After release
 
-Use after releases or production incidents:
+Expected outcome: the team learns from production behavior and improves the next cycle.
 
-1. What went well?
-2. What was missed?
-3. What risk should have been clearer?
-4. What test, log, automation, or checklist should improve?
-5. What is the next action?
+- [ ] Production signals were reviewed for critical flows.
+- [ ] Critical or Blocker bugs updated the metrics dashboard when relevant.
+- [ ] Missed risks were added to the test strategy or checklist.
+- [ ] Repeated defects triggered an improvement action.
+- [ ] A short quality retro happened when a release or incident justified it.
+
+Useful guide: [03 - After Development](../03-after-development.md)
+
+---
+
+## 5. Final question
+
+```text
+Do we have enough evidence to make a good quality decision?
+```
+
+If the answer is no, clarify the risk, gather better evidence, or agree on the known risk before moving forward.
