@@ -100,9 +100,9 @@ flowchart TB
     I["<b>Integration · API · Contract</b><br/>some<br/>service &amp; system boundaries"]:::mid
     E["<b>UI / E2E</b><br/>few<br/>critical user journeys"]:::top
     U --> I --> E
-    classDef base fill:#dcfce7,stroke:#22c55e,color:#14532d;
-    classDef mid  fill:#fef9c3,stroke:#eab308,color:#713f12;
-    classDef top  fill:#fee2e2,stroke:#ef4444,color:#7f1d1d;
+    classDef base fill:#d4e4d8,stroke:#4f7a63,color:#1f3329;
+    classDef mid  fill:#ecdcb8,stroke:#997327,color:#3d3115;
+    classDef top  fill:#e6c2c4,stroke:#9c4a4f,color:#38191b;
 ```
 
 > **Why low and early wins:** the later a defect is found, the more it costs to fix. Boehm & Basili found that fixing a problem after release is often **~100× more expensive** than fixing it during requirements or design — less on small projects, far more on safety-critical ones. Catching defects at the unit and integration layers keeps them cheap. See [References](README.md#references-and-inspiration).
@@ -216,10 +216,10 @@ flowchart TD
     Q1 -->|Yes| Q2{"Reproducible<br/>with evidence?"}
     Q2 -->|No| U
     Q2 -->|Yes| B["<b>Log a bug</b><br/>impact · severity · priority<br/>steps · evidence"]:::bug
-    classDef check fill:#e0e7ff,stroke:#6366f1,color:#312e81;
-    classDef bug  fill:#fee2e2,stroke:#ef4444,color:#7f1d1d;
-    classDef no   fill:#dcfce7,stroke:#22c55e,color:#14532d;
-    classDef wait fill:#fef9c3,stroke:#eab308,color:#713f12;
+    classDef check fill:#d4dcf0,stroke:#51689c,color:#20284a;
+    classDef bug  fill:#e6c2c4,stroke:#9c4a4f,color:#38191b;
+    classDef no   fill:#d4e4d8,stroke:#4f7a63,color:#1f3329;
+    classDef wait fill:#ecdcb8,stroke:#997327,color:#3d3115;
 ```
 
 ### Usually a bug

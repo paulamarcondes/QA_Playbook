@@ -127,10 +127,10 @@ flowchart TD
     Q -->|Medium| M["<b>Medium</b><br/>Functional · negative<br/>integration · targeted regression"]
     Q -->|High| H["<b>High</b><br/>Risk-based validation<br/>automation review<br/>observability · rollback"]
     Q -->|Critical| C["<b>Critical</b><br/>Release-blocking validation<br/>mandatory automation<br/>post-release monitoring"]
-    classDef low  fill:#dcfce7,stroke:#22c55e,color:#14532d;
-    classDef med  fill:#fef9c3,stroke:#eab308,color:#713f12;
-    classDef high fill:#ffedd5,stroke:#f97316,color:#7c2d12;
-    classDef crit fill:#fee2e2,stroke:#ef4444,color:#7f1d1d;
+    classDef low  fill:#d4e4d8,stroke:#4f7a63,color:#1f3329;
+    classDef med  fill:#ecdcb8,stroke:#997327,color:#3d3115;
+    classDef high fill:#ecc9b0,stroke:#b5683a,color:#3f2614;
+    classDef crit fill:#e6c2c4,stroke:#9c4a4f,color:#38191b;
     class L low
     class M med
     class H high

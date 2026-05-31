@@ -140,9 +140,9 @@ flowchart LR
     G["Gather<br/>context"]:::step --> D["Draft<br/>proposal"]:::step --> P{"Human<br/>approval?"}:::gate
     P -->|Approved| E["Execute"]:::step --> C["Confirm<br/>result"]:::done
     P -->|Changes| D
-    classDef step fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a;
-    classDef gate fill:#fef9c3,stroke:#eab308,color:#713f12;
-    classDef done fill:#dcfce7,stroke:#22c55e,color:#14532d;
+    classDef step fill:#d6deea,stroke:#5b6b85,color:#222a38;
+    classDef gate fill:#ecdcb8,stroke:#997327,color:#3d3115;
+    classDef done fill:#d4e4d8,stroke:#4f7a63,color:#1f3329;
 ```
 
 The assistant should be useful, but the QA professional remains accountable for quality decisions.

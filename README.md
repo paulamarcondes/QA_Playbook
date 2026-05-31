@@ -17,9 +17,9 @@ flowchart LR
     C["<b>03 · After</b><br/>Release confidence<br/>Metrics &amp; observability<br/>Blame-free learning"]
     A --> B --> C
     C -. "learn &amp; improve" .-> A
-    classDef before fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a;
-    classDef during fill:#fef9c3,stroke:#eab308,color:#713f12;
-    classDef after  fill:#dcfce7,stroke:#22c55e,color:#14532d;
+    classDef before fill:#d6deea,stroke:#5b6b85,color:#222a38;
+    classDef during fill:#ecdcb8,stroke:#997327,color:#3d3115;
+    classDef after  fill:#d4e4d8,stroke:#4f7a63,color:#1f3329;
     class A before
     class B during
     class C after
