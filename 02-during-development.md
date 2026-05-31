@@ -2,7 +2,7 @@
 
 Test design, execution, and collaboration while the work is being built.
 
-The goal during development: **fast feedback, shared ownership, and continuous validation**. QA is not the final gate after everything is built — QA helps the team build the right thing, test the right risks, and catch problems while they are still cheap to fix.
+The goal during development: **fast feedback, shared ownership, and continuous validation**. QA is not the final gate after everything is built - QA helps the team build the right thing, test the right risks, and catch problems while they are still cheap to fix.
 
 > **Key idea:** QA is not only testing finished work. QA helps the team make better technical and product decisions during implementation.
 
@@ -26,7 +26,7 @@ Companion reference: [Quality Review Checklist - During development](resources/q
 
 ## Outcomes expected during development
 
-During implementation, the team validates changes incrementally, reviews risk before merge, tests at the right level, checks developer quality signals, automates valuable checks, and keeps defects, evidence, and quality visible to everyone — converging on the [Definition of Done](#13-definition-of-done).
+During implementation, the team validates changes incrementally, reviews risk before merge, tests at the right level, checks developer quality signals, automates valuable checks, and keeps defects, evidence, and quality visible to everyone - converging on the [Definition of Done](#13-definition-of-done).
 
 ## 1. Collaborate before the handoff
 
@@ -92,7 +92,7 @@ Not everything should be tested through the UI. Strong QA strategy uses differen
 | Exploratory testing | Unknown risks, usability, edge cases, workflow quality |
 | Regression tests | Protecting existing critical flows |
 
-> **Principle:** Push tests as low as possible and as high as necessary.
+> **Principle:** Test at the lowest level that can catch the problem; move up only when a lower level cannot. Unit and API tests are faster and more stable than UI tests.
 
 ```mermaid
 flowchart TB
@@ -100,12 +100,14 @@ flowchart TB
     I["<b>Integration · API · Contract</b><br/>some<br/>service &amp; system boundaries"]:::mid
     E["<b>UI / E2E</b><br/>few<br/>critical user journeys"]:::top
     U --> I --> E
-    classDef base fill:#d4e4d8,stroke:#4f7a63,color:#1f3329;
-    classDef mid  fill:#ecdcb8,stroke:#997327,color:#3d3115;
-    classDef top  fill:#e6c2c4,stroke:#9c4a4f,color:#38191b;
+    classDef base fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
+    classDef mid  fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
+    classDef top  fill:#e6c2c4,stroke:#7a3338,color:#38191b;
 ```
 
-> **Why low and early wins:** the later a defect is found, the more it costs to fix. Boehm & Basili found that fixing a problem after release is often **~100× more expensive** than fixing it during requirements or design — less on small projects, far more on safety-critical ones. Catching defects at the unit and integration layers keeps them cheap. See [References](README.md#references-and-inspiration).
+> **Example:** One feature, three levels. A tax calculation -> unit test. An order syncing across two services -> integration/contract test. The checkout journey the user sees -> one UI/E2E test. Each risk validated at its cheapest reliable layer.
+
+> **Why low and early wins:** A defect fixed after release can cost **~100× more** than one caught at requirements or design (Boehm & Basili) - less on small projects, far more on safety-critical ones. Testing low and early keeps defects cheap. See [References](README.md#references-and-inspiration).
 
 For a broader reference and a context-to-validation map, see the [Testing Types Reference](resources/testing-types.md#practical-selection-guide).
 
@@ -209,18 +211,20 @@ A bug is a product behavior that conflicts with a requirement, acceptance criter
 
 ```mermaid
 flowchart TD
-    O["Observed behavior"] --> C["Check against the agreed spec:<br/>requirement · AC · business rule<br/>contract · security · data integrity"]:::check
+    O["<b>Observed behavior</b>"] --> C["<b>Check against the agreed spec:</b><br/>requirement · AC · business rule<br/>contract · security · data integrity"]:::check
     C --> Q1{"Conflict<br/>found?"}
     Q1 -->|No| N["<b>Usually not a bug</b><br/>feature request · works as designed<br/>test data · env · known limitation"]:::no
     Q1 -->|Unsure| U["<b>Investigate</b><br/>document · capture evidence<br/>align with Product / Dev / QA"]:::wait
     Q1 -->|Yes| Q2{"Reproducible<br/>with evidence?"}
     Q2 -->|No| U
     Q2 -->|Yes| B["<b>Log a bug</b><br/>impact · severity · priority<br/>steps · evidence"]:::bug
-    classDef check fill:#d4dcf0,stroke:#51689c,color:#20284a;
-    classDef bug  fill:#e6c2c4,stroke:#9c4a4f,color:#38191b;
-    classDef no   fill:#d4e4d8,stroke:#4f7a63,color:#1f3329;
-    classDef wait fill:#ecdcb8,stroke:#997327,color:#3d3115;
+    classDef check fill:#d4dcf0,stroke:#38507e,color:#20284a;
+    classDef bug  fill:#e6c2c4,stroke:#7a3338,color:#38191b;
+    classDef no   fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
+    classDef wait fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
 ```
+
+> **Example:** An API returns `200` with an empty body when the contract requires the created record -> a bug (breaks the contract). A user requests a new sort option that was never in the acceptance criteria -> not a bug, a feature request.
 
 ### Usually a bug
 
@@ -279,7 +283,16 @@ Example:
 [Checkout] Payment confirmation is not displayed after approved transaction
 ```
 
-> **Worth a smile:** Andy Glover's *Bugs Have Feelings Too* cartoon nails bug advocacy — report it, report it quick, be honest, and get to know it. See [Cartoon Tester - Bug Advocacy (2010)](https://cartoontester.blogspot.com/2010/03/bug-advocacy.html).
+### Severity vs priority
+
+Severity is the impact; priority is the urgency to fix - they are not the same:
+
+| | High priority | Low priority |
+|---|---|---|
+| **High severity** | Checkout crashes for all users - fix now | Data loss in a deprecated admin tool - schedule |
+| **Low severity** | Typo on a legal page - fix fast | Minor UI misalignment on an internal page - backlog |
+
+> **Worth a smile:** Andy Glover's *Bugs Have Feelings Too* cartoon nails bug advocacy - understand it, report it quickly, back it with evidence, and look for its mates (the related bugs). See [Cartoon Tester - Bug Advocacy (2010)](https://cartoontester.blogspot.com/2010/03/bug-advocacy.html).
 
 ## 11. Collect evidence that proves behavior
 

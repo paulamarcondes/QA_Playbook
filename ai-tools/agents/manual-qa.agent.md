@@ -46,7 +46,7 @@ The agent can run the full workflow or any phase independently.
 Every write action follows:
 
 ```text
-Gather -> Draft -> Pause -> Approval -> Execute -> Confirm
+Gather context -> Draft proposal -> Pause for approval -> Execute -> Confirm result
 ```
 
 Write actions include:

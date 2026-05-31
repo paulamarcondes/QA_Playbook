@@ -6,7 +6,7 @@ The goal after development is to answer one question:
 
 > **Can we release with confidence, detect issues quickly, and learn from what happens next?**
 
-Quality does not end when QA testing is complete — release readiness, production validation, observability, metrics, and retrospectives are part of modern QA.
+Quality does not end when QA testing is complete - release readiness, production validation, observability, metrics, and retrospectives are part of QA.
 
 ## On this page
 
@@ -24,7 +24,7 @@ Companion reference: [Quality Review Checklist - After release](resources/qualit
 
 ## Outcomes expected after development
 
-After implementation, the team understands release risk, validates key flows before and after deploy, detects failures quickly, communicates QA status to stakeholders, measures quality trends, and learns from incidents to improve the next cycle — recapped in the [after development checklist](#after-development-checklist).
+After implementation, the team understands release risk, validates key flows before and after deploy, detects failures quickly, communicates QA status to stakeholders, measures quality trends, and learns from incidents to improve the next cycle - recapped in the [after development checklist](#after-development-checklist).
 
 ## 1. Define release readiness
 
@@ -41,7 +41,22 @@ Before release, the team should confirm that the change is functionally correct,
 - [ ] Support/Product aware of relevant behavior changes.
 - [ ] Test evidence attached.
 - [ ] Release notes or documentation updated when needed.
-- [ ] Go/no-go decision made with visible risk.
+- [ ] Go/No-Go decision made with visible risk.
+
+The checklist feeds one clear decision - release, release with mitigation, or hold:
+
+```mermaid
+flowchart TD
+    R["<b>Release readiness review</b><br/>AC · regression · automation<br/>defects · rollback · observability"]:::step --> Q{"Risk visible<br/>and acceptable?"}
+    Q -->|Yes| GO["<b>Go</b><br/>release, then smoke-test<br/>and monitor"]:::go
+    Q -->|Residual risk| COND["<b>Ready with risk</b><br/>release with mitigation<br/>+ heightened monitoring"]:::cond
+    Q -->|No| NOGO["<b>No-go</b><br/>fix blockers,<br/>then re-review"]:::nogo
+    NOGO -.-> R
+    classDef step fill:#d6deea,stroke:#3f4f68,color:#222a38;
+    classDef go   fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
+    classDef cond fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
+    classDef nogo fill:#e6c2c4,stroke:#7a3338,color:#38191b;
+```
 
 For a reusable structure, see [Deployment Validation Guide Template](templates/deployment-validation-guide-template.md).
 
@@ -84,7 +99,7 @@ Post-deploy validation confirms that real systems are healthy after release.
 
 > **Principle:** A release is not fully complete until the team confirms that production behavior is healthy.
 
-> **Real world:** many QAs have no production access, especially in regulated or enterprise systems. If you cannot touch prod, partner with Ops, SRE, or on-call to run these checks and share the signals — the validation still has to happen, even if you do not run it yourself.
+> **Real world:** many QAs have no production access, especially in regulated or enterprise systems. If you cannot touch prod, partner with Ops, SRE, or on-call to run these checks and share the signals - the validation still has to happen, even if you do not run it yourself.
 
 ## 4. Create a QA report for leadership visibility
 
@@ -113,13 +128,13 @@ Use a concise one-page document or short presentation for leadership and a more 
 
 Metrics should help the team improve quality, not create blame.
 
-A strong QA metrics approach should combine a few useful signals:
+A strong QA metrics approach combines a few complementary signal types - the concrete starter metrics for each appear in the next section:
 
-- **Outcome signals:** escaped defects, production incidents, support ticket trends, user-impacting issues.
-- **Delivery health signals:** validation cycle time, blocked testing time, rework, release readiness risk.
-- **Automation health signals:** critical-flow automation coverage, flaky test rate, failed pipeline patterns.
-- **Observability signals:** time to detect, time to restore, useful logs, alerts, dashboards, traceability.
-- **Culture and maturity signals:** QA assessment survey trends, Definition of Ready/Done adoption, repeated root causes.
+- **Outcome signals:** what actually reached users or production.
+- **Delivery health signals:** how smoothly validation and release flow.
+- **Automation health signals:** whether automation is trustworthy and protects critical paths.
+- **Observability signals:** how fast issues are detected and diagnosed.
+- **Culture and maturity signals:** whether quality practices improve over time.
 
 For a detailed dashboard format, see [QA Metrics Dashboard Template](templates/qa-metrics-dashboard-template.md).
 
@@ -221,5 +236,5 @@ Examples:
 
 ---
 
-**Playbook:** [← 01 - Before Development](01-before-development.md) · [02 - During Development](02-during-development.md) · **03 - After Development**  
+**Playbook:** [01 - Before Development](01-before-development.md) · [← 02 - During Development](02-during-development.md) · **03 - After Development**  
 [↑ Back to README](README.md)

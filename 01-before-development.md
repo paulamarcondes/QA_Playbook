@@ -26,15 +26,17 @@ Companion reference: [Quality Review Checklist - Before development](resources/q
 
 ## Outcomes expected before coding starts
 
-By the end of this phase, the team can explain what to build and why, what could fail, how success and failure will be validated, and what must be observable after release — captured formally in the [Definition of Ready](#13-definition-of-ready).
+By the end of this phase, the team can explain what to build and why, what could fail, how success and failure will be validated, and what must be observable after release - captured formally in the [Definition of Ready](#13-definition-of-ready).
 
 ## 1. Start with user value
 
 Quality starts with the real user journey, not only the technical change.
 
+> **Real world:** This user-first instinct often comes from experience-driven backgrounds - service, support, UX, customer success - where you learn to see the product through the user's eyes. QA that keeps that lens catches problems a spec never mentions.
+
 ### Questions to ask
 
-- Who consumes this change — user, customer, support team, or system?
+- Who consumes this change - user, customer, support team, or system?
 - What problem are we solving, and what task must they complete?
 - What could frustrate, block, confuse, or mislead them?
 - What would make it feel reliable and easy to use?
@@ -46,7 +48,7 @@ Quality starts with the real user journey, not only the technical change.
 
 Hold a short **Product + Development + QA** conversation before implementation.
 
-> **Real world:** a formal Three Amigos is rare, and QA is often pulled in late. If that is your situation, start small — ask one or two of the questions below in refinement, or directly to the developer. Influence beats ceremony.
+> **Real world:** a formal Three Amigos is rare, and QA is often pulled in late. If that is your situation, start small - ask one or two of the questions below in refinement, or directly to the developer. Influence beats ceremony.
 
 ### Questions to answer
 
@@ -122,15 +124,15 @@ Testing depth should follow risk; not every change deserves the same effort.
 
 ```mermaid
 flowchart TD
-    Start["Assess the change<br/><b>Risk = Impact × Likelihood</b>"] --> Q{"Take the higher<br/>of the two"}
+    Start["<b>Assess the change</b><br/>Risk = Impact × Likelihood"] --> Q{"Take the higher<br/>of the two"}
     Q -->|Low| L["<b>Low</b><br/>Focused functional<br/>+ basic regression"]
     Q -->|Medium| M["<b>Medium</b><br/>Functional · negative<br/>integration · targeted regression"]
     Q -->|High| H["<b>High</b><br/>Risk-based validation<br/>automation review<br/>observability · rollback"]
     Q -->|Critical| C["<b>Critical</b><br/>Release-blocking validation<br/>mandatory automation<br/>post-release monitoring"]
-    classDef low  fill:#d4e4d8,stroke:#4f7a63,color:#1f3329;
-    classDef med  fill:#ecdcb8,stroke:#997327,color:#3d3115;
-    classDef high fill:#ecc9b0,stroke:#b5683a,color:#3f2614;
-    classDef crit fill:#e6c2c4,stroke:#9c4a4f,color:#38191b;
+    classDef low  fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
+    classDef med  fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
+    classDef high fill:#ecc9b0,stroke:#8a4423,color:#3f2614;
+    classDef crit fill:#e6c2c4,stroke:#7a3338,color:#38191b;
     class L low
     class M med
     class H high
@@ -157,7 +159,9 @@ For full risk assessment, use the [Test Strategy Template](templates/test-strate
 | High | Full risk-based validation, automation review, observability checks, rollback awareness, and release follow-up. |
 | Critical | Release-blocking validation: full risk-based coverage, mandatory automated regression, observability and rollback verification, and post-release monitoring. |
 
-> **Data point:** ~80% of avoidable rework traces to ~20% of defects, and projects spend 40–50% of effort on avoidable rework (Boehm & Basili, 2001). Testing the risky few beats testing everything evenly — that is the case for risk-based depth.
+> **Example:** A change to the payment-confirmation email. Impact = High (revenue and trust), Likelihood = Medium. Take the higher -> **High** risk: risk-based validation, automation review, and post-release monitoring.
+
+> **Data point:** **~20% of defects cause ~80% of avoidable rework** - and teams lose 40-50% of their effort to it (Boehm & Basili, 2001). Test the risky few deeply, not everything evenly.
 
 ## 5. Create the test strategy and draft test cases early
 

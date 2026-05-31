@@ -4,7 +4,20 @@ Use this template to define clear, practical quality standards for stories, task
 
 The goal is not to create bureaucracy. The goal is to reduce rework, prevent unclear handoffs, and make quality a shared team responsibility.
 
-> **Real world:** most teams that succeed with DoR/DoD use a 3–5 item subset, not the full list. Treat everything below as a menu to pick from, not a mandate — start small and add only what repeatedly bites you.
+> **Real world:** most teams that succeed with DoR/DoD use a 3-5 item subset, not the full list. Treat everything below as a menu to pick from, not a mandate - start small and add only what repeatedly bites you.
+
+The two gates at a glance - a common starter subset:
+
+```mermaid
+flowchart LR
+    DoR["<b>Definition of Ready</b><br/>before development<br/><br/>Three Amigos done<br/>Requirements documented<br/>Test data and environment ready<br/>Ticket clear, with evidence/logs<br/>Refinement completed"]:::ready
+    WORK["<b>Build<br/>and test</b>"]:::work
+    DoD["<b>Definition of Done</b><br/>before release · adapt per story<br/><br/>Code complete, reviewed, merged<br/>Documentation updated<br/>Approvals obtained (QA, PO)<br/>Deployed and monitored<br/>No open critical defects"]:::done
+    DoR --> WORK --> DoD
+    classDef ready fill:#d6deea,stroke:#3f4f68,color:#222a38;
+    classDef work  fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
+    classDef done  fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
+```
 
 ## 1. Purpose
 

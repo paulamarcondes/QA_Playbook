@@ -11,12 +11,12 @@ This reference is connected to my original Software Testing QA mind map: [Softwa
 ## Seven testing principles (ISTQB)
 
 1. Testing shows the presence of defects, not their absence.
-2. Exhaustive testing is impossible — guide effort with risk and priorities.
+2. Exhaustive testing is impossible - guide effort with risk and priorities.
 3. Early testing saves time and money (shift-left).
-4. Defects cluster — a few areas usually hold most of them.
-5. Pesticide paradox — repeated tests stop finding new bugs; vary and refresh them.
+4. Defects cluster - a few areas usually hold most of them.
+5. Pesticide paradox - repeated tests stop finding new bugs; vary and refresh them.
 6. Testing is context-dependent.
-7. Absence-of-errors fallacy — a defect-free build can still fail user needs.
+7. Absence-of-errors fallacy - a defect-free build can still fail user needs.
 
 Reference: [ISTQB Glossary](https://glossary.istqb.org/).
 

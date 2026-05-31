@@ -9,7 +9,7 @@ Use this skill for Robot Framework test creation, review, refactoring, debugging
 
 ## Core rule
 
-Analyze -> Propose -> Get approval -> Execute.
+Gather context -> Draft proposal -> Pause for approval -> Execute -> Confirm result.
 
 Do not modify test code without approval.
 

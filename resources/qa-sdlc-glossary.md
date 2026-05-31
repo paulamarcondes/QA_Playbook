@@ -128,7 +128,7 @@ For fuller descriptions, ownership, and a practical selection guide, see the [Te
 | Rollback | Returning the system to a previous stable version or state. |
 | Hotfix | A fast targeted fix for a high-priority issue. |
 | Change Freeze | A period when changes are restricted to reduce release or operational risk. |
-| Go / No-Go Decision | A release decision based on readiness, risk, validation results, blockers, and stakeholder alignment. |
+| Go/No-Go Decision | A release decision based on readiness, risk, validation results, blockers, and stakeholder alignment. |
 
 ## Observability and production quality
 

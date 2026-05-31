@@ -18,7 +18,7 @@ Use this template to track quality trends and support better team decisions.
 | Open critical/high defects |  |  |  |  |
 | Regression completion |  |  |  |  |
 | Known release risks |  |  |  |  |
-| Go/no-go recommendation |  |  |  |  |
+| Go/No-Go recommendation |  |  |  |  |
 
 ## Quality outcomes
 

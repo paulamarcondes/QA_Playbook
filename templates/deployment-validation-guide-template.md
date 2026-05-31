@@ -80,16 +80,16 @@ Use this section before approving the deployment.
 - [ ] Support team informed of relevant changes.
 - [ ] Release notes updated when needed.
 - [ ] Known risks documented and accepted.
-- [ ] Go / No-Go decision recorded.
+- [ ] Go/No-Go decision recorded.
 
-## 4. Go / No-Go decision
+## 4. Go/No-Go decision
 
 | Question | Answer |
 |---|---|
 | Is the release ready to deploy? | Ready / Ready with risk / Not ready |
 | What are the known risks? |  |
 | Who accepted the risks? |  |
-| What is the final decision? | Go / No-Go |
+| What is the final decision? | Go/No-Go |
 | Approver(s) |  |
 
 ## 5. Deployment validation steps
