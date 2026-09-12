@@ -6,6 +6,10 @@
 
 A practical Quality Engineering playbook for building reliable software **before, during, and after development**.
 
+By **Paula Marcondes**, Senior QA Engineer at Motorola Solutions, working on mission-critical Public Safety integrations. [LinkedIn](https://www.linkedin.com/in/paulamarcondes)
+
+**What's inside:** three phase guides ([before](01-before-development.md) · [during](02-during-development.md) · [after](03-after-development.md)), 8 reusable templates, 5 QA references, and AI agents and skills for QA workflows.
+
 This repository is a portfolio project that documents how QA can support delivery through shift-left practices, risk-based testing, automation, release confidence, AI-assisted workflows, and continuous improvement.
 
 > **Key idea:** Quality is not a final checkpoint. It is a system property built through clear requirements, technical collaboration, smart testing, user focus, and measurable learning.
@@ -220,9 +224,11 @@ Released under the [MIT License](LICENSE). You are free to use, adapt, and share
 
 ## Author
 
-Created by **Paula Marcondes**, a Quality Assurance Engineer at Motorola Solutions working on mission-critical Public Safety integrations.
+Created by **Paula Marcondes**, a **Senior QA Engineer** at Motorola Solutions working on mission-critical Public Safety integrations.
 
-My route to QA ran through 10+ years of international customer experience and leadership at Royal Caribbean International and Walt Disney World. That foundation shapes the user-focused, human-centric view of quality throughout this playbook: technical decisions matter most for their real impact on the people who use the product.
+**QA is my second career.** Before moving into tech, I spent 10+ years in international Customer Experience and leadership roles at Royal Caribbean International and Walt Disney World - a decade of watching real people succeed or struggle with a service, in real time, with nowhere to hide.
+
+I did not leave that behind when I changed careers. It is the lens I test through, and it runs through this entire playbook: a feature is only as good as the experience of the person on the other end of it, and technical decisions matter most for their real impact on the people who use the product.
 
 <a href="https://www.linkedin.com/in/paulamarcondes" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
