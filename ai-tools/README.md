@@ -28,10 +28,14 @@ Always validate how your specific tool loads instructions before relying on them
 ai-tools/
 ├── README.md
 ├── BASICS.instructions.md
+├── BASICS-SHORT.instructions.md
 ├── agents/
-│   └── manual-qa.agent.md
+│   ├── manual-qa.agent.md
+│   └── qa-assessment.agent.md
 └── skills/
     ├── manual-qa/
+    │   └── SKILL.md
+    ├── qa-assessment/
     │   └── SKILL.md
     └── robot-qa/
         └── SKILL.md
@@ -41,9 +45,12 @@ ai-tools/
 
 | File | Purpose |
 |---|---|
-| `BASICS.instructions.md` | Always-on QA context: role, systems, tools, communication style, safety rules, SDLC principles. |
+| `BASICS.instructions.md` | Always-on QA context: role, systems, tools, communication style, safety rules, SDLC principles. Fill in the placeholders with your team context. |
+| `BASICS-SHORT.instructions.md` | The short working version: communication style, approval rules, and token-efficient tool use. Ready to use with no customization. |
 | `agents/manual-qa.agent.md` | Manual QA agent workflow: requirements review, test strategy, test cases, execution, and reporting. |
 | `skills/manual-qa/SKILL.md` | Manual QA knowledge base: test types, techniques, strategy, bug reporting, metrics, CI/CD, documentation. |
+| `agents/qa-assessment.agent.md` | QA consultancy engagement: gather evidence, grade the team, draft a Confluence plan and Jira tickets. |
+| `skills/qa-assessment/SKILL.md` | The measuring stick: eight scored areas, evidence rules, grade bands, and report format. |
 | `skills/robot-qa/SKILL.md` | Robot Framework automation guidance: clean, maintainable, robust test code. |
 
 ## Recommended usage
@@ -81,7 +88,25 @@ Analyze this defect and draft a clear bug report with severity, priority, impact
 Create a QA summary report for leadership based on these test results.
 ```
 
-### 3. Use the Robot QA skill for automation support
+### 3. Use the QA Assessment Agent to grade where the team stands
+
+Typical prompts:
+
+```text
+Assess this team's QA maturity against the playbook. Repo and Jira are available, no interviews. Read-only.
+```
+
+```text
+Score only the automation and observability areas, with evidence for each score.
+```
+
+```text
+Scores are agreed. Draft the Confluence action plan and Jira tickets for the top three gaps.
+```
+
+The agent reads and grades, then writes plan drafts locally. It does not create Confluence pages or Jira tickets unless you ask for that as a separate approved step.
+
+### 4. Use the Robot QA skill for automation support
 
 Typical prompts:
 

@@ -242,13 +242,7 @@ Frontend and backend testing protect different risks. A strong strategy covers b
 
 Validate the user journey, usability, accessibility, clarity, visual feedback, error recovery, permissions, and state changes.
 
-Useful validation:
-
-- exploratory testing;
-- UI and accessibility checks;
-- usability review;
-- critical UI automation;
-- copy, labels, empty states, errors, loading states, and recovery paths.
+Useful validation: exploratory testing, UI and accessibility checks, usability review, critical UI automation, and a pass over copy, labels, empty states, errors, loading states, and recovery paths.
 
 Use usability heuristics to support structured review. Reference: [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
 
@@ -256,14 +250,9 @@ Use usability heuristics to support structured review. Reference: [Nielsen Heuri
 
 Validate business rules, contracts, data integrity, security, performance, integrations, error handling, and system behavior beyond the UI.
 
-Useful validation:
+Useful validation: API, contract, and integration tests, data validation, negative testing, authorization checks, logs and correlation IDs, plus duplicate requests, timeouts, retries, and idempotency when relevant.
 
-- API, contract, and integration tests;
-- logs and correlation IDs;
-- data validation;
-- negative testing;
-- authorization checks;
-- duplicate requests, timeouts, retries, and idempotency when relevant.
+For the full catalogue of testing types and a context-to-validation map, see the [Testing Types Reference](resources/testing-types.md#practical-selection-guide).
 
 ## 9. Choose tools, languages, and frameworks intentionally
 
@@ -356,19 +345,14 @@ For a full template, see [Definition of Ready & Definition of Done Template](tem
 
 ## Before development checklist
 
-- [ ] User/business value is clear.
+The work items of this phase. The readiness gate itself lives in the [Definition of Ready](#13-definition-of-ready) and is not repeated here.
+
 - [ ] User journey and expected experience are understood.
-- [ ] Acceptance criteria are testable.
-- [ ] BDD or practical checklist format was chosen.
+- [ ] BDD or practical checklist format was chosen for acceptance criteria.
 - [ ] Happy path and negative paths are known.
-- [ ] Risks are classified.
+- [ ] Risk level is classified and testing depth follows it.
 - [ ] Test strategy and test case outline started when relevant.
-- [ ] Test data needs are identified.
-- [ ] Dependencies are visible.
-- [ ] Integration/API/data contracts are documented.
-- [ ] Frontend/UX and backend/API strategies are considered.
 - [ ] Tool/framework choices are aligned with product risk and team context.
-- [ ] Observability needs are considered.
 - [ ] Definition of Ready is met.
 
 ## Key message

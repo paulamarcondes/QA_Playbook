@@ -27,6 +27,7 @@ flowchart LR
 
 ## Contents
 
+- [What do we even call this job?](#what-do-we-even-call-this-job)
 - [Why this playbook exists](#why-this-playbook-exists)
 - [Quick navigation](#quick-navigation)
 - [Core principles](#core-principles)
@@ -36,6 +37,25 @@ flowchart LR
 - [References and inspiration](#references-and-inspiration)
 - [License](#license)
 - [Author](#author)
+
+## What do we even call this job?
+
+Depending on the company, the org chart, and whoever wrote the job description that quarter, the same person is called:
+
+- Quality Assurance
+- Quality Assurance Tester
+- Quality Assurance Engineer
+- Software Tester
+- Software Development Engineer in Test (SDET)
+- Test Engineer
+- QA Analyst
+- QA Architect
+- QA Intelligence
+- Or, when the meeting is already running late, simply **QA**
+
+And before releases, the one who breaks everything.
+
+The title keeps changing. The goal never does: **make sure we deliver the BEST solution possible, so the company's reputation keeps shining in the customer's eyes.**
 
 ## Why this playbook exists
 
@@ -101,7 +121,7 @@ The three core guides ([01 - Before](01-before-development.md), [02 - During](02
 
 | Resource | Purpose |
 |---|---|
-| [Testing Types Reference](resources/testing-types.md) | Testing levels, types, techniques, and practical selection guidance. |
+| [Testing Types Reference](resources/testing-types.md) | Verification vs validation, testing levels, types, techniques, and practical selection guidance. |
 | [QA SDLC Glossary](resources/qa-sdlc-glossary.md) | Shared terminology for QA, SDLC, testing, delivery, AI, and metrics. |
 | [Quality Review Checklist](resources/quality-review-checklist.md) | Outcome-based quality questions for refinement, development, PRs, bugs, and releases. |
 | [Clean Code Review Guide for QA](resources/clean-code-guide.md) | How QA can review code and PRs from a risk, testability, and observability perspective. |
@@ -125,9 +145,12 @@ The three core guides ([01 - Before](01-before-development.md), [02 - During](02
 | File | Purpose |
 |---|---|
 | [AI Tools README](ai-tools/README.md) | Navigation and usage guidance for the AI tools folder. |
-| [BASICS.instructions.md](ai-tools/BASICS.instructions.md) | Always-on QA context and AI safety rules. |
+| [BASICS.instructions.md](ai-tools/BASICS.instructions.md) | Always-on QA context and AI safety rules, as a template to customize. |
+| [BASICS-SHORT.instructions.md](ai-tools/BASICS-SHORT.instructions.md) | The short working version: say the most with the fewest words, approval-first, token-efficient. |
 | [Manual QA Agent](ai-tools/agents/manual-qa.agent.md) | End-to-end QA workflow agent behavior. |
+| [QA Assessment Agent](ai-tools/agents/qa-assessment.agent.md) | Grades a team's QA maturity with evidence, then drafts a Confluence plan and Jira tickets. |
 | [Manual QA Skill](ai-tools/skills/manual-qa/SKILL.md) | QA knowledge base for planning, tests, bugs, reporting, and metrics. |
+| [QA Assessment Skill](ai-tools/skills/qa-assessment/SKILL.md) | The measuring stick: eight scored areas, evidence rules, and grade bands. |
 | [Robot QA Skill](ai-tools/skills/robot-qa/SKILL.md) | Robot Framework automation guidance. |
 
 ## Recommended use
@@ -192,6 +215,8 @@ Useful references include:
 ## License
 
 Released under the [MIT License](LICENSE). You are free to use, adapt, and share this playbook, with attribution.
+
+**One exception:** the cartoon [*Bugs Have Feelings Too*](02-during-development.md#bug-advocacy-with-a-smile) is Copyright 2010 [Andy Glover (Cartoon Tester)](https://cartoontester.blogspot.com), included here with his permission. It is not covered by the MIT License and is not sub-licensed. To reuse it, ask him directly.
 
 ## Author
 

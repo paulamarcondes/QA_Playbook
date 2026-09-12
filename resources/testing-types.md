@@ -20,6 +20,29 @@ This reference is connected to my original Software Testing QA mind map: [Softwa
 
 Reference: [ISTQB Glossary](https://glossary.istqb.org/).
 
+## Verification vs validation
+
+Two words used interchangeably in daily conversation that mean different things, and QA needs both.
+
+| | Verification | Validation |
+|---|---|---|
+| The question | Are we building the product **right**? | Are we building the **right** product? |
+| Checks against | Spec, contract, design, standard, acceptance criteria | Real user **value**: the user need, the business outcome, actual use |
+| Typical activities | Requirement and design review, static analysis, unit and component tests, contract tests, PR review | Exploratory testing, usability and accessibility testing, UAT, bug bash, production behavior and user feedback |
+| It fails when | The build does not match what was agreed | The build matches what was agreed, and what was agreed was wrong |
+
+A feature can pass every verification check and still fail validation. That is the absence-of-errors fallacy (principle 7 above) in practice: a defect-free build that solves the wrong problem.
+
+Across this playbook, the two run in parallel rather than in sequence:
+
+| Phase | Verification | Validation |
+|---|---|---|
+| [01 - Before](../01-before-development.md) | Contracts, testability, acceptance criteria that can be checked | User value, user journey, the problem actually worth solving |
+| [02 - During](../02-during-development.md) | PR review, unit/API/contract tests, static analysis | Exploratory testing, UX and error clarity, does the flow make sense |
+| [03 - After](../03-after-development.md) | Regression, release readiness gate, smoke tests | Bug bash, production behavior, support signals, user feedback |
+
+> **Practical reminder:** Verification is mostly answerable from documents and code. Validation usually requires a human using the product the way a real person would.
+
 ## Testing levels
 
 | Level | Purpose | Typical ownership |

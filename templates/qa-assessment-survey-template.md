@@ -69,6 +69,7 @@ The goal is not to audit people. The goal is to understand how quality currently
 | Unit tests and static analysis results are reviewed when relevant |  |  |
 | QA can review PRs from a risk/testability perspective |  |  |
 | Bugs are clearly classified and reproducible |  |  |
+| Big or high-risk releases get a whole-team bug bash, with findings triaged |  |  |
 | Definition of Done is understood and applied |  |  |
 
 ## 6. Environments and test data

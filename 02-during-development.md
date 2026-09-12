@@ -246,30 +246,16 @@ flowchart TD
 - Known limitation already documented and accepted
 - Test data setup issue caused by invalid preconditions
 
-### When unsure
-
-Document the observation, impact, evidence, and question. Then align with Product, Dev, and QA before classifying it.
-
 ## 10. Report bugs with resolution in mind
 
-A good bug report helps the team fix the issue faster.
+A good bug report helps the team fix the issue faster. Use the [Bug Report Template](templates/bug-report-template.md) for the full structure - it keeps defect documentation clear, reproducible, and consistent across the team.
 
-### Include
+### The fields most often missing
 
-- concise title;
-- environment;
-- build/version;
-- preconditions;
-- steps to reproduce;
-- expected result;
-- actual result;
-- evidence;
-- impact;
-- severity and priority suggestion;
-- logs, IDs, payloads, or screenshots when relevant;
-- suspected area if known.
-
-Use the [Bug Report Template](templates/bug-report-template.md) to keep defect documentation clear, reproducible, and consistent across the team.
+- **Preconditions:** the state the system had to be in, not only the steps.
+- **Impact:** who is affected and what they cannot do.
+- **Evidence:** logs, correlation IDs, payloads, or screenshots that prove the behavior.
+- **Suspected area:** where to start investigating, when QA already has a signal.
 
 ### Good bug title pattern
 
@@ -292,7 +278,26 @@ Severity is the impact; priority is the urgency to fix - they are not the same:
 | **High severity** | Checkout crashes for all users - fix now | Data loss in a deprecated admin tool - schedule |
 | **Low severity** | Typo on a legal page - fix fast | Minor UI misalignment on an internal page - backlog |
 
-> **Worth a smile:** Andy Glover's *Bugs Have Feelings Too* cartoon nails bug advocacy - understand it, report it quickly, back it with evidence, and look for its mates (the related bugs). See [Cartoon Tester - Bug Advocacy (2010)](https://cartoontester.blogspot.com/2010/03/bug-advocacy.html).
+### Bug advocacy, with a smile
+
+Andy Glover's *Bugs Have Feelings Too* says everything above in eight panels, and says it better.
+
+![Cartoon titled Bugs Have Feelings Too, with eight panels of advice for testers who find a bug. The eight rules are listed in the table below.](resources/bugs-have-feelings-too-andy-glover.jpg)
+
+*Cartoon by [Andy Glover, Cartoon Tester](https://cartoontester.blogspot.com/2010/03/bug-advocacy.html) (2010). Used with permission.*
+
+| If you find a bug | Because |
+|---|---|
+| Report it | Bugs don't like to be forgotten |
+| Get to know them | Bugs like to be understood |
+| Take a photo | Bugs like to keep memories of the occasion |
+| Get to know their mates | Bugs are socialites |
+| Report it quick | Otherwise bugs settle in and make a home for themselves |
+| Be honest | Bugs don't like gossips |
+| Note how you meet them | Bugs are romantics |
+| Don't ignore it | Bugs can bite if not appreciated |
+
+Translated into practice: report it, report it early, understand it before you write it up, back it with evidence, look for the related bugs nearby, and never quietly drop one because it is inconvenient.
 
 ## 11. Collect evidence that proves behavior
 
@@ -300,15 +305,9 @@ Evidence should make validation clear and reusable.
 
 ### Examples
 
-- Screenshots or short videos
-- API requests and responses
-- Logs with correlation IDs
-- Test execution results
-- Database record comparison when appropriate
-- Input and output files
-- Before/after behavior
-- CI pipeline result
-- Link to automated test
+- **User-facing:** screenshots or short videos, before/after behavior.
+- **Technical:** API requests and responses, logs with correlation IDs, input and output files, database record comparison when appropriate.
+- **Automated:** test execution results, CI pipeline result, link to the automated test.
 
 Good evidence reduces rework, improves trust, and helps future debugging.
 
@@ -362,19 +361,15 @@ Use the [Definition of Ready & Definition of Done Template](templates/definition
 
 ## During development checklist
 
+The work items of this phase. The completion gate itself lives in the [Definition of Done](#13-definition-of-done) and is not repeated here.
+
 - [ ] QA and Dev aligned before handoff.
-- [ ] Unit tests and static analysis reviewed when relevant.
 - [ ] QA reviewed PR risk/testability when relevant.
 - [ ] Risk-based scenarios designed.
 - [ ] Right test levels selected.
 - [ ] Correct environment used for the validation purpose.
-- [ ] Critical paths validated.
-- [ ] Negative and edge cases covered.
 - [ ] Automation opportunities reviewed.
 - [ ] Defects classified and documented clearly.
-- [ ] Evidence attached.
-- [ ] User guide or how-to-test notes updated when needed.
-- [ ] Logs/observability checked when relevant.
 - [ ] Definition of Done met.
 
 ## Key message

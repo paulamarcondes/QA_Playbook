@@ -27,11 +27,14 @@ The goal is to reduce ambiguity and help teams use the same language when discus
 | QC | Quality Control: detecting defects through inspection or testing. |
 | Quality Engineering | Quality designed into requirements, architecture, code, tests, releases, observability, and improvement. |
 | Quality Mindset | The habit of thinking about risk, user impact, testability, reliability, and maintainability in every phase. |
+| Verification | Checking that the product was built right: it matches the spec, contract, design, and acceptance criteria. |
+| Validation | Checking that the right product was built: it delivers real **value** by meeting the user need and the business outcome. A build can pass verification and still fail validation. |
 | Shift-Left Testing | Moving quality activities earlier into discovery, refinement, design, and development. |
 | Shift-Right Testing | Validating after release through monitoring, production signals, feedback, logs, and controlled experiments. |
 | Quality Standard | A shared expectation that helps the team decide whether work is ready or done. |
 | Team Quality Agreement | A shared agreement on how quality will be planned, tested, reviewed, released, and measured. |
 | QA as Strategist | A QA role focused on risk analysis, user impact, quality coaching, and release confidence. |
+| SDET | Software Development Engineer in Test: a QA role that builds test frameworks, tooling, and automated checks with the same engineering standards applied to production code. |
 
 ## Requirements and planning
 
@@ -199,6 +202,7 @@ For metric tracking, use the [QA Metrics Dashboard Template](../templates/qa-met
 
 | Term | Meaning |
 |---|---|
+| Bug Bash | A time-boxed session before a big release where the whole team, and often guests from close teams, explores a release-candidate build at the same time to surface risks no scripted test covers. |
 | QA Guild | A recurring community where QAs share practices, tools, learnings, standards, and improvement ideas. |
 | SonarQube | Static analysis platform used to identify code quality, maintainability, security, duplication, and coverage issues. |
 | Static Code Analysis | Automated inspection of code without executing it. |
