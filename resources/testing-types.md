@@ -6,7 +6,7 @@ This reference is connected to my original Software Testing QA mind map: [Softwa
 
 > **Key idea:** Testing is not only execution. It includes planning, analysis, design, implementation, execution, monitoring, reporting, and completion.
 
-> **Dijkstra:** "Program testing can be used to show the presence of bugs, but never to show their absence." This is why QA prioritizes by risk instead of chasing exhaustive coverage.
+> **Dijkstra:** "Program testing can be used to show the presence of bugs, but never to show their absence." This is why QA prioritizes by risk instead of chasing exhaustive coverage. Source: [Notes on Structured Programming, EWD249 (1970)](https://en.wikiquote.org/wiki/Edsger_W._Dijkstra).
 
 ## Seven testing principles (ISTQB)
 

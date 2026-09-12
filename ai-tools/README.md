@@ -162,8 +162,12 @@ Use these rules in every AI-assisted QA workflow:
 
 ```mermaid
 flowchart LR
-    G["<b>Gather<br/>context</b>"]:::step --> D["<b>Draft<br/>proposal</b>"]:::step --> P{"Human<br/>approval?"}:::gate
-    P -->|Approved| E["<b>Execute</b>"]:::step --> C["<b>Confirm<br/>result</b>"]:::done
+    G["`**Gather
+context**`"]:::step --> D["`**Draft
+proposal**`"]:::step --> P{"`Human
+approval?`"}:::gate
+    P -->|Approved| E["`**Execute**`"]:::step --> C["`**Confirm
+result**`"]:::done
     P -->|Changes| D
     classDef step fill:#d6deea,stroke:#3f4f68,color:#222a38;
     classDef gate fill:#ecdcb8,stroke:#6e5418,color:#3d3115;

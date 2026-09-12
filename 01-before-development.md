@@ -124,11 +124,23 @@ Testing depth should follow risk; not every change deserves the same effort.
 
 ```mermaid
 flowchart TD
-    Start["<b>Assess the change</b><br/>Risk = Impact × Likelihood"] --> Q{"Take the higher<br/>of the two"}
-    Q -->|Low| L["<b>Low</b><br/>Focused functional<br/>+ basic regression"]
-    Q -->|Medium| M["<b>Medium</b><br/>Functional · negative<br/>integration · targeted regression"]
-    Q -->|High| H["<b>High</b><br/>Risk-based validation<br/>automation review<br/>observability · rollback"]
-    Q -->|Critical| C["<b>Critical</b><br/>Release-blocking validation<br/>mandatory automation<br/>post-release monitoring"]
+    Start["`**Assess the change**
+Risk = Impact × Likelihood`"] --> Q{"`Take the higher
+of the two`"}
+    Q -->|Low| L["`**Low**
+Focused functional
++ basic regression`"]
+    Q -->|Medium| M["`**Medium**
+Functional · negative
+integration · targeted regression`"]
+    Q -->|High| H["`**High**
+Risk-based validation
+automation review
+observability · rollback`"]
+    Q -->|Critical| C["`**Critical**
+Release-blocking validation
+mandatory automation
+post-release monitoring`"]
     classDef low  fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
     classDef med  fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
     classDef high fill:#ecc9b0,stroke:#8a4423,color:#3f2614;

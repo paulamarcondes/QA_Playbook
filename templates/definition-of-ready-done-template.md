@@ -10,9 +10,24 @@ The two gates at a glance - a common starter subset:
 
 ```mermaid
 flowchart LR
-    DoR["<b>Definition of Ready</b><br/>before development<br/><br/>Three Amigos done<br/>Requirements documented<br/>Test data and environment ready<br/>Ticket clear, with evidence/logs<br/>Refinement completed"]:::ready
-    WORK["<b>Build<br/>and test</b>"]:::work
-    DoD["<b>Definition of Done</b><br/>before release · adapt per story<br/><br/>Code complete, reviewed, merged<br/>Documentation updated<br/>Approvals obtained (QA, PO)<br/>Deployed and monitored<br/>No open critical defects"]:::done
+    DoR["`**Definition of Ready**
+*before development*
+
+Three Amigos done
+Requirements documented
+Test data and environment ready
+Ticket clear, with evidence/logs
+Refinement completed`"]:::ready
+    WORK["`**Build
+and test**`"]:::work
+    DoD["`**Definition of Done**
+*before release · adapt per story*
+
+Code complete, reviewed, merged
+Documentation updated
+Approvals obtained (QA, PO)
+Deployed and monitored
+No open critical defects`"]:::done
     DoR --> WORK --> DoD
     classDef ready fill:#d6deea,stroke:#3f4f68,color:#222a38;
     classDef work  fill:#ecdcb8,stroke:#6e5418,color:#3d3115;

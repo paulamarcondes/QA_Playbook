@@ -44,10 +44,19 @@ The checklist feeds one clear decision - release, release with mitigation, or ho
 
 ```mermaid
 flowchart TD
-    R["<b>Release readiness review</b><br/>AC · regression · automation<br/>defects · rollback · observability"]:::step --> Q{"Risk visible<br/>and acceptable?"}
-    Q -->|Yes| GO["<b>Go</b><br/>release, then smoke-test<br/>and monitor"]:::go
-    Q -->|Residual risk| COND["<b>Ready with risk</b><br/>release with mitigation<br/>+ heightened monitoring"]:::cond
-    Q -->|No| NOGO["<b>No-go</b><br/>fix blockers,<br/>then re-review"]:::nogo
+    R["`**Release readiness review**
+AC · regression · automation
+defects · rollback · observability`"]:::step --> Q{"`Risk visible
+and acceptable?`"}
+    Q -->|Yes| GO["`**Go**
+release, then smoke-test
+and monitor`"]:::go
+    Q -->|Residual risk| COND["`**Ready with risk**
+release with mitigation
++ heightened monitoring`"]:::cond
+    Q -->|No| NOGO["`**No-go**
+fix blockers,
+then re-review`"]:::nogo
     NOGO -.-> R
     classDef step fill:#d6deea,stroke:#3f4f68,color:#222a38;
     classDef go   fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
@@ -89,10 +98,18 @@ Worth running before a major release, a high-risk integration, a migration, or t
 
 ```mermaid
 flowchart LR
-    P["<b>1 · Prepare</b><br/>stable build · environment<br/>test data · scope"]:::prep
-    B["<b>2 · Bash</b><br/>60-90 min · everyone at once<br/>assigned areas · shared log"]:::bash
-    T["<b>3 · Triage</b><br/>same day · dedupe<br/>severity &amp; priority"]:::triage
-    F["<b>4 · Feed back</b><br/>fix · accept · defer<br/>new regression · Go/No-Go"]:::feed
+    P["`**1 · Prepare**
+stable build · environment
+test data · scope`"]:::prep
+    B["`**2 · Bash**
+60-90 min · everyone at once
+assigned areas · shared log`"]:::bash
+    T["`**3 · Triage**
+same day · dedupe
+severity & priority`"]:::triage
+    F["`**4 · Feed back**
+fix · accept · defer
+new regression · Go/No-Go`"]:::feed
     P --> B --> T --> F
     classDef prep   fill:#d6deea,stroke:#3f4f68,color:#222a38;
     classDef bash   fill:#ecdcb8,stroke:#6e5418,color:#3d3115;

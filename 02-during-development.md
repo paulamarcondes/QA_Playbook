@@ -95,10 +95,16 @@ Not everything should be tested through the UI. Strong QA strategy uses differen
 > **Principle:** Test at the lowest level that can catch the problem; move up only when a lower level cannot. Unit and API tests are faster and more stable than UI tests.
 
 ```mermaid
-flowchart TB
-    U["<b>Unit / Component</b><br/>many, fast<br/>rules · validators · calculations"]:::base
-    I["<b>Integration · API · Contract</b><br/>some<br/>service &amp; system boundaries"]:::mid
-    E["<b>UI / E2E</b><br/>few<br/>critical user journeys"]:::top
+flowchart BT
+    U["`**Unit / Component**
+*many · fast · cheap*
+rules · validators · calculations`"]:::base
+    I["`**Integration · API · Contract**
+*some · slower*
+service & system boundaries`"]:::mid
+    E["`**UI / E2E**
+*few · slow · brittle*
+critical user journeys`"]:::top
     U --> I --> E
     classDef base fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
     classDef mid  fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
@@ -211,13 +217,23 @@ A bug is a product behavior that conflicts with a requirement, acceptance criter
 
 ```mermaid
 flowchart TD
-    O["<b>Observed behavior</b>"] --> C["<b>Check against the agreed spec:</b><br/>requirement · AC · business rule<br/>contract · security · data integrity"]:::check
-    C --> Q1{"Conflict<br/>found?"}
-    Q1 -->|No| N["<b>Usually not a bug</b><br/>feature request · works as designed<br/>test data · env · known limitation"]:::no
-    Q1 -->|Unsure| U["<b>Investigate</b><br/>document · capture evidence<br/>align with Product / Dev / QA"]:::wait
-    Q1 -->|Yes| Q2{"Reproducible<br/>with evidence?"}
+    O["`**Observed behavior**`"] --> C["`**Check against the agreed spec:**
+requirement · AC · business rule
+contract · security · data integrity`"]:::check
+    C --> Q1{"`Conflict
+found?`"}
+    Q1 -->|No| N["`**Usually not a bug**
+feature request · works as designed
+test data · env · known limitation`"]:::no
+    Q1 -->|Unsure| U["`**Investigate**
+document · capture evidence
+align with Product / Dev / QA`"]:::wait
+    Q1 -->|Yes| Q2{"`Reproducible
+with evidence?`"}
     Q2 -->|No| U
-    Q2 -->|Yes| B["<b>Log a bug</b><br/>impact · severity · priority<br/>steps · evidence"]:::bug
+    Q2 -->|Yes| B["`**Log a bug**
+impact · severity · priority
+steps · evidence`"]:::bug
     classDef check fill:#d4dcf0,stroke:#38507e,color:#20284a;
     classDef bug  fill:#e6c2c4,stroke:#7a3338,color:#38191b;
     classDef no   fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;

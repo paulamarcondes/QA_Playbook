@@ -16,11 +16,20 @@ This repository is a portfolio project that documents how QA can support deliver
 
 ```mermaid
 flowchart LR
-    A["<b>01 · Before</b><br/>Clarify value &amp; risk<br/>Testability &amp; contracts<br/>Early test design"]
-    B["<b>02 · During</b><br/>Collaborate &amp; PR review<br/>Right test level<br/>Automate strategically"]
-    C["<b>03 · After</b><br/>Release confidence<br/>Metrics &amp; observability<br/>Blame-free learning"]
+    A["`**01 · Before**
+Clarify value & risk
+Testability & contracts
+Early test design`"]
+    B["`**02 · During**
+Collaborate & PR review
+Right test level
+Automate strategically`"]
+    C["`**03 · After**
+Release confidence
+Metrics & observability
+Blame-free learning`"]
     A --> B --> C
-    C -. "learn &amp; improve" .-> A
+    C -. "learn & improve" .-> A
     classDef before fill:#d6deea,stroke:#3f4f68,color:#222a38;
     classDef during fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
     classDef after  fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
@@ -174,9 +183,14 @@ Turn the playbook into an interactive coach: feed it the standards, point it at 
 
 ```mermaid
 flowchart LR
-    P["<b>QA Playbook</b><br/>standards · templates · checklists"]:::src --> AI["<b>Your AI assistant</b><br/>NotebookLM · ChatGPT · Claude"]:::ai
-    W["<b>Your real work</b><br/>story · change · bug · release"]:::work --> AI
-    AI --> O["<b>Applied guidance</b><br/>DoR review · risk level<br/>bug report · go/no-go"]:::out
+    P["`**QA Playbook**
+standards · templates · checklists`"]:::src --> AI["`**Your AI assistant**
+NotebookLM · ChatGPT · Claude`"]:::ai
+    W["`**Your real work**
+story · change · bug · release`"]:::work --> AI
+    AI --> O["`**Applied guidance**
+DoR review · risk level
+bug report · go/no-go`"]:::out
     classDef src  fill:#d6deea,stroke:#3f4f68,color:#222a38;
     classDef work fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
     classDef ai   fill:#d4dcf0,stroke:#38507e,color:#20284a;
@@ -204,7 +218,7 @@ Useful references include:
 - [Cabinet Office of Japan - Society 5.0 (human-centered super-smart society)](https://www8.cao.go.jp/cstp/english/society5_0/index.html)
 - [ASQ - Quality 4.0](https://asq.org/quality-resources/quality-4-0)
 - [NIST/RTI - The Economic Impacts of Inadequate Infrastructure for Software Testing (2002)](https://www.nist.gov/document/report02-3pdf)
-- [Dijkstra - Notes on Structured Programming, EWD249 ("testing shows the presence, not the absence, of bugs")](https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD249/EWD249.html)
+- [Dijkstra - "Program testing can be used to show the presence of bugs, but never to show their absence" (Notes on Structured Programming, EWD249, 1970; quote via Wikiquote)](https://en.wikiquote.org/wiki/Edsger_W._Dijkstra)
 - [Mike Cohn - Succeeding with Agile (test pyramid origin)](https://www.mountaingoatsoftware.com/books/succeeding-with-agile-software-development-using-scrum)
 - [Google SRE Book - Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)
 - [IBM - Shift-left testing](https://www.ibm.com/think/topics/shift-left-testing)
