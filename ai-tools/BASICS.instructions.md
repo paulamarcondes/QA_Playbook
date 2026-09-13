@@ -113,35 +113,7 @@ Use the simplest tool that gives the right result.
 
 ## Testing standards
 
-### Test case quality
-
-- Clear objective
-- Traceable to requirements
-- Specific test data
-- Actionable steps
-- Objective expected results
-- Independent and maintainable
-- Pass/fail criteria are measurable
-
-### Bug report quality
-
-- Reproducible steps
-- Expected vs actual result
-- Environment and build details
-- User/business impact
-- Severity and priority rationale
-- Evidence attached or linked
-- Workaround if available
-
-### Automation standards
-
-- Readable and maintainable
-- Stable and deterministic
-- Independent tests
-- Clear assertions and failure messages
-- Minimal waits, robust synchronization
-- Version controlled
-- Integrated into CI/CD where valuable
+Test case, bug report, and reporting formats are in the [Manual QA Skill](skills/manual-qa/SKILL.md). Automation standards are in the [Robot QA Skill](skills/robot-qa/SKILL.md).
 
 ## Environment policy
 
@@ -165,7 +137,12 @@ After each release or escaped defect, ask:
 ## Skills
 
 - `/manual-qa` - Requirements review, test strategy, test cases, bug reports, log analysis, reporting
+- `/qa-assessment` - Team QA maturity scoring against the playbook, with evidence, grade bands, and an action plan
 - `/robot-qa` - Robot Framework automation, refactoring, manual-to-automated conversion, robustness review
+- `/check-requirements` - QA Checker: requirements document against its template and against what development needs
+- `/check-deliverables` - QA Checker: QA and development deliverables against templates, coverage, and each other
+- `/check-code` - QA Checker: preliminary trace of code against requirements. Never replaces testing
+- `/check-fix` - QA Checker: a fix against its ticket, for root cause and regression risk
 
 ## Team context to customize
 

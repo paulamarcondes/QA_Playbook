@@ -13,16 +13,18 @@ Paired with [`qa-assessment.agent.md`](../../agents/qa-assessment.agent.md), whi
 
 Scored against the [QA Assessment Survey Template](../../../templates/qa-assessment-survey-template.md), so an AI assessment and a team self-assessment produce comparable numbers.
 
+Sections are named rather than numbered, because section numbers change when the playbook gains a practice and a stale number is worse than no number.
+
 | # | Area | Playbook reference |
 |---|---|---|
-| 1 | Requirements and refinement | [01 §1-§3, §13](../../../01-before-development.md) |
-| 2 | User focus and product quality | [01 §1, §8](../../../01-before-development.md) |
-| 3 | Test strategy and coverage | [01 §4-§5](../../../01-before-development.md), [02 §4-§5](../../../02-during-development.md) |
-| 4 | Automation and tooling | [01 §9](../../../01-before-development.md), [02 §7](../../../02-during-development.md) |
-| 5 | Development collaboration | [02 §1-§3, §9-§13](../../../02-during-development.md) |
-| 6 | Environments and test data | [01 §10](../../../01-before-development.md), [02 §6](../../../02-during-development.md) |
-| 7 | Observability and release confidence | [03 §1-§4](../../../03-after-development.md) |
-| 8 | Metrics and improvement culture | [03 §6-§8](../../../03-after-development.md) |
+| 1 | Requirements and refinement | [Acceptance criteria that are testable](../../../01-before-development.md#3-write-acceptance-criteria-that-are-testable) · [Definition of Ready](../../../01-before-development.md#11-definition-of-ready) |
+| 2 | User focus and product quality | [Start with user value](../../../01-before-development.md#1-start-with-user-value) · [Quality Attributes Guide](../../../resources/quality-attributes-guide.md) |
+| 3 | Test strategy and coverage | [Map risk before defining test depth](../../../01-before-development.md#4-map-risk-before-defining-test-depth) · [Use the right test level](../../../02-during-development.md#4-use-the-right-test-level-for-the-risk) · [Exploratory testing](../../../02-during-development.md#6-run-exploratory-testing-with-a-charter) |
+| 4 | Automation and tooling | [Choose tools intentionally](../../../01-before-development.md#9-choose-tools-languages-and-frameworks-intentionally) · [Automate strategically](../../../02-during-development.md#8-automate-strategically) |
+| 5 | Development collaboration | [Collaborate before the handoff](../../../02-during-development.md#1-collaborate-before-the-handoff) · [PR review as a QA task](../../../02-during-development.md#3-participate-in-pr-review-as-a-qa-task) · [Triage defects as a team](../../../02-during-development.md#12-triage-defects-as-a-team) · [QA Operating Model](../../../resources/qa-operating-model.md) |
+| 6 | Environments and test data | [Prepare test data and environments early](../../../01-before-development.md#10-prepare-test-data-and-environments-early) · [Use environments intentionally](../../../02-during-development.md#7-use-environments-intentionally) |
+| 7 | Observability and release confidence | [Define release readiness](../../../03-after-development.md#1-define-release-readiness) · [Release progressively](../../../03-after-development.md#4-release-progressively) · [Validate production behavior](../../../03-after-development.md#5-validate-production-behavior) |
+| 8 | Metrics and improvement culture | [Metrics that drive decisions](../../../03-after-development.md#8-use-metrics-that-drive-decisions) · [Blame-free post-release reviews](../../../03-after-development.md#10-run-blame-free-post-release-reviews) |
 
 Equal weight by default. A team may reweight for its context, as long as the weighting is stated in the report.
 
@@ -48,6 +50,7 @@ Non-negotiable. A QA assessment that cannot survive a "how do you know?" is an o
 - **Never invent a finding, a metric, or a ticket key.** If access was denied or a tool failed, say so in the Coverage section.
 - **Distinguish "we have the template" from "we use the template".** A DoR nobody applies scores 2, not 4.
 - Prefer three recent examples over one perfect one. Recency beats volume: the last 2-3 sprints reflect how the team works now.
+- **Separate what the team controls from what it does not.** A score can be capped by a decision made above the team: no environment budget, no time allocated for automation, a deadline that waives the DoD every quarter. Score the practice as it actually is, then name the constraint and who owns it. A team scored down for a decision it was never allowed to make will dismiss the whole assessment, and it will be right to.
 
 ## Grade bands
 

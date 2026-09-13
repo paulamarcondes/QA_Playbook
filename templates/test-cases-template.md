@@ -50,6 +50,7 @@ Test cases should be readable as plain text documentation. Keep executable autom
 
 | Field | Details |
 |---|---|
+| Requirement / AC |  |
 | Priority | Critical / High / Medium / Low |
 | Type | Positive / Negative / API / Integration / UI / Regression / Exploratory |
 | Automation | Automated / Candidate / Manual only |
@@ -65,6 +66,7 @@ Test cases should be readable as plain text documentation. Keep executable autom
 
 | Field | Details |
 |---|---|
+| Requirement / AC |  |
 | Priority | Critical / High / Medium / Low |
 | Type | Positive / Negative / API / Integration / UI / Regression / Exploratory |
 | Automation | Automated / Candidate / Manual only |
@@ -123,10 +125,9 @@ Use this section when validating APIs, files, events, queues, data transformatio
 
 ### Automation guidance
 
-- Automate stable, valuable, and repetitive checks.
-- Prioritize critical flows, contracts, integrations, and regression-prone areas.
-- Avoid automating unclear or unstable behavior too early.
-- Keep test case documentation readable; keep executable logic in the automation framework.
+What to automate and what to leave alone is defined once, in [02 - Automate strategically](../02-during-development.md#8-automate-strategically). Two rules specific to this template:
+
+- Keep test case documentation readable as plain text; keep executable logic in the automation framework.
 - In Robot Framework, keep Test Cases high-level and place reusable executable keywords in Resource files.
 
 ## 9. Execution summary

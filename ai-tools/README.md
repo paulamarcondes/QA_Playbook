@@ -1,164 +1,52 @@
 # AI Tools for QA Workflows
 
-Reusable AI assistant templates for Quality Engineering work across the SDLC.
+Reusable instructions, agents, and skills that configure an AI assistant (GitHub Copilot, Claude Code, or similar) for QA work across the SDLC: requirements review, test strategy, test design, defect reporting, automation support, and reporting.
 
-These files help configure AI assistants such as GitHub Copilot, Claude Code, or similar coding agents to support QA activities from requirements review to test strategy, test case design, defect reporting, automation support, and test reporting.
-
-## Goals
-
-- Support shift-left QA practices.
-- Improve test planning and test design quality.
-- Standardize bug reports, test cases, and QA documentation.
-- Keep AI usage safe, concise, and approval-driven.
-- Encourage token-efficient workflows using local tools first and MCP only when useful.
-
-## Compatibility note
-
-These files are reusable templates. Folder structure, loading behavior, and feature support vary by AI tool.
-
-- GitHub Copilot custom instructions and prompts may require placement in your VS Code or repository configuration.
-- Claude Code supports agents and skills, but file locations may vary depending on local or global setup.
-- Other AI tools may require copying the relevant content into their own instruction or agent format.
-
-Always validate how your specific tool loads instructions before relying on them in daily work.
-
-## Folder structure
-
-```text
-ai-tools/
-├── README.md
-├── BASICS.instructions.md
-├── BASICS-SHORT.instructions.md
-├── agents/
-│   ├── manual-qa.agent.md
-│   └── qa-assessment.agent.md
-└── skills/
-    ├── manual-qa/
-    │   └── SKILL.md
-    ├── qa-assessment/
-    │   └── SKILL.md
-    └── robot-qa/
-        └── SKILL.md
-```
+These are templates. Folder structure, loading behavior, and feature support vary by tool, so check how yours loads instructions before relying on them.
 
 ## Files
 
 | File | Purpose |
 |---|---|
 | `BASICS.instructions.md` | Always-on QA context: role, systems, tools, communication style, safety rules, SDLC principles. Fill in the placeholders with your team context. |
-| `BASICS-SHORT.instructions.md` | The short working version: communication style, approval rules, and token-efficient tool use. Ready to use with no customization. |
-| `agents/manual-qa.agent.md` | Manual QA agent workflow: requirements review, test strategy, test cases, execution, and reporting. |
-| `skills/manual-qa/SKILL.md` | Manual QA knowledge base: test types, techniques, strategy, bug reporting, metrics, CI/CD, documentation. |
+| `BASICS-SHORT.instructions.md` | The short working version: communication style, approval rules, token-efficient tool use. Ready to use with no customization. |
+| `agents/manual-qa.agent.md` | Manual QA agent workflow: requirements review, test strategy, test cases, execution, reporting. |
 | `agents/qa-assessment.agent.md` | QA consultancy engagement: gather evidence, grade the team, draft a Confluence plan and Jira tickets. |
-| `skills/qa-assessment/SKILL.md` | The measuring stick: eight scored areas, evidence rules, grade bands, and report format. |
-| `skills/robot-qa/SKILL.md` | Robot Framework automation guidance: clean, maintainable, robust test code. |
+| `skills/manual-qa/SKILL.md` | Output formats and team standards an assistant cannot infer: test cases, bugs, charters, reports. |
+| `skills/qa-assessment/SKILL.md` | The measuring stick: eight scored areas, evidence rules, grade bands, report format. |
+| `skills/robot-qa/SKILL.md` | Robot Framework automation guidance. |
+| `skills/check-requirements/SKILL.md` | **QA Checker:** is a requirements document complete, testable, and free of contradictions? |
+| `skills/check-deliverables/SKILL.md` | **QA Checker:** do QA and development deliverables follow their templates, cover the acceptance criteria, and agree with each other? |
+| `skills/check-code/SKILL.md` | **QA Checker:** preliminary trace of developed code against the requirements it was built from. |
+| `skills/check-fix/SKILL.md` | **QA Checker:** does a fix address the ticket, fix the cause, and what might it break? |
 
-## Recommended usage
+## Typical prompts
 
-### 1. Start with the basics file
+| To | Ask |
+|---|---|
+| Review a story | "Review this user story for testability and missing acceptance criteria." |
+| Plan and design tests | "Create a test strategy and test cases for this feature. Ask for approval before writing anything." |
+| Report a defect | "Analyze this defect and draft a bug report with severity, priority, impact, and evidence." |
+| Report to leadership | "Create a QA summary report for leadership based on these test results." |
+| Grade QA maturity | "Assess this team's QA maturity against the playbook. Repo and Jira available, no interviews. Read-only." |
+| Automate | "Review this Robot Framework test for readability, robustness, and maintainability." |
+| Check a document | "Check these test cases and the deployment guide against their templates and the ACs in PROJ-812." |
+| Check code or a fix | "Check this diff against PROJ-1423. Did it fix the cause, and what should I retest?" |
 
-Customize `BASICS.instructions.md` with your team context:
+The four checkers ask for their required inputs and stop if they are missing, rather than guessing. `check-code` and `check-fix` are preliminary and always end with what a human still has to test. The assessment agent reads, grades, and drafts locally; it creates nothing in Confluence or Jira unless you approve that as a separate step.
 
-- Product or system under test
-- Architecture and integration points
-- Testing scope
-- Test management and defect tracking tools
-- Automation framework
-- CI/CD pipeline
-- Environments
-- Definition of Ready and Definition of Done
+## CLI vs MCP
 
-### 2. Use the Manual QA Agent for SDLC work
-
-Typical prompts:
-
-```text
-Review this user story for testability and missing acceptance criteria.
-```
-
-```text
-Create a test strategy and test cases for this feature. Ask for approval before writing anything.
-```
-
-```text
-Analyze this defect and draft a clear bug report with severity, priority, impact, and evidence.
-```
-
-```text
-Create a QA summary report for leadership based on these test results.
-```
-
-### 3. Use the QA Assessment Agent to grade where the team stands
-
-Typical prompts:
-
-```text
-Assess this team's QA maturity against the playbook. Repo and Jira are available, no interviews. Read-only.
-```
-
-```text
-Score only the automation and observability areas, with evidence for each score.
-```
-
-```text
-Scores are agreed. Draft the Confluence action plan and Jira tickets for the top three gaps.
-```
-
-The agent reads and grades, then writes plan drafts locally. It does not create Confluence pages or Jira tickets unless you ask for that as a separate approved step.
-
-### 4. Use the Robot QA skill for automation support
-
-Typical prompts:
-
-```text
-Review this Robot Framework test for readability, robustness, and maintainability.
-```
-
-```text
-Convert these manual test cases into Robot Framework automation candidates.
-```
-
-```text
-Refactor this keyword with minimal changes and better failure messages.
-```
-
-## CLI vs MCP guidance
-
-Use the simplest tool that gives the right result.
-
-### Prefer CLI or local tools for
-
-- Searching local files
-- Reading repository structure
-- Running tests
-- Checking git status or diffs
-- Editing small files
-- Inspecting logs already available locally
-
-### Prefer MCP for
-
-- Structured access to Jira, Azure DevOps, TestRail, Zephyr, Confluence, GitHub, or similar systems
-- Multi-resource workflows, such as linking stories, test cases, defects, and documentation
-- Operations where the assistant needs context from several external tools
-
-### Avoid MCP when
-
-- A local file read, grep, or test command is enough
-- The task does not require external system context
-- It would increase token usage without improving accuracy
+Simplest tool that gives the right result. **CLI and local tools** for searching files, reading repository structure, running tests, git status and diffs, small edits, and local logs. **MCP** only when external system context is genuinely required: Jira, Azure DevOps, TestRail, Zephyr, Confluence, GitHub. Never when a local read, grep, or test command answers the question. Full guidance: [BASICS.instructions.md](BASICS.instructions.md#cli-vs-mcp-guidance).
 
 ## Safety rules
 
-Use these rules in every AI-assisted QA workflow:
-
 - Never include secrets, credentials, tokens, private keys, customer data, production data, or proprietary system details in prompts or examples.
 - Use synthetic or anonymized test data.
-- Do not allow AI to write to issue trackers, test management tools, documentation tools, repositories, or production systems without explicit approval.
+- No AI writes to issue trackers, test management tools, documentation, repositories, or production systems without explicit approval.
 - Treat production as read-only unless a formally approved operational process says otherwise.
 - Review all generated test cases, bug reports, and automation code before using them.
 - Keep AI-generated content traceable to requirements, risks, and evidence.
-
-## Good AI workflow
 
 ```mermaid
 flowchart LR
@@ -174,16 +62,8 @@ result**`"]:::done
     classDef done fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
 ```
 
-The assistant should be useful, but the QA professional remains accountable for quality decisions.
+AI belongs in QA as a productivity layer, not as a replacement for engineering judgment. The assistant should be useful; the QA professional remains accountable for every quality decision.
 
-## What to customize
+## Customizing
 
-- Replace placeholders with your real tool names and paths.
-- Remove sections that do not apply to your team.
-- Add product-specific risks, test data rules, and environment constraints.
-- Update automation standards to match your framework.
-- Add links to your internal templates, examples, and documentation.
-
-## Portfolio note
-
-This folder demonstrates how QA can use AI responsibly as a productivity layer, not as a replacement for engineering judgment. The focus is practical: better requirements, stronger test strategy, cleaner test cases, safer automation, and clearer communication.
+Replace the placeholders in `BASICS.instructions.md` with your product, architecture, test scope, tools, automation framework, CI/CD, environments, and DoR/DoD. Remove what does not apply, and add your own product risks, test data rules, and internal template links.

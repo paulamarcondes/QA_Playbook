@@ -6,27 +6,11 @@ The goal: **make the work clear, testable, valuable, and safe to build**. Involv
 
 > **Key idea:** A story is not ready just because it has a description. It is ready when the team understands value, risk, contracts, testability, and expected evidence.
 
-## On this page
-
-1. [Start with user value](#1-start-with-user-value)
-2. [Run a lightweight Three Amigos review](#2-run-a-lightweight-three-amigos-review)
-3. [Write acceptance criteria that are testable](#3-write-acceptance-criteria-that-are-testable)
-4. [Map risk before defining test depth](#4-map-risk-before-defining-test-depth)
-5. [Create the test strategy and draft test cases early](#5-create-the-test-strategy-and-draft-test-cases-early)
-6. [Validate testability before implementation](#6-validate-testability-before-implementation)
-7. [Treat contracts as quality assets](#7-treat-contracts-as-quality-assets)
-8. [Separate frontend/UX and backend/API strategies](#8-separate-frontendux-and-backendapi-strategies)
-9. [Choose tools, languages, and frameworks intentionally](#9-choose-tools-languages-and-frameworks-intentionally)
-10. [Prepare test data and environments early](#10-prepare-test-data-and-environments-early)
-11. [Assess QA maturity when joining a team](#11-assess-qa-maturity-when-joining-a-team)
-12. [Build QA community through a QA Guild](#12-build-qa-community-through-a-qa-guild)
-13. [Definition of Ready](#13-definition-of-ready)
-
 Companion reference: [Quality Review Checklist - Before development](resources/quality-review-checklist.md#before-development).
 
 ## Outcomes expected before coding starts
 
-By the end of this phase, the team can explain what to build and why, what could fail, how success and failure will be validated, and what must be observable after release - captured formally in the [Definition of Ready](#13-definition-of-ready).
+By the end of this phase, the team can explain what to build and why, what could fail, how success and failure will be validated, and what must be observable after release - captured formally in the [Definition of Ready](#11-definition-of-ready).
 
 ## 1. Start with user value
 
@@ -42,7 +26,19 @@ Quality starts with the real user journey, not only the technical change.
 - What would make it feel reliable and easy to use?
 - How will we know the experience improved?
 
-> **Principle:** A feature can be technically correct and still fail if the user journey is unclear, slow, confusing, or hard to recover from.
+### Ask how it fails them, not only how it works
+
+Service industries learned this long before software did: people forgive failure, and they remember how the failure was handled. A refund handled well keeps a customer. A refund handled badly loses ten.
+
+Most acceptance criteria describe success. The recovery path is where trust is actually won or lost, so ask it explicitly:
+
+- When this fails, does the person understand **what happened**, in their words rather than the system's?
+- Do they know **what to do next**, or are they left guessing?
+- Can they **recover without contacting support**, and if they do contact support, does Support have what they need to help?
+- Does the failure lose their work, their data, or their time?
+- How long will they be stuck before anyone notices?
+
+> **Principle:** A feature can be technically correct and still fail if the user journey is unclear, slow, confusing, or hard to recover from. Design the recovery, not only the success.
 
 ## 2. Run a lightweight Three Amigos review
 
@@ -120,13 +116,24 @@ Cover failure and operability, not just the happy path:
 
 Testing depth should follow risk; not every change deserves the same effort.
 
-> **Shortcut:** Risk = Impact × Likelihood. Score both High/Medium/Low, take the higher of the two, and let that drive the risk level and testing depth.
+> **Shortcut:** Score **Impact** and **Likelihood** as Low, Medium, or High, then read the risk level off the matrix. Impact weighs more than likelihood: a rare failure that hurts badly still deserves attention.
+
+### Risk matrix
+
+| | Likelihood: Low | Likelihood: Medium | Likelihood: High |
+|---|---|---|---|
+| **Impact: High** | Medium | High | **Critical** |
+| **Impact: Medium** | Low | Medium | High |
+| **Impact: Low** | Low | Low | Medium |
+
+> **Override:** anything touching safety, money, personal data, or regulatory compliance never sits below **High**, whatever the likelihood says.
 
 ```mermaid
 flowchart TD
     Start["`**Assess the change**
-Risk = Impact × Likelihood`"] --> Q{"`Take the higher
-of the two`"}
+Score Impact and Likelihood
+as Low · Medium · High`"] --> Q{"`Read the level from
+the risk matrix`"}
     Q -->|Low| L["`**Low**
 Focused functional
 + basic regression`"]
@@ -171,7 +178,7 @@ For full risk assessment, use the [Test Strategy Template](templates/test-strate
 | High | Full risk-based validation, automation review, observability checks, rollback awareness, and release follow-up. |
 | Critical | Release-blocking validation: full risk-based coverage, mandatory automated regression, observability and rollback verification, and post-release monitoring. |
 
-> **Example:** A change to the payment-confirmation email. Impact = High (revenue and trust), Likelihood = Medium. Take the higher -> **High** risk: risk-based validation, automation review, and post-release monitoring.
+> **Example:** A change to the payment-confirmation email. Impact = High (revenue and trust), Likelihood = Medium -> the matrix gives **High** risk: risk-based validation, automation review, and post-release monitoring. The override would have reached the same level on its own, because money is involved.
 
 > **Data point:** **~20% of defects cause ~80% of avoidable rework** - and teams lose 40-50% of their effort to it (Boehm & Basili, 2001). Test the risky few deeply, not everything evenly.
 
@@ -197,6 +204,8 @@ Use the [Test Strategy Template](templates/test-strategy-template.md) and [Test 
 - Developers see expected validations before implementation.
 - Missing requirements and automation candidates surface earlier.
 - QA execution becomes faster and less reactive.
+
+> **Real world:** requirements move, and test cases written in full detail before the build get rewritten. That teaches a team the effort was wasted, and they stop doing it. Draft **scenarios and risks** early, because those survive a change of design. Leave detailed steps and expected values until the behavior is settled.
 
 ### AI-assisted option
 
@@ -256,7 +265,7 @@ Validate the user journey, usability, accessibility, clarity, visual feedback, e
 
 Useful validation: exploratory testing, UI and accessibility checks, usability review, critical UI automation, and a pass over copy, labels, empty states, errors, loading states, and recovery paths.
 
-Use usability heuristics to support structured review. Reference: [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
+Use usability heuristics to support structured review. Reference: [Nielsen Norman Group - 10 Usability Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
 
 ### Backend / API focus
 
@@ -264,7 +273,7 @@ Validate business rules, contracts, data integrity, security, performance, integ
 
 Useful validation: API, contract, and integration tests, data validation, negative testing, authorization checks, logs and correlation IDs, plus duplicate requests, timeouts, retries, and idempotency when relevant.
 
-For the full catalogue of testing types and a context-to-validation map, see the [Testing Types Reference](resources/testing-types.md#practical-selection-guide).
+For the full catalogue of testing types and a context-to-validation map, see the [Testing Types Reference](resources/testing-types.md#practical-selection-guide). For accessibility, locale, security, performance, and privacy - the qualities that fail silently on both sides - see the [Quality Attributes Guide](resources/quality-attributes-guide.md).
 
 ## 9. Choose tools, languages, and frameworks intentionally
 
@@ -298,66 +307,21 @@ Late test data is a common reason for blocked QA.
 
 Keep a small, reusable set of **golden test data** for critical flows.
 
-> **Note:** Sections 11 and 12 are team-level practices that run over weeks and months, not per-story checks. Use them when joining a team or building quality culture.
+> **Never a production copy.** Generate synthetic data first, and mask irreversibly only when realism is genuinely required. A production dump sitting in a lower environment is a breach waiting for a date. See [Quality Attributes Guide - Privacy and test data](resources/quality-attributes-guide.md#5-privacy-and-test-data).
 
-## 11. Assess QA maturity when joining a team
+> **Team-level practices:** assessing QA maturity when joining a team, and building a QA Guild, run over weeks and months rather than per story. Both moved to the [QA Operating Model](resources/qa-operating-model.md), alongside role ownership and how QA works across time zones and vendor teams.
 
-When QA joins a new team, understand how quality currently works before proposing changes.
+## 11. Definition of Ready
 
-### Run a simple team survey
+A story is ready when the goal and value are clear, the acceptance criteria are testable, risks and dependencies are identified, test data and environment needs are understood, and QA, Dev, and Product share the same understanding of what is being built.
 
-Measure the current state of:
+Contracts, non-functional expectations ([Quality Attributes Guide](resources/quality-attributes-guide.md)) and observability needs join that bar when the change is risky enough to warrant them.
 
-- requirement quality;
-- Definition of Ready and Definition of Done;
-- test strategy and coverage;
-- automation health;
-- environment and test data stability;
-- defect management;
-- observability;
-- release confidence;
-- user focus and quality culture.
-
-Repeat the survey after a few sprints or months to show improvement, gaps, and culture change.
-
-For a reusable model, see [QA Assessment Survey Template](templates/qa-assessment-survey-template.md).
-
-## 12. Build QA community through a QA Guild
-
-A QA Guild is a recurring space where QAs from different teams share knowledge, patterns, failures, tools, and standards.
-
-### Useful guild topics
-
-- testing techniques and automation patterns;
-- flaky tests;
-- accessibility and UX testing;
-- API and contract testing;
-- AI-assisted QA;
-- quality metrics;
-- incident learnings;
-- framework/tool decisions.
-
-> **Principle:** QA maturity grows faster when knowledge is shared across teams instead of staying isolated inside one squad.
-
-## 13. Definition of Ready
-
-A story is ready for development when:
-
-- the goal and value are clear;
-- acceptance criteria are testable;
-- main risks and dependencies are identified;
-- test data needs are understood;
-- UX/API/contract expectations are documented;
-- frontend and backend validation needs are understood;
-- non-functional expectations are clear when relevant;
-- observability needs are defined for risky flows;
-- QA, Dev, and Product share the same understanding.
-
-For a full template, see [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md).
+The full checklist, the high-risk add-ons, and where the team confirms each one live in the [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md). Agree 3-5 items there and apply them consistently, rather than adopting the whole list.
 
 ## Before development checklist
 
-The work items of this phase. The readiness gate itself lives in the [Definition of Ready](#13-definition-of-ready) and is not repeated here.
+The work items of this phase. The readiness gate itself lives in the [Definition of Ready](#11-definition-of-ready) and is not repeated here.
 
 - [ ] User journey and expected experience are understood.
 - [ ] BDD or practical checklist format was chosen for acceptance criteria.

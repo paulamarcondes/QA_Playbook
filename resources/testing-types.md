@@ -2,7 +2,7 @@
 
 Use this reference to clarify common testing levels, methods, types, and techniques used across the QA Playbook.
 
-This reference is connected to my original Software Testing QA mind map: [Software Testing QA Mind Map](https://mm.tt/map/3489122534?t=03NPIthAMR).
+Companion visual: the author's own [Software Testing QA mind map](https://mm.tt/map/3489122534?t=03NPIthAMR), which maps the same material as a single picture. It is a personal artifact rather than a standard, so treat this page as the source of truth.
 
 > **Key idea:** Testing is not only execution. It includes planning, analysis, design, implementation, execution, monitoring, reporting, and completion.
 
@@ -113,6 +113,8 @@ A mature strategy usually combines both. Manual testing is strong for exploratio
 | Cross-Platform Testing | Validates behavior across web, mobile, desktop, or operating systems. |
 | Network Testing | Validates behavior under Wi-Fi, 5G, 4G, 3G, slow, or unstable network conditions. |
 
+> **Mobile:** native and hybrid mobile apps add risks this playbook does not cover in depth - app store review and staged rollout, OS version fragmentation, device permissions, background and offline behavior, battery and data usage, push notifications, and the fact that users can decline an update indefinitely, so several versions of your app run at once. Treat the practices here as the base and add mobile-specific coverage on top.
+
 ## Test design techniques
 
 | Technique | Use when |
@@ -130,10 +132,10 @@ A mature strategy usually combines both. Manual testing is strong for exploratio
 
 | Term | Meaning |
 |---|---|
-| Severity | How serious the technical or user impact is. |
-| Priority | How urgently the issue should be fixed. |
+| Severity | How much damage the defect does. Critical / High / Medium / Low. |
+| Priority | How soon it gets fixed. Critical / High / Medium / Low. |
 
-Example: a rare crash may have high severity but lower priority if almost no users are affected. A public typo in a legally sensitive page may have low technical severity but high business priority.
+They move independently. Data loss in a deprecated admin tool two people still use is high severity but low priority. A typo on a legally sensitive public page is low severity but high priority. For the full four-corner view, see [02 - Severity vs priority](../02-during-development.md#severity-vs-priority).
 
 ## Practical selection guide
 

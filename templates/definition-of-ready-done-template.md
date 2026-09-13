@@ -34,25 +34,9 @@ No open critical defects`"]:::done
     classDef done  fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
 ```
 
-## 1. Purpose
+Keep one **global minimum** for all stories, and add the **high-risk add-ons** below for payments, security, permissions, integrations, data transformation, migrations, incidents, or customer-critical flows. Revisit it in retrospectives when defects, rework, or unclear handoffs happen.
 
-This document defines the minimum quality expectations for:
-
-- **Definition of Ready (DoR):** when work is clear enough to start.
-- **Definition of Done (DoD):** when work is complete enough to be considered delivered.
-
-A story should not start with major unanswered questions, and it should not be marked as done just because code was written.
-
-## 2. How to use this template
-
-Teams should adapt this checklist based on product risk, system complexity, regulatory needs, customer impact, and delivery model.
-
-Recommended approach:
-
-1. Keep a **global minimum DoR/DoD** for all stories.
-2. Add **extra criteria for high-risk work**, such as payments, security, permissions, integrations, data transformation, migrations, production incidents, or customer-critical flows.
-3. Review this template during retrospectives when defects, rework, or unclear handoffs happen.
-4. Avoid checkbox theater. Each item should help the team make a better delivery decision.
+A story should not start with major unanswered questions, and it should not be marked done just because code was written.
 
 ---
 
@@ -60,7 +44,7 @@ Recommended approach:
 
 A story is **Ready** when the team has enough shared understanding to start development with confidence.
 
-## 3. Minimum DoR checklist
+## 1. Minimum DoR checklist
 
 | Area | Ready criteria | Status / Notes |
 |---|---|---|
@@ -75,12 +59,13 @@ A story is **Ready** when the team has enough shared understanding to start deve
 | Test data | Required test data, accounts, files, payloads, or configurations are available or planned. |  |
 | Testability | The team knows how the change can be validated. |  |
 | Observability | Logs, monitoring, correlation IDs, or traceability needs are defined when relevant. |  |
-| Non-functional needs | Performance, security, accessibility, privacy, compatibility, or reliability expectations are defined when relevant. |  |
+| Non-functional needs | Performance, security, accessibility, locale, privacy, compatibility, or reliability expectations are defined when relevant. Minimum bars per attribute: [Quality Attributes Guide](../resources/quality-attributes-guide.md). |  |
 | Risk level | The story has a risk classification: Low / Medium / High / Critical. |  |
 | Estimation | The team has enough clarity to estimate the work. |  |
 | Open questions | Critical open questions are resolved or explicitly documented as assumptions. |  |
+| Size | The story is small enough to test, review, and deliver safely. |  |
 
-## 4. High-risk story add-ons
+## 2. High-risk story add-ons
 
 Use these additional DoR checks when the change has high customer, business, technical, or production risk.
 
@@ -92,18 +77,7 @@ Use these additional DoR checks when the change has high customer, business, tec
 - [ ] Impacted regression areas are identified.
 - [ ] Support, operations, or customer-facing impacts are considered.
 - [ ] Security, privacy, audit, or compliance risks are reviewed when applicable.
-
-## 5. Signs a story is not ready
-
-A story should usually not enter the sprint when:
-
-- acceptance criteria are vague or not testable;
-- expected behavior depends on assumptions nobody confirmed;
-- test data or environments are not available and no plan exists;
-- external dependencies are unknown or unmanaged;
-- the team cannot explain how the feature will be validated;
-- the risk is high but no extra validation strategy was discussed;
-- the story is too large to test, review, or deliver safely.
+- [ ] Supported locales, time zones, and text direction are confirmed when the change is user-facing.
 
 ---
 
@@ -113,7 +87,7 @@ A story is **Done** when it meets the agreed quality bar and can be released or 
 
 Done means the team has validated that the change works, does not create unacceptable risk, and is understandable after delivery.
 
-## 6. Minimum DoD checklist
+## 3. Minimum DoD checklist
 
 | Area | Done criteria | Status / Evidence |
 |---|---|---|
@@ -132,7 +106,7 @@ Done means the team has validated that the change works, does not create unaccep
 | Deployment readiness | Configuration, feature flags, migration steps, rollback needs, or release notes are clear. |  |
 | Product approval | PO, stakeholder, or QA acceptance was completed when required. |  |
 
-## 7. High-risk story add-ons
+## 4. High-risk story add-ons
 
 Use these additional DoD checks for high-risk work.
 
@@ -146,18 +120,20 @@ Use these additional DoD checks for high-risk work.
 - [ ] Support or operations teams received relevant notes when needed.
 - [ ] Risk acceptance is documented for anything intentionally deferred.
 
-## 8. Suggested DoD by test level
+## 5. Which test levels the DoD expects
 
-| Test level | Expected use |
-|---|---|
-| Unit tests | Business rules, validators, calculations, transformations, and isolated logic. |
-| API / contract tests | Field validation, status codes, required/optional fields, error responses, and backward compatibility. |
-| Integration tests | Communication between systems, files, queues, workflows, services, databases, or third-party dependencies. |
-| UI tests | Critical user journeys, permissions, high-value flows, and usability-sensitive paths. |
-| Exploratory testing | New behavior, complex workflows, edge cases, user experience, and areas with high uncertainty. |
-| Regression testing | Existing critical paths that could be impacted by the change. |
+Which level protects which risk is defined once, in [02 - Use the right test level for the risk](../02-during-development.md#4-use-the-right-test-level-for-the-risk). Use this table to record what *this team* requires before a story is Done.
 
-## 9. Practical team agreement
+| Test level | Required for | Team decision |
+|---|---|---|
+| Unit | Every story that adds or changes logic | Always / By risk / Not required |
+| API / contract | Any change to an endpoint, payload, or schema | Always / By risk / Not required |
+| Integration | Any change crossing a system boundary | Always / By risk / Not required |
+| UI | Critical user journeys only | Always / By risk / Not required |
+| Exploratory | New or uncertain behavior | Always / By risk / Not required |
+| Regression | Critical paths the change could touch | Always / By risk / Not required |
+
+## 6. Practical team agreement
 
 Use this section to define how the team will apply DoR and DoD in daily work.
 
@@ -171,35 +147,17 @@ Use this section to define how the team will apply DoR and DoD in daily work.
 | What evidence is required? |  |
 | Where is evidence stored? | Jira / TestRail / GitHub / Confluence / other |
 | How are exceptions approved? |  |
+| Who protects the DoD when the date is at risk? |  |
 | How often is this template reviewed? | Monthly / quarterly / after incidents |
 
-## 10. Recommended Jira fields
+## 7. Ticket fields worth standardizing
 
-For stronger traceability, teams may add or standardize these fields:
+Beyond the defaults, the fields that repay the effort: risk level, test data needed, regression scope, automation candidate, QA evidence link, and accepted risks.
 
-- Business value / user outcome
-- Acceptance criteria
-- Risk level: Low / Medium / High / Critical
-- Impacted systems / modules
-- Test data needed
-- Test strategy notes
-- Automation candidate: Yes / No
-- Regression scope
-- Observability notes
-- Release notes needed: Yes / No
-- QA evidence link
-- Known risks / accepted risks
+## 8. Guiding principle
 
-## 11. Final quality questions
+Definition of Ready protects the team from unclear work. Definition of Done protects the user, the product, and the business from incomplete delivery. Two questions carry both:
 
-Before starting work:
-
-> Do we understand the value, the risk, and how to validate success?
-
-Before closing work:
-
-> Would we be comfortable releasing this, supporting it, and explaining how it behaves in production?
-
-## 12. Guiding principle
-
-Definition of Ready protects the team from unclear work. Definition of Done protects the user, the product, and the business from incomplete delivery.
+> **Before starting:** do we understand the value, the risk, and how to validate success?
+>
+> **Before closing:** would we be comfortable releasing this, supporting it, and explaining how it behaves in production?

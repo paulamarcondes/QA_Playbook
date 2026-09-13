@@ -99,6 +99,8 @@ The goal is not to audit people. The goal is to understand how quality currently
 | QA metrics help decisions instead of blaming people |  |  |
 | Escaped defects and incidents generate learning actions |  |  |
 | Quality improvements are tracked after retrospectives |  |  |
+| Quality practices hold when the deadline is at risk, instead of being waived |  |  |
+| Improvement actions get time allocated, not just agreement |  |  |
 | QAs share knowledge through guilds, chapters, or regular sessions |  |  |
 | AI tools are used responsibly with human review |  |  |
 

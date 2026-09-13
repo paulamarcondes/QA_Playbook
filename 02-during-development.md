@@ -6,27 +6,11 @@ The goal during development: **fast feedback, shared ownership, and continuous v
 
 > **Key idea:** QA is not only testing finished work. QA helps the team make better technical and product decisions during implementation.
 
-## On this page
-
-1. [Collaborate before the handoff](#1-collaborate-before-the-handoff)
-2. [Check developer quality signals](#2-check-developer-quality-signals)
-3. [Participate in PR review as a QA task](#3-participate-in-pr-review-as-a-qa-task)
-4. [Use the right test level for the risk](#4-use-the-right-test-level-for-the-risk)
-5. [Design tests around risk and value](#5-design-tests-around-risk-and-value)
-6. [Use environments intentionally](#6-use-environments-intentionally)
-7. [Automate strategically](#7-automate-strategically)
-8. [Use AI as an assistant, not as ownership](#8-use-ai-as-an-assistant-not-as-ownership)
-9. [Define what is a bug and what is not](#9-define-what-is-a-bug-and-what-is-not)
-10. [Report bugs with resolution in mind](#10-report-bugs-with-resolution-in-mind)
-11. [Collect evidence that proves behavior](#11-collect-evidence-that-proves-behavior)
-12. [Document user guides and how-to-test notes](#12-document-user-guides-and-how-to-test-notes)
-13. [Definition of Done](#13-definition-of-done)
-
 Companion reference: [Quality Review Checklist - During development](resources/quality-review-checklist.md#during-development).
 
 ## Outcomes expected during development
 
-During implementation, the team validates changes incrementally, reviews risk before merge, tests at the right level, checks developer quality signals, automates valuable checks, and keeps defects, evidence, and quality visible to everyone - converging on the [Definition of Done](#13-definition-of-done).
+During implementation, the team validates changes incrementally, reviews risk before merge, tests at the right level, checks developer quality signals, automates valuable checks, and keeps defects, evidence, and quality visible to everyone - converging on the [Definition of Done](#15-definition-of-done).
 
 ## 1. Collaborate before the handoff
 
@@ -77,6 +61,8 @@ For deeper guidance, see the [Clean Code Review Guide for QA](resources/clean-co
 
 QA does not need to approve implementation style, but can raise risks that affect validation and release confidence.
 
+> **Real world:** QA reviewing every pull request does not survive contact with a normal sprint. Pick the ones that earn it: changes to permissions or authorization, data transformations and migrations, anything touching a contract other teams depend on, areas with defect history, and anything a developer flags as risky. Skip the rest without guilt.
+
 ## 4. Use the right test level for the risk
 
 Not everything should be tested through the UI. Strong QA strategy uses different layers.
@@ -106,14 +92,16 @@ service & system boundaries`"]:::mid
 *few · slow · brittle*
 critical user journeys`"]:::top
     U --> I --> E
-    classDef base fill:#d4e4d8,stroke:#2f5a43,color:#1f3329;
-    classDef mid  fill:#ecdcb8,stroke:#6e5418,color:#3d3115;
-    classDef top  fill:#e6c2c4,stroke:#7a3338,color:#38191b;
+    classDef base fill:#e3eaf4,stroke:#4a5f80,color:#222a38;
+    classDef mid  fill:#c9d6e8,stroke:#3f4f68,color:#1e2733;
+    classDef top  fill:#aec2dc,stroke:#2f3d56,color:#16202c;
 ```
+
+The shading is a cost gradient, darker meaning slower and more expensive to run. It is not a risk rating: across this playbook, red is reserved for risk and severity.
 
 > **Example:** One feature, three levels. A tax calculation -> unit test. An order syncing across two services -> integration/contract test. The checkout journey the user sees -> one UI/E2E test. Each risk validated at its cheapest reliable layer.
 
-> **Why low and early wins:** A defect fixed after release can cost **~100× more** than one caught at requirements or design (Boehm & Basili) - less on small projects, far more on safety-critical ones. Testing low and early keeps defects cheap. See [References](README.md#references-and-inspiration).
+> **Data point:** A defect fixed after release can cost **~100× more** than one caught at requirements or design (Boehm & Basili) - less on small projects, far more on safety-critical ones. Testing low and early keeps defects cheap. See [References](README.md#references-and-inspiration).
 
 For a broader reference and a context-to-validation map, see the [Testing Types Reference](resources/testing-types.md#practical-selection-guide).
 
@@ -137,7 +125,67 @@ For each story, prioritize:
 - What existing flow could regress?
 - What would be hard to troubleshoot later?
 
-## 6. Use environments intentionally
+## 6. Run exploratory testing with a charter
+
+Scripted tests check what you already thought of. Exploratory testing finds what you did not - and it is not "clicking around". It is a disciplined activity where learning, test design, and execution happen at the same time, inside a time box, aimed at a stated question.
+
+### The charter
+
+One sentence that gives the session a target. Without it, exploration drifts back to the happy path everyone already trusts.
+
+```text
+Explore [area]
+with [data, role, tool, or condition]
+to discover [risk or information].
+```
+
+Example:
+
+```text
+Explore bulk record import
+with files containing duplicates, wrong encodings, and missing required columns
+to discover how partial failures are reported to the user and recorded in the logs.
+```
+
+### Running a session
+
+| Step | What it looks like |
+|---|---|
+| Time box | 60 or 90 minutes. Shorter loses depth, longer loses focus. |
+| Take notes as you go | What you tried, what you saw, what surprised you, what you did not reach. |
+| Follow surprises | An unexpected result is the point of the session, not a distraction from it. |
+| Log questions, not only bugs | "Why does this take four seconds?" often matters more than the typo you found. |
+| Debrief | Five minutes with someone else: what was covered, what was found, what still worries you. |
+
+### Heuristics when you get stuck
+
+- **Boundaries:** zero, one, many, maximum, one past maximum, negative, empty.
+- **Interruptions:** refresh, back button, double submit, session timeout, lost connection.
+- **Wrong order:** skip a step, repeat a step, do them backwards.
+- **Bad data:** wrong type, wrong encoding, enormous, empty, hostile.
+- **Someone else's data:** another tenant, another role, an expired token.
+- **Time:** a slow network, a fast double-click, a request that arrives twice.
+
+### The user's situation
+
+The heuristics above break the system. These break the *assumption that the user is you*: rested, informed, unhurried, on a good connection, working in their first language, looking at the screen.
+
+- **First time, not hundredth time.** You know where the button is. They do not. Does the screen explain itself?
+- **Under pressure.** Someone doing this at 2am during an outage, or with a customer waiting on the phone. What do they misread when they are rushing?
+- **Interrupted.** They leave mid-task and come back in twenty minutes. Is their work still there?
+- **Not a native speaker**, or reading a translation that is 40% longer than the English.
+- **Using a keyboard, a screen reader, or a phone on one bar of signal.**
+- **Already annoyed**, because this is the third time they have tried.
+
+> **Real world:** watching one real person use the feature without helping them beats an afternoon of guessing. Many QAs in enterprise or regulated products never get that access. If you do not, get as close as you can: Support calls and ticket wording, training staff, field teams, session recordings, and the workarounds users invented on their own.
+
+Exploratory testing gets dismissed as unstructured because it is usually *reported* that way. State what was aimed at, what was actually covered, what was not, and turn findings into bugs, questions, or regression cases.
+
+> **Principle:** exploratory testing is not the opposite of planned testing. It is planned testing where the plan is a question rather than a script.
+
+Charter template: [Test Cases Template - Exploratory testing charter](templates/test-cases-template.md#7-exploratory-testing-charter).
+
+## 7. Use environments intentionally
 
 Environment strategy affects test reliability and release confidence.
 
@@ -149,7 +197,7 @@ Environment strategy affects test reliability and release confidence.
 
 > **Release reminder:** Dev → Staging → Production is the common baseline. Larger or regulated orgs may add dedicated QA, integration, UAT, or pre-production environments. A feature moving between environments should carry clear build/version information, deployment notes, known risks, and rollback or mitigation awareness.
 
-## 7. Automate strategically
+## 8. Automate strategically
 
 Automation should reduce risk and shorten feedback loops.
 
@@ -183,7 +231,36 @@ Automated tests should be:
 - connected to CI/CD when valuable;
 - maintained as product behavior evolves.
 
-## 8. Use AI as an assistant, not as ownership
+### Where each suite runs
+
+Automation only shortens the feedback loop if it runs at the right moment. The rule is speed: the faster a suite is, the earlier it runs and the more it is allowed to block.
+
+| Stage | What runs | Budget | Blocks? |
+|---|---|---|---|
+| Pre-commit / local | Linting, unit tests for the changed code | seconds | Yes |
+| Pull request | Unit, component, static analysis, small smoke suite | under 10 minutes | Yes |
+| Merge to main | Smoke plus critical-path regression, contract tests | under 30 minutes | Yes |
+| Nightly | Broad regression, integration, cross-browser | hours | No - reported and triaged next morning |
+| Pre-release | Full regression, performance, security scans | as needed | Yes |
+| Post-deploy | Smoke against the real environment | minutes | Triggers rollback |
+
+> **Principle:** a suite that blocks a merge must be fast *and* trustworthy. A slow or flaky suite moves to nightly until it is neither.
+
+### When tests go flaky
+
+A flaky test - one that passes and fails without the product changing - is worse than no test. It teaches the team to re-run and move on, and that habit eventually gets applied to a real failure.
+
+Agree the policy once, then apply it without negotiation:
+
+1. **Detect:** track the flake rate per test, not only the suite pass rate.
+2. **Quarantine within a day:** out of the blocking gate, still running and reporting.
+3. **Own it:** a name and a date, like any other defect. An unowned quarantined test is a deleted test that still costs run time.
+4. **Fix the cause:** usually timing, shared state, test data, or environment - rarely the assertion.
+5. **Delete after an agreed limit:** if nobody fixes it within two sprints, it was not protecting anything the team valued.
+
+> **Never re-run to green.** A retry that hides a race condition in the test is also hiding one in the product.
+
+## 9. Use AI as an assistant, not as ownership
 
 AI can support QA work, but it does not replace product understanding.
 
@@ -209,9 +286,11 @@ AI can support QA work, but it does not replace product understanding.
 
 > **Principle:** AI accelerates analysis. QA provides judgment.
 
+This split is the whole idea behind [QA 5.0](README.md#where-qa-is-heading-qa-50). AI is fast and tireless at the parts of testing that are mechanical. It has never met your user, carries no accountability for the release, and cannot tell you whether an error message will make someone panic. Those stay human, and they are the parts that decide whether the product is actually good.
+
 For reusable assistant configuration and tools, see [AI Tools](ai-tools/README.md).
 
-## 9. Define what is a bug and what is not
+## 10. Define what is a bug and what is not
 
 A bug is a product behavior that conflicts with a requirement, acceptance criteria, contract, expected user outcome, security rule, data integrity rule, or agreed quality standard.
 
@@ -262,7 +341,7 @@ steps · evidence`"]:::bug
 - Known limitation already documented and accepted
 - Test data setup issue caused by invalid preconditions
 
-## 10. Report bugs with resolution in mind
+## 11. Report bugs with resolution in mind
 
 A good bug report helps the team fix the issue faster. Use the [Bug Report Template](templates/bug-report-template.md) for the full structure - it keeps defect documentation clear, reproducible, and consistent across the team.
 
@@ -287,12 +366,14 @@ Example:
 
 ### Severity vs priority
 
-Severity is the impact; priority is the urgency to fix - they are not the same:
+**Severity** is how much damage the defect does. **Priority** is how soon it gets fixed. Both use the same four-point scale across this playbook - Critical, High, Medium, Low - and they move independently:
 
 | | High priority | Low priority |
 |---|---|---|
-| **High severity** | Checkout crashes for all users - fix now | Data loss in a deprecated admin tool - schedule |
-| **Low severity** | Typo on a legal page - fix fast | Minor UI misalignment on an internal page - backlog |
+| **High severity** | Checkout crashes for all users - fix now | Data loss in a deprecated admin tool two people still use - schedule |
+| **Low severity** | Typo on a legally sensitive public page - fix fast | Minor UI misalignment on an internal page - backlog |
+
+The table shows the four corners. Real triage uses the full scale on both axes, and the two ratings are argued separately: QA usually owns severity, Product usually owns priority.
 
 ### Bug advocacy, with a smile
 
@@ -315,7 +396,56 @@ Andy Glover's *Bugs Have Feelings Too* says everything above in eight panels, an
 
 Translated into practice: report it, report it early, understand it before you write it up, back it with evidence, look for the related bugs nearby, and never quietly drop one because it is inconvenient.
 
-## 11. Collect evidence that proves behavior
+## 12. Triage defects as a team
+
+A bug report nobody rates is a bug nobody fixes. Triage is the recurring decision about what happens to each new defect, and it works best as a short, boring, scheduled habit rather than an argument during a release.
+
+### The four questions
+
+For every new defect, in order:
+
+1. **Is it real?** Product, or test data, environment, or a misread requirement?
+2. **How bad is it?** Severity - QA proposes, backed by evidence.
+3. **How soon?** Priority - Product decides, against everything else in the backlog.
+4. **Who owns it next?** A name, not a team.
+
+### Making it work
+
+| Practice | Why |
+|---|---|
+| Short and regular | 15-20 minutes, two or three times a week, beats a two-hour session the day before release. |
+| Three people minimum | QA, a developer, Product. With fewer, the decision gets revisited later anyway. |
+| Decide, do not investigate | If it needs research, assign the research and move on. Triage stalls the moment it turns into debugging. |
+| Keep severity and priority apart | Different owners, different grounds. Collapsing them hides the trade-off being made. |
+| Age the backlog out loud | Review anything open past an agreed age. Defects do not improve with time, they just stop being visible. |
+
+### Agree the escalation rule in advance
+
+Write this down before the first argument about it:
+
+| Severity | Response |
+|---|---|
+| Critical | Stop and fix now. Interrupt whoever is needed, out of hours if the rule says so. |
+| High | Fixed in the current sprint, or the release is reconsidered. |
+| Medium | Scheduled and tracked, or explicitly accepted if deferred. |
+| Low | Backlog, reviewed periodically, and closed honestly when it will never be done. |
+
+### Keep a person in the conversation
+
+Triage is where the user quietly disappears. Defects get discussed as components and effort, and the thing that gets deprioritized is whatever nobody in the room can picture happening to anyone.
+
+One habit fixes most of it: **say who is affected and what they cannot do, before anyone proposes a priority.**
+
+- "A user who forgot their password cannot get back into their account" is a decision.
+- "Auth reset endpoint returns 500 intermittently" is a ticket.
+
+Same defect. Only one of them gets fixed this sprint.
+
+Where the signal comes from when you cannot observe users directly: support tickets, the questions Support keeps having to answer, session recordings, and the workarounds people have invented on their own. A workaround in the wild is a defect the team never logged.
+
+> **Real world:** the most valuable triage outcome is often "not a bug, our acceptance criteria were wrong". That is a requirements defect, and naming it as one is the cheapest signal you will ever get that refinement needs work.
+
+## 13. Collect evidence that proves behavior
 
 Evidence should make validation clear and reusable.
 
@@ -327,7 +457,7 @@ Evidence should make validation clear and reusable.
 
 Good evidence reduces rework, improves trust, and helps future debugging.
 
-## 12. Document user guides and how-to-test notes
+## 14. Document user guides and how-to-test notes
 
 Documentation is part of quality when it helps users, support, QA, and developers validate or operate the feature correctly.
 
@@ -357,35 +487,26 @@ Add lightweight technical notes when the feature needs specific validation conte
 
 A good how-to-test note makes future regression faster and reduces knowledge loss.
 
-## 13. Definition of Done
+## 15. Definition of Done
 
-A change is done when:
+A change is done when the acceptance criteria are met and validated, regression risk is covered, evidence is attached, no critical or high defect is left unaccepted, and Product, QA, and Dev agree it is ready for the next step.
 
-- acceptance criteria are met;
-- relevant positive and negative scenarios are validated;
-- unit/static analysis/pipeline quality signals are reviewed;
-- regression risk is covered;
-- critical tests pass;
-- automated tests were added or updated when valuable;
-- logs and errors are useful for troubleshooting;
-- documentation, user guide, how-to-test notes, or release notes are updated when needed;
-- known risks are communicated;
-- evidence is attached;
-- Product/QA/Dev agree the change is ready for the next step.
+Quality attributes ([Quality Attributes Guide](resources/quality-attributes-guide.md)), useful logs, updated documentation, and communicated risks belong to that bar in proportion to the change.
 
-Use the [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md) to align team expectations and make completion criteria clear, consistent, and visible.
+The full checklist, the high-risk add-ons, and the record of which test levels this team requires live in the [Definition of Ready & Definition of Done Template](templates/definition-of-ready-done-template.md).
 
 ## During development checklist
 
-The work items of this phase. The completion gate itself lives in the [Definition of Done](#13-definition-of-done) and is not repeated here.
+The work items of this phase. The completion gate itself lives in the [Definition of Done](#15-definition-of-done) and is not repeated here.
 
 - [ ] QA and Dev aligned before handoff.
 - [ ] QA reviewed PR risk/testability when relevant.
 - [ ] Risk-based scenarios designed.
 - [ ] Right test levels selected.
+- [ ] Exploratory session run where the behavior is new or uncertain.
 - [ ] Correct environment used for the validation purpose.
-- [ ] Automation opportunities reviewed.
-- [ ] Defects classified and documented clearly.
+- [ ] Automation opportunities reviewed, and flaky tests quarantined rather than ignored.
+- [ ] Defects classified, triaged, and documented clearly.
 - [ ] Definition of Done met.
 
 ## Key message

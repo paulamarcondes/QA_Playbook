@@ -12,7 +12,11 @@ Use this format to make defects clear, reproducible, and easier to fix.
 
 ## Description
 
-Describe the issue in 1-2 sentences. Explain the user, business, technical, or release impact.
+Describe the issue in 1-2 sentences.
+
+## Impact
+
+One line: who is affected and what they cannot do. Not "the endpoint returns 500", but "a dispatcher cannot close an incident, so the record stays open in the queue". This line is what severity and priority get argued from.
 
 ## Environment
 
@@ -26,13 +30,17 @@ Describe the issue in 1-2 sentences. Explain the user, business, technical, or r
 | Affected flow/API/component |  |
 | Risk level | Low / Medium / High / Critical |
 
+## Preconditions
+
+The state the system had to be in before step 1: existing records, configuration, feature flags, permissions, prior transactions. The field most often missing from a bug report, and the one that most often blocks reproduction.
+
 ## Expected result
 
-What should happen?
+What should happen, and which requirement, acceptance criterion, or contract says so.
 
 ## Actual result
 
-What actually happened?
+What actually happened.
 
 ## Steps to reproduce
 
@@ -45,7 +53,7 @@ What actually happened?
 | Field | Value |
 |---|---|
 | Severity | Critical / High / Medium / Low |
-| Priority | High / Medium / Low |
+| Priority | Critical / High / Medium / Low |
 | Rationale |  |
 
 ## Evidence

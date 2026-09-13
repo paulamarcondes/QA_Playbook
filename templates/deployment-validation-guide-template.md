@@ -45,42 +45,13 @@ It is not a full DevOps runbook. Its purpose is to make QA expectations clear be
 
 ## 3. Release readiness checklist
 
-Use this section before approving the deployment.
+Run the checklist in [03 - Define release readiness](../03-after-development.md#1-define-release-readiness) before approving the deployment. Record anything specific to this release here:
 
-### Functional readiness
-
-- [ ] Critical acceptance criteria passed.
-- [ ] Main user journeys validated.
-- [ ] Negative scenarios validated.
-- [ ] Edge cases reviewed.
-- [ ] Known defects triaged.
-- [ ] User-facing behavior changes documented when relevant.
-
-### Regression readiness
-
-- [ ] Risk-based regression completed.
-- [ ] Critical automated tests passing.
-- [ ] Manual regression evidence attached when needed.
-- [ ] Impacted APIs/integrations validated.
-- [ ] Permissions and roles checked when relevant.
-- [ ] Data migration or transformation validated when relevant.
-
-### Technical readiness
-
-- [ ] Deployment version/build confirmed.
-- [ ] Configuration reviewed.
-- [ ] Environment dependencies confirmed.
-- [ ] Logs are clear and useful.
-- [ ] Monitoring/alerts reviewed.
-- [ ] Rollback or mitigation plan understood.
-
-### Product and support readiness
-
-- [ ] Product owner aware of release status.
-- [ ] Support team informed of relevant changes.
-- [ ] Release notes updated when needed.
-- [ ] Known risks documented and accepted.
-- [ ] Go/No-Go decision recorded.
+| Area | Confirmed by | Notes or exceptions |
+|---|---|---|
+| Functional and regression |  |  |
+| Technical: version, config, logs, monitoring, rollback |  |  |
+| Product and Support informed |  |  |
 
 ## 4. Go/No-Go decision
 
@@ -97,11 +68,12 @@ Use this section before approving the deployment.
 | Step | Validation | Expected result | Owner | Evidence | Status |
 |---|---|---|---|---|---|
 | 1 | Confirm deployed version/build | Correct version is live |  |  | Not Run / Pass / Fail |
-| 2 | Validate application/service health | Services are available |  |  | Not Run / Pass / Fail |
-| 3 | Run critical smoke test | Main flow works |  |  | Not Run / Pass / Fail |
-| 4 | Validate API/integration processing | Expected response/data flow |  |  | Not Run / Pass / Fail |
-| 5 | Check logs and monitoring | No unexpected errors |  |  | Not Run / Pass / Fail |
-| 6 | Confirm known risk areas | No release-blocking behavior |  |  | Not Run / Pass / Fail |
+| 2 | Run data migration, if any | Completed within [expected duration]; record counts before and after match |  |  | Not Run / Pass / Fail / N/A |
+| 3 | Validate application/service health | Services are available |  |  | Not Run / Pass / Fail |
+| 4 | Run critical smoke test | Main flow works |  |  | Not Run / Pass / Fail |
+| 5 | Validate API/integration processing | Expected response/data flow |  |  | Not Run / Pass / Fail |
+| 6 | Check logs and monitoring | No unexpected errors |  |  | Not Run / Pass / Fail |
+| 7 | Confirm known risk areas | No release-blocking behavior |  |  | Not Run / Pass / Fail |
 
 ## 6. Smoke test scenarios
 
@@ -130,6 +102,7 @@ Use this section when deployment affects APIs, files, events, queues, transforma
 | What issue would trigger rollback? |  |
 | Who can approve rollback? |  |
 | What is the rollback path? |  |
+| Has the rollback been executed and proven, and when? | Yes, on [date] / No, untested |
 | What data/configuration needs special care? |  |
 | What is the customer/user communication path? |  |
 | What temporary mitigation is available if rollback is not possible? |  |

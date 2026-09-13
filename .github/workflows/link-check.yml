@@ -1,0 +1,27 @@
+# Runs .github/tools/check-links.py on every push and pull request, so a broken
+# link or a stale #anchor fails visibly instead of being found by a reader.
+#
+# Section numbers are part of heading anchors, so inserting a section can
+# silently break every link to the ones after it. This is what catches that.
+
+name: Link check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      # Copies the repository into the runner so the script can read the files.
+      - uses: actions/checkout@v4
+
+      # The script uses only the Python standard library, so nothing to install.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check internal links and anchors
+        run: python .github/tools/check-links.py

@@ -7,6 +7,22 @@ description: Manual QA and Quality Engineering guidance for test strategy, test 
 
 Use this skill for requirements review, test planning, test case design, bug reporting, exploratory testing, execution summaries, and QA reporting.
 
+This file holds the **output formats and team standards** an assistant cannot infer. General testing knowledge is deliberately not repeated here.
+
+## Where the knowledge lives
+
+When the playbook is available, read the source rather than guessing:
+
+| Need | Source |
+|---|---|
+| Testing levels, types, techniques, selection guide | [Testing Types Reference](../../../resources/testing-types.md) |
+| Risk levels and test depth | [01 - Map risk before defining test depth](../../../01-before-development.md#4-map-risk-before-defining-test-depth) |
+| Which test level for which risk | [02 - Use the right test level](../../../02-during-development.md#4-use-the-right-test-level-for-the-risk) |
+| What to automate, pipeline stages, flaky tests | [02 - Automate strategically](../../../02-during-development.md#8-automate-strategically) |
+| Bug or not a bug | [02 - Define what is a bug and what is not](../../../02-during-development.md#10-define-what-is-a-bug-and-what-is-not) |
+| Accessibility, locale, security, performance, privacy | [Quality Attributes Guide](../../../resources/quality-attributes-guide.md) |
+| Metrics worth tracking | [03 - Use metrics that drive decisions](../../../03-after-development.md#8-use-metrics-that-drive-decisions) |
+
 ## Core principles
 
 - Test early, not only at the end.
@@ -14,285 +30,134 @@ Use this skill for requirements review, test planning, test case design, bug rep
 - Risk drives priority.
 - Evidence beats opinion.
 - Exhaustive testing is impossible.
-- Quality is shared across the team.
+- Quality is shared across the team, and leadership decides how much of it is possible.
 
-## Shift-left checklist
-
-Before development starts, check:
-
-- business value is clear;
-- user/persona is clear;
-- acceptance criteria are testable;
-- positive, negative, and edge cases are discussed;
-- data rules are documented;
-- API or integration contracts are available;
-- dependencies are known;
-- test data can be created;
-- environments are available;
-- logs, errors, and monitoring needs are considered;
-- automation candidates are identified.
-
-## Test strategy
-
-A test strategy should define:
-
-- scope and out of scope;
-- risk assessment;
-- test levels;
-- test types;
-- manual vs automation approach;
-- frontend/UX strategy;
-- backend/API/integration strategy;
-- test data;
-- environments;
-- entry and exit criteria;
-- dependencies;
-- reporting approach.
-
-## Test levels
-
-| Level | Purpose |
-|---|---|
-| Unit / Component | Validates isolated functions, methods, components, or classes. Usually owned by developers. |
-| Integration | Validates communication between components, services, APIs, databases, files, or external systems. |
-| System | Validates complete system behavior against requirements. |
-| Acceptance / UAT | Validates that the solution meets business and user needs. |
-
-## Test types
-
-| Type | Purpose |
-|---|---|
-| Smoke | Critical path check to confirm a build is testable. |
-| Sanity | Narrow check after a fix or small change. |
-| Functional | Validates business rules and expected behavior. |
-| Regression | Confirms existing behavior still works after change. |
-| Exploratory | Time-boxed investigation to discover risks, defects, or unknowns. |
-| Usability | Validates ease of use, clarity, consistency, and user friction. |
-| Accessibility | Validates keyboard navigation, screen reader support, contrast, labels, and WCAG-related expectations. |
-| API | Validates status codes, contracts, payloads, errors, auth, and backward compatibility. |
-| Integration | Validates end-to-end data flow and system interactions. |
-| Performance | Validates response time, throughput, load, stress, endurance, and scalability. |
-| Security | Validates authentication, authorization, injection risks, sensitive data handling, and access control. |
-| Compatibility | Validates browser, device, OS, platform, version, and backward/forward compatibility. |
-| Recovery/Reliability | Validates resilience, retry, failover, timeout, and recovery behavior. |
-
-## Test design techniques
-
-Use the technique that fits the risk:
-
-- **Equivalence Partitioning:** group inputs into valid and invalid classes.
-- **Boundary Value Analysis:** test limits and values just below/above them.
-- **Decision Table:** cover combinations of conditions and outcomes.
-- **State Transition:** validate state changes and invalid transitions.
-- **Use Case Testing:** validate real workflows from the user perspective.
-- **Error Guessing:** use experience to target likely failures.
-- **Checklist-Based Testing:** use focused checklists for recurring quality concerns.
-- **Exploratory Testing:** learn, design, execute, and evaluate in the same time-boxed session.
-
-## Frontend and UX testing
-
-Focus on:
-
-- critical user journeys;
-- navigation and flow clarity;
-- form validation;
-- error messages;
-- loading, empty, and failure states;
-- responsiveness;
-- accessibility basics;
-- browser/device coverage;
-- visual consistency;
-- user friction.
-
-Useful UX lens (Nielsen heuristics): system status visibility, match to the real world, user control and freedom, consistency and standards, error prevention, recognition over recall, flexibility and efficiency, minimalist design, error recovery, and help/documentation.
-
-## Backend, API, and integration testing
-
-Focus on:
-
-- contract validation;
-- required and optional fields;
-- data types and formats;
-- authentication and authorization;
-- error handling;
-- idempotency;
-- timeouts and retries;
-- data persistence;
-- data transformation;
-- message/file processing;
-- backward compatibility;
-- observability and correlation IDs;
-- audit and traceability.
-
-## Risk-based testing
-
-Prioritize higher effort when the change impacts:
-
-- revenue, safety, legal, compliance, or reputation;
-- critical user journeys;
-- data integrity;
-- security;
-- integrations;
-- high-change areas;
-- recent incident areas;
-- complex logic;
-- customer-specific behavior;
-- production stability.
-
-Risk assessment format:
+## Risk assessment format
 
 ```text
 Risk: [what can go wrong]
 Impact: [business/user/technical impact]
 Likelihood: High/Medium/Low
+Level: Low/Medium/High/Critical
 Mitigation: [test, automation, monitoring, documentation, review]
 ```
 
-## Manual vs automated testing
-
-### Prefer manual testing for
-
-- New or unstable features
-- Exploratory testing
-- UX/usability validation
-- One-time validation
-- Ambiguous behavior
-- Visual or workflow judgment
-
-### Prefer automation for
-
-- Regression
-- Smoke checks
-- API and contract validation
-- Data validation
-- Repetitive scenarios
-- Stable critical journeys
-- CI/CD quality gates
-
-### Avoid automating
-
-- Unstable requirements
-- Rare one-off cases
-- Highly visual checks without stable tooling
-- Scenarios with excessive maintenance cost
+Safety, money, personal data, and regulatory compliance never sit below High, whatever the likelihood.
 
 ## Test case template
 
+The compact chat version of the [Test Cases Template](../../../templates/test-cases-template.md). Same fields, written as plain text. When the output goes into a document, use the template; when it goes into a ticket or a chat reply, use this. If the two ever disagree, the template wins.
+
 ```text
 Title: [Feature] TC## - [Scenario]
-Objective: [What this test validates]
-Requirement: [Story/requirement/reference]
+Objective: [what this test validates]
+Requirement: [story/requirement/reference]
 Priority: Critical/High/Medium/Low
 Test Type: Functional/API/Integration/Regression/Smoke/etc.
 Automation Candidate: Yes/No/Later
-Environment: Dev/QA/Staging
-Preconditions: [Setup/system state]
-Test Data: [Specific data or dataset]
+Environment: Dev/Staging
+Preconditions: [setup/system state]
+Test Data: [specific data or dataset]
 Steps:
 1. [Action]
 2. [Action]
 3. [Action]
 Expected Results:
-- [Specific measurable result]
-- [Data/log/UI/API validation]
-Pass/Fail Criteria: [Objective rule]
-Notes: [Risks, dependencies, questions]
+- [specific measurable result]
+- [data/log/UI/API validation]
+Pass/Fail Criteria: [objective rule]
+Notes: [risks, dependencies, questions]
 ```
 
 Quality checks:
 
-- Avoid vague steps like "test the feature".
+- No vague steps like "test the feature".
 - Expected results must be measurable.
 - Include negative and boundary scenarios when relevant.
-- Keep scenarios focused and maintainable.
-- Link each test to a requirement or risk.
+- Link each test to a requirement or a risk.
 
-## Bug vs not a bug
+## Bug report template
 
-A bug is behavior that contradicts:
+The compact chat version of the [Bug Report Template](../../../templates/bug-report-template.md); the template wins if the two disagree. Preconditions, impact, evidence, and suspected area are the fields most often missing and most often needed.
 
-- requirement;
-- acceptance criteria;
-- design or contract;
-- expected system behavior;
-- data integrity rules;
-- security expectations;
-- accessibility expectations;
-- reasonable user expectation for the agreed scope.
+```text
+Title: [Area] Action fails when condition happens
+Summary: [one line: who is affected and what they cannot do]
+Environment: [Dev / Staging / Production read-only]
+Build/Version: [build, commit, or release]
+User/Role: [if relevant]
+Preconditions: [the state the system had to be in before step 1]
+Test Data: [accounts, records, payloads used]
+Steps to Reproduce:
+1. [Step]
+2. [Step]
+3. [Step]
+Expected Result: [from the requirement, AC, or contract]
+Actual Result: [observed behavior]
+Impact: [user, business, or technical impact]
+Severity: Critical/High/Medium/Low
+Priority: Critical/High/Medium/Low
+Rationale: [why those two ratings]
+Frequency: Always / Intermittent / Rare
+Regression: Yes / No / Unknown
+Suspected Area: [where to start investigating, if known]
+Evidence: [screenshots, logs, correlation IDs, payloads, files]
+Workaround: [if available]
+Related Requirement / Test Case: [link]
+```
 
-Not always a bug:
-
-- missing requirement;
-- new enhancement request;
-- test data problem;
-- environment/configuration issue;
-- known limitation;
-- out-of-scope behavior;
-- duplicate of an existing defect;
-- behavior that matches the approved design but creates user friction.
-
-When unsure, classify as:
+When it is unclear whether something is a defect, label it and move on rather than arguing:
 
 ```text
 Potential defect / requirement clarification needed
 ```
 
-## Bug report template
-
-```text
-Title: [Component] Specific defect summary
-Summary: [One-line impact]
-Environment: [Dev/QA/Staging/Prod read-only]
-Build/Version: [Build, commit, release]
-User/Role: [If relevant]
-Steps to Reproduce:
-1. [Step]
-2. [Step]
-3. [Step]
-Expected Result: [Based on requirement]
-Actual Result: [Observed behavior]
-Impact: [User/business/technical impact]
-Severity: Critical/High/Medium/Low
-Priority: Critical/High/Medium/Low
-Evidence: [Screenshots, logs, network trace, video]
-Frequency: Always/Intermittent/Rare
-Workaround: [If available]
-Related Requirement/Test Case: [Link]
-```
-
 ## Severity vs priority
 
-- **Severity:** Technical or user impact of the defect.
-- **Priority:** Business urgency to fix it.
+- **Severity:** how much damage the defect does. Critical / High / Medium / Low.
+- **Priority:** how soon it gets fixed. Critical / High / Medium / Low.
 
-Examples:
+They move independently:
 
-- High severity, low priority: rare crash in unused admin flow.
-- Low severity, high priority: public typo in a legally sensitive page.
+- High severity, low priority: data loss in a deprecated admin tool two people still use.
+- Low severity, high priority: typo on a legally sensitive public page.
+
+QA proposes severity with evidence. Product owns priority. State who is affected and what they cannot do before proposing either.
+
+## Exploratory testing charter
+
+```text
+Charter: Explore [area] with [data/persona/condition] to discover [risk/information].
+Time Box: [30/60/90 minutes]
+Notes:
+Findings:
+Questions:
+Coverage gaps:
+Follow-up tests:
+```
 
 ## Test execution summary
 
-Include:
-
-- scope tested;
-- environment and build;
-- test cases executed;
-- pass/fail/blocked/skipped numbers;
-- defects found by severity;
-- open risks;
-- blockers;
-- regression status;
-- release recommendation: Ready / Ready with risk / Not ready.
+```text
+Scope tested:
+Environment and build:
+Executed / Passed / Failed / Blocked / Not run:
+Defects by severity:
+Open risks:
+Blockers:
+Regression status:
+Release recommendation: Ready / Ready with risk / Not ready
+```
 
 ## QA report for leadership
 
-Keep it outcome-focused:
+Outcome-focused. Name the lever next to each risk, not only the risk.
 
 ```text
 QA Status: Green / Yellow / Red
 Release Recommendation: Ready / Ready with risk / Not ready
 Scope Tested:
-Key Risks:
+Key Risks: [risk -> what would reduce it -> recommendation]
 Customer/User Impact:
 Defect Summary:
 Regression Status:
@@ -301,58 +166,12 @@ Open Decisions:
 Next Actions:
 ```
 
-## Metrics
-
-Useful metrics:
-
-- requirements covered by tests;
-- test execution progress;
-- pass/fail/blocked rate;
-- defects by severity and priority;
-- reopened defects;
-- escaped defects;
-- defect aging;
-- regression pass rate;
-- automation stability;
-- flaky test rate;
-- deployment validation results;
-- time to detect and recover from defects.
-
-Use metrics to improve decisions, not to punish people.
-
-## CI/CD quality standards
-
-Common standards:
-
-- unit tests pass;
-- static analysis passes;
-- critical integration tests pass;
-- smoke tests pass;
-- no blocker/critical defects open;
-- security scan passes when applicable;
-- performance thresholds met when applicable;
-- deployment validation completed.
-
-## Exploratory testing charter
-
-```text
-Charter: Explore [area] to discover [risk/information] using [data/persona/approach].
-Time Box: [30/60/90 minutes]
-Focus: [risk, workflow, integration, UX, error handling]
-Notes:
-Defects:
-Questions:
-Follow-up tests:
-```
-
 ## Post-release learning
 
-For escaped defects or incidents, ask:
+For escaped defects or incidents, blame-free:
 
-- What happened?
-- What was the impact?
+- What happened, and what did the person on the other end experience?
 - Why did our process not catch it earlier?
 - What test, monitor, log, alert, review, or documentation update would prevent recurrence?
 - Should this become part of DoR, DoD, regression, or automation?
-
-Use a blame-free tone.
+- Who owns the follow-up, and by when?

@@ -1,72 +1,49 @@
 # QA Metrics Dashboard Template
 
-Use this template to track quality trends and support better team decisions.
+The tracking sheet for the metric set defined in [03 - Use metrics that drive decisions](../03-after-development.md#8-use-metrics-that-drive-decisions). That page says *which* metrics and *why*; this one is where you record them.
 
-## Dashboard principles
+## Principles
 
-- Use metrics to improve the system, not to blame people.
-- Prefer trends over isolated numbers.
-- Connect metrics to decisions and actions.
-- Highlight risk, bottlenecks, and learning opportunities.
-- Review metrics regularly with QA, Dev, Product, and leadership.
+- Metrics improve the system. They are never used to rank people.
+- Trends over isolated numbers.
+- **If a metric has no target and no agreed action when it breaches, do not track it.**
+- Review with QA, Dev, Product, and leadership together. Most of what limits quality is decided above the team, and this is the conversation where that gets decided with the data rather than without it.
 
 ## Release confidence
 
-| Metric | Current | Target | Status | Action |
-|---|---:|---:|---|---|
-| Critical tests passed |  |  |  |  |
-| Open critical/high defects |  |  |  |  |
-| Regression completion |  |  |  |  |
-| Known release risks |  |  |  |  |
-| Go/No-Go recommendation |  |  |  |  |
+A snapshot per release, not a trend.
 
-## Quality outcomes
+| Check | Current | Target | Status |
+|---|---:|---:|---|
+| Critical tests passed |  |  |  |
+| Open critical/high defects |  |  |  |
+| Regression completion |  |  |  |
+| Known release risks |  |  |  |
+| Go/No-Go recommendation |  |  |  |
 
-| Metric | Formula / definition | Frequency | Data source | Action when red |
-|---|---|---|---|---|
-| Defect escape rate | Escaped defects / total defects | Sprint/month | Jira/TestRail/Support | Review test strategy and risk mapping |
-| Production incidents | Count by severity | Sprint/month | Incident tool/logs | Run RCA and add prevention action |
-| Change failure rate | Failed releases / total releases | Month | CI/CD/incident records | Improve release readiness and monitoring |
-| Reopened defect rate | Reopened defects / closed defects | Sprint | Jira | Improve fix validation |
-| Customer-reported defects | Defects reported by users/support | Month | Support tool | Prioritize user pain points |
+## The metric set
 
-## Process health
+Ten metrics across five signal types. Start with three, not ten.
 
-| Metric | Formula / definition | Frequency | Data source | Action when red |
-|---|---|---|---|---|
-| Requirement readiness | Stories meeting DoR / total stories | Sprint | Jira checklist | Improve refinement |
-| Validation cycle time | Ready for QA to QA sign-off | Sprint | Jira | Remove testing bottlenecks |
-| Defect resolution time | Bug created to verified fix | Sprint | Jira | Improve triage and ownership |
-| Defects by origin | Requirement/code/test data/environment/etc. | Sprint/month | RCA labels | Target root causes |
+| Signal | Metric | Formula | Frequency | Source | Target | Action when it breaches |
+|---|---|---|---|---|---|---|
+| Outcome | Escaped defects | Found in production / total found | Sprint | Jira, Support |  | Review risk analysis and regression scope |
+| Outcome | Production incidents | Count by severity | Month | Incident tool |  | RCA, then targeted regression where they repeat |
+| Outcome | Change failure rate | Failed releases / total releases | Month | CI/CD |  | Strengthen release readiness and post-deploy checks |
+| Outcome | Support ticket trend | Tickets by theme | Month | Support tool |  | Prioritize the user pain behind the tickets |
+| Delivery health | Reopened defect rate | Reopened / closed | Sprint | Jira |  | Improve fix validation and acceptance criteria |
+| Delivery health | Validation cycle time | Ready for QA to sign-off | Sprint | Jira |  | Review test data, environments, automation |
+| Automation health | Critical-flow coverage | Automated critical flows / total | Month | Test inventory |  | Automate the highest-risk uncovered flow next |
+| Automation health | Flaky test rate | Flaky failures / total failures | Sprint | CI/CD |  | Stabilize before expanding coverage |
+| Observability | MTTD / MTTR | Detect and restore times | Month | Incident tool |  | Add logs, alerts, correlation IDs, dashboards |
+| Culture | QA maturity trend | Assessment score per area | Quarter | [Survey](qa-assessment-survey-template.md) |  | Three improvement actions, with time allocated |
 
-## Automation health
+Post-deploy production signals - error rate, latency, traffic, saturation - are tracked per release in the [Deployment Validation Guide](deployment-validation-guide-template.md#9-post-deployment-monitoring).
 
-| Metric | Formula / definition | Frequency | Data source | Action when red |
-|---|---|---|---|---|
-| Critical flow automation coverage | Automated critical flows / total critical flows | Month | Test inventory | Automate highest-risk gaps |
-| Automated test pass rate | Passed tests / executed tests | Build/sprint | CI/CD | Investigate failures |
-| Flaky test rate | Flaky failures / total failures | Sprint | CI/CD | Stabilize before expanding |
-| Regression execution time | Time to complete regression | Release | CI/CD/TestRail | Optimize suite and scope |
-| Automation maintenance effort | Time spent fixing tests | Sprint/month | Team tracking | Refactor brittle tests |
+## Monthly review
 
-## Production signals
-
-| Metric | What to watch | Action |
-|---|---|---|
-| Error rate | New or increasing failures | Investigate and classify impact |
-| Latency | Slower critical operations | Check performance degradation |
-| Traffic/volume | Abnormal spikes or drops | Compare with expected usage |
-| Saturation | Resource limits or queue buildup | Prevent instability |
-| MTTD | Time to detect failures | Improve alerts |
-| MTTR | Time to restore service | Improve incident response |
-
-## Monthly quality review
-
-Answer these questions:
-
-1. What improved?
-2. What got worse?
-3. Which risk repeated?
-4. Which defect should have been caught earlier?
-5. Which metric needs better data?
-6. What is the smallest process, test, automation, or observability improvement we can make next?
+1. What improved, and what got worse?
+2. Which risk repeated?
+3. Which defect should have been caught earlier?
+4. Which metric needs better data, or should be dropped?
+5. What is the smallest improvement we can make next, and who owns it?

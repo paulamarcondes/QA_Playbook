@@ -4,7 +4,26 @@ Use this as a lightweight test strategy for a feature, integration, release, or 
 
 This template includes risk assessment, test scope, test levels, manual vs automated strategy, tool/framework decisions, observability, and release confidence in one place.
 
-> **How to use:** Keep this short for low-risk stories. Complete more sections for high-risk features, integrations, data flows, security-sensitive changes, or release-critical work.
+> **How to use:** **Most stories need the one-pager below and nothing else.** Sections 1 to 14 are for integrations, migrations, release-level work, and regulated changes - the cases where someone will ask, months later, what was covered and why.
+
+## The one-page version
+
+For a normal story. Eight lines, written in the ticket, done in ten minutes.
+
+| Field | Answer |
+|---|---|
+| What is changing |  |
+| Risk level and why | Low / Medium / High / Critical |
+| What must not break |  |
+| How it will be validated | Levels, and manual vs automated |
+| Test data and environment needs |  |
+| What we are not testing |  |
+| Evidence for sign-off |  |
+| Post-deploy check needed? | Yes / No |
+
+If every answer is easy, the story is low risk and you are done. If two or three are hard to answer, that is the signal to open the full version below.
+
+---
 
 ## 1. Strategy summary
 
@@ -51,7 +70,7 @@ What confidence do we need before release?
 
 ## 3. Risk assessment
 
-Risk should guide testing depth and evidence expectations.
+Risk should guide testing depth and evidence expectations. Score each factor below, then derive the overall level from the [risk matrix in 01](../01-before-development.md#4-map-risk-before-defining-test-depth).
 
 | Risk factor | Low | Medium | High | Notes |
 |---|---|---|---|---|
@@ -71,7 +90,9 @@ Risk should guide testing depth and evidence expectations.
 |---|---|
 | Risk level | Low / Medium / High / Critical |
 | Reason |  |
-| Testing depth required | Light / Standard / Deep / Release-blocking validation |
+| Testing depth required | Matches the risk level - see the [risk levels table](../01-before-development.md#risk-levels) |
+
+Individual factors are scored Low/Medium/High. **Critical** is reached through the matrix (high impact and high likelihood) or through the override: safety, money, personal data, or regulatory compliance.
 
 ## 4. Quality risks and mitigation
 
@@ -89,7 +110,7 @@ Use different strategies for frontend/UX and backend/API risks.
 | Backend / API | Contracts, business rules, data integrity, permissions, performance, integrations | API, contract, integration, negative, data validation | Payloads, logs, reports |
 | Data / Integration | Mapping, transformation, compatibility, duplicate handling, processing failures | Input/output validation, file/event checks, logs, reconciliation | Files, events, logs, DB checks |
 
-Reference for UI review: [Nielsen Heuristics Workshop](https://youtu.be/OtyM8dGKLUU?si=Fu3HYPjSQG3NDAoG)
+Reference for UI review: [Nielsen Norman Group - 10 Usability Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
 
 ## 6. Test approach by level
 
@@ -143,7 +164,7 @@ Choose tools based on product architecture, team skills, maintainability, CI/CD 
 4. Repetitive manual checks
 5. Stable behavior with clear expected results
 
-Avoid automating unstable, unclear, or low-value scenarios before the behavior is mature.
+Avoid automating unstable, unclear, or low-value scenarios before the behavior is mature. Full criteria: [02 - Automate strategically](../02-during-development.md#8-automate-strategically).
 
 ## 10. Observability and supportability
 

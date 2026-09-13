@@ -1,69 +1,51 @@
 # Quality Review Checklist
 
-Use this checklist during refinement, development, PR review, bug triage, release conversations, and post-release learning.
+The questions to ask out loud - in refinement, in PR review, in bug triage, in the release call, and after something goes wrong.
 
-> **How to use:** Focus on outcomes, not checkbox theater. The goal is to reveal risk, improve decisions, and make quality visible.
-
-This checklist mirrors the core guides: [01 - Before Development](../01-before-development.md), [02 - During Development](../02-during-development.md), and [03 - After Development](../03-after-development.md).
+> **How this differs from the phase checklists:** the checklists at the end of [01](../01-before-development.md#before-development-checklist), [02](../02-during-development.md#during-development-checklist), and [03](../03-after-development.md#after-development-checklist) confirm the work was done. This page is what a reviewer asks to find out whether it was done *well*. Focus on outcomes, not checkbox theater.
 
 ## Before development
 
-- [ ] Is the user or business problem clear?
-- [ ] Is the impacted user, system, or journey known?
-- [ ] Are acceptance criteria clear and testable?
-- [ ] Did the team choose BDD or practical checklist criteria?
-- [ ] Is the happy path understood?
-- [ ] Are negative paths and edge cases discussed?
-- [ ] Are impacted systems, APIs, files, events, permissions, or configurations identified?
-- [ ] Are frontend/UX and backend/API risks visible?
-- [ ] Is regression impact understood?
-- [ ] Is required test data available or planned?
-- [ ] Are observability needs clear for risky flows?
-- [ ] Is a test strategy or draft test case outline needed before development?
-- [ ] Are tool/framework decisions clear for testing or automation?
-- [ ] Is the story ready for development?
+- [ ] What is the user or business problem, and who is the affected user or system?
+- [ ] Are the acceptance criteria specific and observable enough to test without guessing?
+- [ ] What are the negative paths and edge cases, and which did we deliberately leave out?
+- [ ] Which systems, APIs, files, events, permissions, or configurations does this touch?
+- [ ] What is the risk level, and does the planned test depth actually match it?
+- [ ] Is the test data available, or is there a plan with an owner and a date?
+- [ ] If this breaks in production, how would we find out?
+- [ ] What would make us say this story is *not* ready?
 
 ## During development
 
-- [ ] Has QA reviewed scenarios before formal handoff?
-- [ ] Did QA and Dev review unit tests, integration tests, and static analysis when relevant?
-- [ ] Are SonarQube or similar static analysis findings reviewed?
-- [ ] Has QA reviewed the PR from a risk and testability perspective when relevant?
-- [ ] Are unit/API/integration/UI tests added at the right level?
-- [ ] Are errors handled clearly and safely?
-- [ ] Is the feature observable in production through logs, traces, metrics, or alerts when relevant?
-- [ ] Is the implementation testable without relying only on the UI?
-- [ ] Are critical paths protected?
-- [ ] Are environment differences between Dev, Staging, and Production understood?
-- [ ] Are known risks communicated?
-- [ ] Is evidence attached?
-- [ ] Are user guide or how-to-test notes updated when needed?
+- [ ] Which risks are protected by developer tests, and which still need QA validation?
+- [ ] Can this be validated below the UI, or is the UI the only way in?
+- [ ] What existing flows, contracts, permissions, or data could this change affect?
+- [ ] Are failures explicit and safe, and would the team diagnose one from the logs alone?
+- [ ] Were static analysis findings reviewed, or dismissed to keep the build green?
+- [ ] Do user guides or how-to-test notes need updating?
+- [ ] What did we choose not to test, and why is that acceptable?
 
 ## Bug classification
 
-- [ ] Does the behavior violate a requirement, acceptance criteria, contract, user need, or quality standard?
-- [ ] Is it a regression?
-- [ ] Is it caused by invalid test data or environment setup?
-- [ ] Is it expected behavior but poorly documented?
-- [ ] Is it actually a feature request or product decision?
-- [ ] Is impact clear enough to define severity and priority?
-- [ ] Is the bug report actionable enough for a developer to investigate quickly?
+- [ ] Does the behavior violate a requirement, acceptance criterion, contract, user need, or quality standard?
+- [ ] Is it a regression in something that used to work?
+- [ ] Is it the product, or is it test data, environment, or setup?
+- [ ] Is it expected behavior that is simply undocumented?
+- [ ] Is it actually a feature request or a product decision?
+- [ ] Is the impact clear enough to argue severity and priority *separately*?
+- [ ] Could a developer start investigating from this report alone?
 
 ## Before release
 
-- [ ] Did critical tests pass?
-- [ ] Was risk-based regression completed?
-- [ ] Are high-severity defects closed or explicitly accepted?
-- [ ] Is rollback or mitigation understood?
-- [ ] Are monitoring/logs available for critical areas?
-- [ ] Was production smoke validation planned when needed?
-- [ ] Is the release recommendation clear?
-- [ ] Is a QA report or release summary needed for leadership visibility?
+- [ ] What is the residual risk, and who accepted it by name?
+- [ ] Which critical flows are proven, and by what evidence?
+- [ ] If this goes wrong, what is the rollback or mitigation, and who can trigger it?
+- [ ] What will we watch after deploy, for how long, and who is watching?
+- [ ] Does leadership have the risk picture, not just the test counts?
 
 ## After release
 
-- [ ] Were production signals reviewed?
-- [ ] Were escaped defects or incidents analyzed without blame?
-- [ ] Was the root cause added to the test strategy, checklist, automation, monitoring, or documentation when relevant?
-- [ ] Were quality metrics updated when the release created measurable impact?
-- [ ] Are follow-up actions owned and visible?
+- [ ] What did production tell us that testing did not?
+- [ ] Did a user detect something before we did?
+- [ ] Which single change would have caught this earlier?
+- [ ] Did each improvement action get an owner and a date, or just a nod in the retro?
